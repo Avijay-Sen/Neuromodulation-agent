@@ -8,6 +8,24 @@ echo "=== Git Auto-Push Watcher Started ==="
 echo "Watching branch '$BRANCH' for new commits or local changes..."
 
 while true; do
+    # 0. Pull remote changes first (e.g. from the daily research automation,
+    #    which runs in a separate cloud session and commits/pushes directly
+    #    to GitHub). Without this, the local checkout silently drifts behind
+    #    origin and Excel/Numbers shows stale data even after a "successful"
+    #    remote push.
+    if [ -z "$(git status --porcelain)" ]; then
+        git fetch origin $BRANCH >/dev/null 2>&1
+        LOCAL=$(git rev-parse HEAD 2>/dev/null)
+        REMOTE=$(git rev-parse origin/$BRANCH 2>/dev/null)
+        if [ -n "$REMOTE" ] && [ "$LOCAL" != "$REMOTE" ]; then
+            echo ""
+            echo "[$(date +'%Y-%m-%d %H:%M:%S')] Remote has new commits. Pulling..."
+            git pull origin $BRANCH
+        fi
+    else
+        echo "[$(date +'%Y-%m-%d %H:%M:%S')] Skipping pull — local uncommitted changes present."
+    fi
+
     # 1. Check if there are local unpushed commits on this branch
     UNPUSHED=$(git log origin/$BRANCH..HEAD --oneline 2>/dev/null)
 
