@@ -20,6 +20,17 @@ this batch.
 **Artifact refresh status:** Pending (diagram artifact refresh not available in
 this session; tree source (`docs/technology-tree.md`) is up to date).
 
+**Post-batch fix (2026-09-13, later same day):** The backfill above wrote its
+5 rows with raw openpyxl, which used default styling (Calibri, no fill, no
+wrap, no border, no row height) instead of matching the workbook's established
+per-category look (Arial 10pt, category color fill, wrapped/top-aligned text,
+thin borders, 130pt rows). Fixed by re-styling all 10 affected rows (5 in
+Master + 5 across the category sheets). Added `scripts/update_xlsx.py` as the
+one canonical way to add/fix spreadsheet rows going forward — the daily
+automation is now required to use it instead of ad-hoc openpyxl code, so this
+can't recur. Also removed stray `.DS_Store`/`.patch` files that a local
+auto-push watcher had swept into a commit, and added `.gitignore`.
+
 ## 2026-09-07 — Initial batch (15 startups)
 
 Seeded the tracker with 15 startups across four categories:
