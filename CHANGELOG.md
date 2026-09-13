@@ -12,9 +12,13 @@ Researched 5 startups across three categories:
 
 **Tech-tree updates:** Added new L3 branch "Intracortical BCI (Penetrating)" under Electrical Neurostimulation; populated with Blackrock and Paradromics. Added entries to existing Implanted Spinal Cord (Saluda), Non-invasive Transcutaneous Peripheral (Cala), and Direct Current tDCS (Soterix) branches. Removed placeholder for Intracortical BCI from "Notes for future branches."
 
-**Spreadsheet update status:** Pending (profiles and tech-tree committed; spreadsheet update deferred to next run with better permission handling).
+**Spreadsheet update status:** Done (backfilled) — added Master sheet rows + rows
+on the three relevant category sheets (`Cognitive - Neural Interface`,
+`Mental Health - Psychiatric`, `Neuro-Musculoskeletal`) for all 5 companies in
+this batch.
 
-**Artifact refresh status:** Pending (will refresh once spreadsheet sync complete).
+**Artifact refresh status:** Pending (diagram artifact refresh not available in
+this session; tree source (`docs/technology-tree.md`) is up to date).
 
 ## 2026-09-07 — Initial batch (15 startups)
 
