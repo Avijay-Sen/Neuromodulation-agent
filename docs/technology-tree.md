@@ -34,6 +34,11 @@ Last synced to diagram: 2026-09-13
 ### L3: Implanted Spinal Cord
 - **Nevro** (Senza / HFX, 10kHz) — paresthesia-free high-frequency dorsal column stimulation — Chronic back/leg pain, painful diabetic neuropathy — added 2026-09-07
 - **Onward Medical** (ARC-IM, investigational) — implantable epidural stimulation, spatiotemporally patterned to intended movement — Spinal cord injury (restorative) — added 2026-09-07
+- **Saluda Medical** (Evoke) — closed-loop spinal cord stimulation with ECAP-based feedback, automatic adjustment to maintain pain relief — Chronic back/leg pain, failed back surgery syndrome — added 2026-09-13
+
+### L3: Intracortical BCI (Penetrating)
+- **Blackrock Neurotech** (Utah Array) — 96–128 channel intracortical microelectrode arrays, single-unit recording for motor intent decoding — Paralysis/SCI communication & prosthetic control — added 2026-09-13
+- **Paradromics** — 10,000+ channel ultra-high-density intracortical arrays, bidirectional motor decoding + sensory feedback — Paralysis/SCI communication, sensorimotor prosthetic control — added 2026-09-13
 
 ### L3: Implanted Peripheral / Cranial Nerve
 - **Inspire Medical Systems** — unilateral hypoglossal nerve stimulation, breath-synchronized closed loop — Obstructive sleep apnea — added 2026-09-07
@@ -48,6 +53,7 @@ Last synced to diagram: 2026-09-13
 - **NeuroSigma** (Monarch eTNS) — external trigeminal nerve stimulation, nightly during sleep — Pediatric ADHD — added 2026-09-07
 - **Signifier Medical Technologies** (eXciteOSA) — transcutaneous neuromuscular stimulation (NMES) of the tongue, daytime use — Mild OSA / primary snoring — added 2026-09-07
 - **Onward Medical** (ARC-EX) — transcutaneous spinal cord stimulation during rehab — Spinal cord injury (hand/arm function) — added 2026-09-07
+- **Cala Health** (Cala Trio) — wearable transcutaneous peripheral nerve stimulation (radial/ulnar nerves), on-demand use — Essential tremor, Parkinson's tremor — added 2026-09-13
 
 ---
 
@@ -67,6 +73,7 @@ Last synced to diagram: 2026-09-13
 
 ### L3: Direct Current (tDCS)
 - **Flow Neuroscience** (FL-100) — at-home 2-electrode tDCS, anode over left DLPFC — MDD (non-treatment-refractory) — added 2026-09-07
+- **Soterix Medical** — clinical-grade tDCS (conventional and HD variants), research & clinical devices — MDD, treatment-resistant depression, stroke rehabilitation — added 2026-09-13
 
 ---
 
@@ -96,5 +103,4 @@ once researched — added here as placeholders so the daily job/automation knows
 where to file them rather than guessing:
 
 - **L2: Electrical Neurostimulation → L3: Implanted DBS (Deep Brain Stimulation)** — none yet (Medtronic/Boston Scientific/Abbott are incumbents, not startups tracked here; watch for a DBS-focused startup)
-- **L2: Electrical Neurostimulation → L3: Intracortical BCI (penetrating)** — none yet (Blackrock Neurotech, Paradromics, Precision Neuroscience are backlog candidates — distinct from Synchron's endovascular approach)
 - **L2: Ultrasound → L3: Low-Intensity Focused Ultrasound Neuromodulation (non-ablative, reversible)** — distinct from Insightec's thermal ablation; watch for a non-thermal neuromodulatory ultrasound startup

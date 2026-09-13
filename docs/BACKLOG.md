@@ -22,22 +22,22 @@ Queue of candidate neuromodulation startups for future daily batches
 - [ ] LivaNova plc — aura6000 sleep apnea program
 
 ## Cognitive Disorders / Neural Interface
-- [ ] Blackrock Neurotech (BCI, Utah array — paralysis/communication)
-- [ ] Paradromics (high-bandwidth BCI)
+- [x] Blackrock Neurotech (BCI, Utah array — paralysis/communication) — added 2026-09-13
+- [x] Paradromics (high-bandwidth BCI) — added 2026-09-13
 - [ ] Precision Neuroscience (Layer 7 cortical interface, BCI)
 - [ ] Motif Neurotech (minimally invasive neurostimulation for depression/epilepsy)
 - [ ] Rune Labs (Parkinson's DBS data/programming platform)
 
 ## Mental Health / Psychiatric
-- [ ] Soterix Medical (tDCS/tACS research & clinical devices)
+- [x] Soterix Medical (tDCS/tACS research & clinical devices) — added 2026-09-13
 - [ ] Sooma (tDCS for depression, Finland, CE marked)
 - [ ] Nexstim (NBT system — navigated TMS for depression & stroke rehab)
 - [ ] Neurolief (Relivion — multi-nerve stimulation for migraine; borderline
       neurological/pain, evaluate fit before including)
 
 ## Neuro-Musculoskeletal / Pain / Movement
-- [ ] Cala Health (Cala Trio — wrist-worn peripheral nerve stimulation, essential tremor)
-- [ ] Saluda Medical (Evoke closed-loop spinal cord stimulation, chronic pain)
+- [x] Cala Health (Cala Trio — wrist-worn peripheral nerve stimulation, essential tremor) — added 2026-09-13
+- [x] Saluda Medical (Evoke closed-loop spinal cord stimulation, chronic pain) — added 2026-09-13
 - [ ] Nalu Medical (microIPG peripheral nerve stimulation)
 - [ ] SPR Therapeutics (Sprint PNS — percutaneous peripheral nerve stimulation for pain)
 - [ ] Presidio Medical (novel DC spinal cord stimulation for chronic pain)
