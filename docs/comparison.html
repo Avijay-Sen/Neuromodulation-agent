@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Neuromodulation Startup Comparison</title>
+<style>
+  :root{
+    color-scheme: light;
+    --surface-0:#fcfcfb; --surface-1:#ffffff; --surface-2:#f2f1ee;
+    --border: #e2e0da;
+    --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#84837c;
+    --link:#2a78d6;
+    --cat-sleep:#2a78d6;      /* blue */
+    --cat-cognitive:#eb6834;  /* orange */
+    --cat-mental:#1baf7a;     /* aqua */
+    --cat-neuro:#eda100;      /* yellow */
+    --status-approved:#1baf7a;
+    --status-investigational:#84837c;
+    --status-mixed:#eda100;
+    --status-disputed:#e34948;
+    --bar-track:#eceae4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])){
+      color-scheme: dark;
+      --surface-0:#141413; --surface-1:#1a1a19; --surface-2:#232220;
+      --border:#38362f;
+      --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#8c8a7f;
+      --link:#3987e5;
+      --cat-sleep:#3987e5; --cat-cognitive:#d95926; --cat-mental:#199e70; --cat-neuro:#c98500;
+      --status-approved:#199e70; --status-investigational:#8c8a7f; --status-mixed:#c98500; --status-disputed:#e66767;
+      --bar-track:#2a2924;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --surface-0:#141413; --surface-1:#1a1a19; --surface-2:#232220;
+    --border:#38362f;
+    --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#8c8a7f;
+    --link:#3987e5;
+    --cat-sleep:#3987e5; --cat-cognitive:#d95926; --cat-mental:#199e70; --cat-neuro:#c98500;
+    --status-approved:#199e70; --status-investigational:#8c8a7f; --status-mixed:#c98500; --status-disputed:#e66767;
+    --bar-track:#2a2924;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--surface-0);
+    color: var(--text-primary);
+    font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0 16px 64px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  header { padding: 28px 0 16px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+  h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .subtitle { color: var(--text-secondary); font-size: 14px; }
+  .meta-row { display:flex; flex-wrap:wrap; gap: 16px; margin-top: 10px; font-size: 13px; color: var(--text-muted); }
+  .meta-row b { color: var(--text-secondary); font-weight: 600; }
+
+  .toolbar {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin-bottom: 18px; padding: 12px; background: var(--surface-1);
+    border: 1px solid var(--border); border-radius: 10px;
+  }
+  .toolbar label { font-size: 12px; color: var(--text-muted); margin-right: 4px; }
+  select, input[type=search] {
+    font: inherit; font-size: 13px; padding: 6px 10px; border-radius: 6px;
+    border: 1px solid var(--border); background: var(--surface-0); color: var(--text-primary);
+  }
+  input[type=search] { min-width: 200px; }
+  .toolbar .spacer { flex: 1; }
+  .view-toggle { display:flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .view-toggle button {
+    font-size: 12px; padding: 6px 12px; background: var(--surface-0); color: var(--text-secondary);
+    border: none; cursor: pointer; border-right: 1px solid var(--border);
+  }
+  .view-toggle button:last-child { border-right: none; }
+  .view-toggle button.active { background: var(--link); color: #fff; }
+
+  .legend { display:flex; flex-wrap:wrap; gap: 14px; margin-bottom: 18px; font-size: 12.5px; color: var(--text-secondary); }
+  .legend .dot { display:inline-block; width:9px; height:9px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+
+  #cardGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px; position: relative; border-left: 4px solid var(--cat, var(--link));
+  }
+  .card h3 { margin: 0 0 2px; font-size: 15.5px; }
+  .card .card-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+  .badge-row { display:flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .badge {
+    font-size: 10.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px;
+    color: #fff; letter-spacing: 0.01em; white-space: nowrap;
+  }
+  .badge.cat { background: var(--cat, var(--link)); }
+  .badge.status-approved { background: var(--status-approved); }
+  .badge.status-investigational { background: var(--status-investigational); }
+  .badge.status-mixed { background: var(--status-mixed); }
+  .badge.status-approved_disputed { background: var(--status-disputed); }
+
+  .mech { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 10px; }
+
+  .fundbar-row { margin-bottom: 12px; }
+  .fundbar-label { display:flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); margin-bottom: 3px; }
+  .fundbar-track { height: 6px; background: var(--bar-track); border-radius: 3px; overflow: hidden; }
+  .fundbar-fill { height: 100%; border-radius: 3px; background: var(--cat, var(--link)); }
+  .fundbar-note { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+
+  .quality { font-size: 12.5px; margin-bottom: 6px; padding-left: 18px; position: relative; }
+  .quality.best::before { content: "+"; position:absolute; left:0; color: var(--status-approved); font-weight:700; }
+  .quality.worst::before { content: "\2212"; position:absolute; left:0; color: var(--status-disputed); font-weight:700; }
+
+  .card-footer { display:flex; justify-content: space-between; align-items:center; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
+  .card-footer a { font-size: 12px; color: var(--link); text-decoration: none; }
+  .card-footer a:hover { text-decoration: underline; }
+
+  table#tableView { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  table#tableView th, table#tableView td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table#tableView th { background: var(--surface-2); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-muted); cursor: pointer; user-select: none; }
+  table#tableView th:hover { color: var(--text-primary); }
+  table#tableView tr:last-child td { border-bottom: none; }
+  table#tableView a { color: var(--link); }
+  .cat-dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }
+
+  footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); }
+  .count-note { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Neuromodulation Startup Comparison</h1>
+    <div class="subtitle">Companion to <code>technology-tree.md</code> (mechanism taxonomy) and <code>profiles/*.md</code> (full write-ups, sources) &mdash; replaces the Excel workbook as the primary comparison view.</div>
+    <div class="meta-row">
+      <span><b>Companies tracked:</b> <span id="totalCount">0</span></span>
+      <span><b>Last updated:</b> 2026-09-14</span>
+      <span><b>Data integrity note:</b> the 5 most-recently-added companies were corrected against live web sources on 2026-09-14 after an earlier draft contained unverified/wrong facts &mdash; see each profile's Sources section for what was and wasn't independently confirmed.</span>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <label for="catFilter">Category</label>
+    <select id="catFilter"><option value="">All</option></select>
+    <label for="regFilter">Regulatory</label>
+    <select id="regFilter">
+      <option value="">All</option>
+      <option value="approved">FDA approved/cleared</option>
+      <option value="investigational">Investigational only</option>
+      <option value="mixed">Mixed (multiple products)</option>
+      <option value="approved_disputed">Approved &mdash; efficacy disputed</option>
+    </select>
+    <input type="search" id="searchBox" placeholder="Search company, mechanism...">
+    <div class="spacer"></div>
+    <label for="sortBy">Sort</label>
+    <select id="sortBy">
+      <option value="name">Name (A-Z)</option>
+      <option value="funding_desc">Funding (high-low)</option>
+      <option value="founded_desc">Founded (newest)</option>
+      <option value="founded_asc">Founded (oldest)</option>
+    </select>
+    <div class="view-toggle">
+      <button id="btnCards" class="active">Cards</button>
+      <button id="btnTable">Table</button>
+    </div>
+  </div>
+
+  <div class="legend" id="legendRow"></div>
+  <div class="count-note" id="countNote"></div>
+
+  <div id="cardGrid"></div>
+  <div id="tableWrap" hidden>
+    <table id="tableView">
+      <thead>
+        <tr>
+          <th data-key="name">Company</th>
+          <th data-key="category">Category</th>
+          <th data-key="founded">Founded</th>
+          <th data-key="funding_m">Funding</th>
+          <th data-key="regulatory">Regulatory</th>
+          <th>Profile</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <footer>
+    Built from <code>docs/profiles/**/*.md</code>. Every company's full sourcing lives in its own profile file &mdash; this dashboard summarizes, it does not replace, those citations. To add a company: research it per <code>docs/BACKLOG.md</code>, write its profile with inline <code>[claim](url)</code> citations, then append one entry to the <code>companies</code> array in this file's embedded script (do not regenerate the whole file).
+  </footer>
+</div>
+
+<script>
+const CAT_COLOR = {
+  "Sleep Apnea": "var(--cat-sleep)",
+  "Cognitive Disorders / Neural Interface": "var(--cat-cognitive)",
+  "Mental Health / Psychiatric": "var(--cat-mental)",
+  "Neuro-Musculoskeletal / Pain / Movement": "var(--cat-neuro)"
+};
+const REG_LABEL = {
+  approved: "FDA approved/cleared",
+  investigational: "Investigational",
+  mixed: "Mixed",
+  approved_disputed: "Approved (disputed)"
+};
+
+const companies = [{"name": "Inspire Medical Systems", "category": "Sleep Apnea", "status": "Public (NYSE: INSP)", "hq": "Maple Grove, MN, USA", "founded": 2007, "funding_m": 109, "funding_note": "~$109M pre-IPO + $112M IPO (2018); market cap ~$1.22B (mid-2026)", "mechanism": "Unilateral hypoglossal nerve stim, breath-synchronized closed-loop", "regulatory": "FDA PMA (2014) + supplements", "reg_class": "approved", "best": "First-ever FDA-approved implant for OSA; largest evidence base (STAR trial, 100k+ patients); breath-synchronized closed-loop", "worst": "Surgical implant ($30k-65k); excludes ~20-30% of OSA patients with complete concentric palatal collapse; 2026 revenue cut on reimbursement disruption", "profile": "docs/profiles/sleep-apnea/inspire-medical-systems.md", "cite": "https://pubmed.ncbi.nlm.nih.gov/24401051/"}, {"name": "Nyxoah", "category": "Sleep Apnea", "status": "Public (NASDAQ: NYXH)", "hq": "Mont-Saint-Guibert, Belgium", "founded": 2009, "funding_m": 360, "funding_note": "\u20ac332.5M raised since inception + 2024/2025/2026 raises (~\u20ac332.5M+, FX approx.)", "mechanism": "Bilateral hypoglossal nerve stim, leadless battery-free implant", "regulatory": "FDA PMA (Aug 2025)", "reg_class": "approved", "best": "Bilateral stimulation + leadless/battery-free design; broader MRI compatibility; targets excluded-by-Inspire complete-concentric-collapse patients", "worst": "8.7% serious adverse event rate in DREAM trial; nightly external wearable compliance burden; active Inspire patent lawsuit (May 2025)", "profile": "docs/profiles/sleep-apnea/nyxoah.md", "cite": "https://clinicaltrials.gov/study/NCT03868618"}, {"name": "Signifier Medical Technologies", "category": "Sleep Apnea", "status": "Private", "hq": "London, UK", "founded": 2015, "funding_m": 57, "funding_note": "~$57-58M disclosed across 4 rounds", "mechanism": "Daytime transcutaneous NMES of tongue muscles (eXciteOSA)", "regulatory": "FDA De Novo (2021)", "reg_class": "approved", "best": "Only non-invasive, non-implant, daytime-use device; targets mild OSA/snoring population excluded from Inspire/Nyxoah eligibility", "worst": "Requires 6-week daily course + indefinite weekly maintenance; not indicated for moderate/severe OSA; thinner peer-reviewed evidence base", "profile": "docs/profiles/sleep-apnea/signifier-medical-technologies.md", "cite": "https://www.fiercebiotech.com/medtech/signifier-hypes-up-excite-tongue-stimulation-device-for-sleep-apnea-35m-series-d"}, {"name": "NeuroPace", "category": "Cognitive Disorders / Neural Interface", "status": "Public (NASDAQ: NPCE)", "hq": "Mountain View, CA, USA", "founded": 1997, "funding_m": 117, "funding_note": "$117.3M IPO (2021); market cap ~$560.5M (July 2026)", "mechanism": "Closed-loop responsive cortical/subcortical stimulation (RNS System)", "regulatory": "FDA PMA (2013)", "reg_class": "approved", "best": "Only FDA-approved closed-loop responsive brain stimulator for epilepsy; unique chronic iEEG dataset asset", "worst": "Requires craniotomy; only ~20% of drug-resistant epilepsy patients are surgical candidates; 2025 IGE indication expansion ruled 'not approvable' by FDA", "profile": "docs/profiles/cognitive-neural-interface/neuropace.md", "cite": "https://www.science.org/doi/10.1126/scitranslmed.abf6588"}, {"name": "Cognito Therapeutics", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "Cambridge, MA, USA", "founded": 2016, "funding_m": 269, "funding_note": "~$269M disclosed total (Series B/C, incl. $105M Series C)", "mechanism": "Non-invasive 40Hz gamma light+sound entrainment (Spectris)", "regulatory": "Breakthrough Device (2021); pre-market", "reg_class": "investigational", "best": "Fully non-invasive, no surgery; targets network-level mechanism (gamma entrainment) distinct from anti-amyloid antibodies", "worst": "No completed Phase 3 (HOPE study) readout yet; independent commentary (ALZFORUM) has questioned preclinical reproducibility; targeting ~2027 market entry", "profile": "docs/profiles/cognitive-neural-interface/cognito-therapeutics.md", "cite": "https://www.nature.com/articles/s41586-018-0351-4"}, {"name": "Insightec", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "Tirat Carmel, Israel", "founded": 1999, "funding_m": 574, "funding_note": "~$574M cumulative disclosed; 2024 valuation ~$375M (down from ~$1B)", "mechanism": "Incisionless focused-ultrasound thermal ablation (Exablate Neuro)", "regulatory": "FDA PMA (2016)", "reg_class": "approved", "best": "Only incisionless option vs. DBS craniotomy; unique BBB-opening application for Alzheimer's drug delivery", "worst": "Ablation is permanent/non-adjustable (vs. reversible DBS); requires favorable skull density ratio; targeting errors can cause irreversible side effects", "profile": "docs/profiles/cognitive-neural-interface/insightec.md", "cite": "https://www.nejm.org/doi/full/10.1056/NEJMoa1600159"}, {"name": "Synchron", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "Brooklyn, NY, USA", "founded": 2016, "funding_m": 345, "funding_note": "~$345M disclosed (incl. $200M Series D, Nov 2025); ~$1B reported valuation", "mechanism": "Endovascular Stentrode (16-channel) via jugular vein, no craniotomy", "regulatory": "Breakthrough Device (2020); pre-market", "reg_class": "investigational", "best": "Only BCI requiring no brain surgery at all (catheter-based, interventional radiology); backed by Gates/Bezos/ARCH", "worst": "Only 16 channels vs. 96-10,000+ for intracortical rivals; often paired with external eye-tracking; no implantable BCI has FDA marketing authorization yet industry-wide", "profile": "docs/profiles/cognitive-neural-interface/synchron.md", "cite": "https://www.sciencedirect.com/science/article/pii/S0165027025001128"}, {"name": "Blackrock Neurotech", "category": "Cognitive Disorders / Neural Interface", "status": "Majority-owned by Tether (crypto)", "hq": "Salt Lake City, UT, USA", "founded": 2008, "funding_m": 200, "funding_note": "$200M for majority stake from Tether (Apr 2024), valuing co. at ~$350M; prior funding only ~$10M", "mechanism": "Intracortical Utah Array (96-128 ch), percutaneous/pedestal", "regulatory": "Breakthrough Device (2021); pre-market", "reg_class": "investigational", "best": "20+ years of clinical use via BrainGate consortium \u2014 longest track record of any intracortical BCI", "worst": "Majority owned by a stablecoin company, not a traditional med-tech investor \u2014 unusual governance/strategic-intent profile worth diligence; no confirmed full FDA clearance yet", "profile": "docs/profiles/cognitive-neural-interface/blackrock-neurotech.md", "cite": "https://www.coindesk.com/business/2024/04/29/tether-buys-200m-majority-stake-in-brain-computer-interface-company-blackrock-neurotech"}, {"name": "Paradromics", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "Austin, TX, USA", "founded": 2015, "funding_m": 33, "funding_note": "$33M Series A (disclosed); ~$127M PitchBook estimate (unverified)", "mechanism": "421-electrode cortical array + wireless chest transceiver (Connexus)", "regulatory": "FDA IDE for Connect-One study (Nov 2025); first human implant done", "reg_class": "investigational", "best": "First human implant completed under FDA-approved IDE (Connect-One, Univ. of Michigan, 2025) \u2014 real regulatory/clinical milestone reached", "worst": "Still first-in-human/early feasibility stage; no efficacy results published yet; prior '10,000+ channel' claim was unverified (real figure: 421 electrodes)", "profile": "docs/profiles/cognitive-neural-interface/paradromics.md", "cite": "https://www.michiganmedicine.org/news-release/university-michigan-implants-first-human-paradromics-wireless-brain-computer-interface-designed"}, {"name": "Neuronetics (NeuroStar)", "category": "Mental Health / Psychiatric", "status": "Public (NASDAQ: STIM)", "hq": "Malvern, PA, USA", "founded": 2003, "funding_m": 294, "funding_note": "~$294.5M lifetime (incl. $107.5M IPO); market cap ~$170-224M", "mechanism": "Figure-8 coil rTMS over left DLPFC", "regulatory": "FDA cleared (2008, expanded since)", "reg_class": "approved", "best": "First TMS device ever FDA-cleared (2008); largest installed base; TrakStar real-world registry (83% relief, 62% remission)", "worst": "Daily in-clinic visits x6 weeks; $8k-12k self-pay cost; bipolar depression indication only Breakthrough-designated, not cleared", "profile": "docs/profiles/mental-health-psychiatric/neuronetics.md", "cite": "https://pubmed.ncbi.nlm.nih.gov/26349810/"}, {"name": "BrainsWay", "category": "Mental Health / Psychiatric", "status": "Public (NASDAQ: BWAY)", "hq": "Burlington, MA, USA / Jerusalem, Israel", "founded": 2003, "funding_m": 27, "funding_note": "~$27.5M IPO gross (2019); market cap ~$230M-611M (2025-2026)", "mechanism": "Patented H-coil Deep TMS (H1/H7 variants)", "regulatory": "FDA cleared (2013 MDD, 2018 OCD, 2020 smoking)", "reg_class": "approved", "best": "Only device FDA-cleared for OCD (2018, first-ever) and only TMS cleared for smoking cessation (2020)", "worst": "Broader field = less spatial focality than figure-8 coils; smoking-cessation quit rates (19-25%) statistically significant but modest in absolute terms", "profile": "docs/profiles/mental-health-psychiatric/brainsway.md", "cite": "https://psychiatryonline.org/doi/10.1176/appi.ajp.2019.18101180"}, {"name": "Flow Neuroscience", "category": "Mental Health / Psychiatric", "status": "Private", "hq": "Malm\u00f6, Sweden", "founded": 2016, "funding_m": 13, "funding_note": "$9.3M Series A disclosed; ~$10-26M lifetime range (sources conflict)", "mechanism": "At-home tDCS headset (FL-100) + app-guided behavioral activation", "regulatory": "FDA PMA (Dec 8, 2025) - first home-use tDCS depression device ever approved", "reg_class": "approved", "best": "First and only FDA-authorized at-home neuromodulation device for depression in the US; broader (non-treatment-refractory) label than TMS competitors", "worst": "tDCS mechanism more contested in literature than TMS; US commercial launch not until mid-2026; self-administration reduces clinician oversight", "profile": "docs/profiles/mental-health-psychiatric/flow-neuroscience.md", "cite": "https://www.nature.com/articles/s41591-024-03305-y"}, {"name": "NeuroSigma", "category": "Mental Health / Psychiatric", "status": "Private", "hq": "Los Angeles, CA, USA", "founded": 2008, "funding_m": 18, "funding_note": "~$17.9M disclosed (conflicting reports as low as ~$1.7M)", "mechanism": "External trigeminal nerve stimulation (eTNS), nightly during sleep (Monarch)", "regulatory": "FDA De Novo (2019) - efficacy now disputed", "reg_class": "approved_disputed", "best": "First (and only) FDA-cleared non-drug treatment for pediatric ADHD; fully at-home use", "worst": "MAJOR FLAG: Jan 2026 Nature Medicine confirmatory trial (n=150) found NO significant benefit vs sham, contradicting the original clearance basis; investigators publicly called for FDA to revisit clearance", "profile": "docs/profiles/mental-health-psychiatric/neurosigma.md", "cite": "https://www.nature.com/articles/s41591-025-04075-x"}, {"name": "Soterix Medical", "category": "Mental Health / Psychiatric", "status": "Private", "hq": "New York, NY, USA", "founded": 2008, "funding_m": null, "funding_note": "Not publicly disclosed", "mechanism": "Multi-modality: HD-tDCS, TMS (SPRY), tFUS platform", "regulatory": "FDA cleared - SPRY TMS (Mar 2026); tDCS depression still IDE-stage", "reg_class": "mixed", "best": "Broad multi-modality platform (tDCS+TMS+tFUS+monitoring) serving 1,200+ medical centers globally, not a single-product bet", "worst": "Its actual FDA depression clearance (SPRY) is TMS, not tDCS as commonly assumed; home tDCS-for-depression program remains IDE-stage, not cleared", "profile": "docs/profiles/mental-health-psychiatric/soterix-medical.md", "cite": "https://www.prnewswire.com/news-releases/soterix-medical-announces-clearance-of-spry-transcranial-magnetic-stimulation-tms-therapy-for-the-treatment-of-major-depression-302704534.html"}, {"name": "Nevro (HFX/Senza)", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Acquired by Globus Medical (Apr 2025)", "hq": "Redwood City, CA, USA", "founded": 2006, "funding_m": 250, "funding_note": "~$153M pre-IPO + $126.5M IPO; acquired for ~$250M total equity value (2025)", "mechanism": "10kHz paresthesia-free spinal cord stimulation", "regulatory": "FDA PMA (2015, expanded)", "reg_class": "approved", "best": "Only SCS with FDA label for painful diabetic neuropathy; AI-personalized HFX iQ platform (first of its kind)", "worst": "Lead migration in 13-22.6% of cases across studies; no longer independently traded (acquired, delisted April 2025)", "profile": "docs/profiles/neuro-musculoskeletal-pain-movement/nevro.md", "cite": "https://www.nevro.com/app/uploads/sites/3/2025/01/Kapural-Anesthesiology-2015-The-SENZA-RCT.pdf"}, {"name": "SetPoint Medical", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Private", "hq": "Valencia, CA, USA", "founded": 2007, "funding_m": 389, "funding_note": "~$388-389M cumulative disclosed (incl. $140M Aug 2025 round)", "mechanism": "Cervical vagus nerve stimulation (cholinergic anti-inflammatory pathway)", "regulatory": "FDA PMA (Jul 2025)", "reg_class": "approved", "best": "First FDA-approved neuroimmune-modulation implant for any indication; mechanistically distinct from every other company in this tracker (systemic immune biology, not pain/motor)", "worst": "RESET-RA effect sizes (35.2% vs 24.2% ACR20 at 3mo) statistically significant but modest vs. biologic response rates; nascent reimbursement pathway for a brand-new device category", "profile": "docs/profiles/neuro-musculoskeletal-pain-movement/setpoint-medical.md", "cite": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10935935/"}, {"name": "Neuros Medical (Altius)", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Private", "hq": "Willoughby, OH, USA", "founded": 2008, "funding_m": 145, "funding_note": "~$145-225M disclosed (aggregators conflict); $56M Series D (Jul 2025)", "mechanism": "Peripheral nerve cuff, on-demand high-frequency conduction block", "regulatory": "FDA PMA (Aug 2024)", "reg_class": "approved", "best": "Mechanistically distinct on-demand conduction block (not gate-control SCS); QUEST trial used genuinely blinded active-sham comparator, rare in device trials", "worst": "Newly commercial (approved 2024) with limited early site availability; long-term durability vs. surgical alternatives (TMR/RPNI) not yet established", "profile": "docs/profiles/neuro-musculoskeletal-pain-movement/neuros-medical.md", "cite": "https://www.fda.gov/medical-devices/recently-approved-devices/altius-direct-electrical-nerve-stimulation-system-p230020"}, {"name": "ONWARD Medical", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Public (Euronext: ONWD)", "hq": "Eindhoven, Netherlands", "founded": 2014, "funding_m": 380, "funding_note": "\u20ac380M market cap at 2021 IPO; market cap ~\u20ac180.4M (Sept 2026, de-rated)", "mechanism": "Transcutaneous (ARC-EX) + implantable (ARC-IM) spinal cord stimulation", "regulatory": "FDA De Novo - ARC-EX only (Dec 2024)", "reg_class": "mixed", "best": "Aims for restorative/functional gain (not just symptom suppression); first FDA-authorized non-invasive SCS system for SCI", "worst": "ARC-IM (the more dramatic 'walking again' platform) remains investigational, not FDA-cleared; commercial ARC-EX revenue still tiny (\u20ac3.7M in 2025)", "profile": "docs/profiles/neuro-musculoskeletal-pain-movement/onward-medical.md", "cite": "https://www.nature.com/articles/s41591-024-02940-9"}, {"name": "Cala Health", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Private", "hq": "San Francisco Bay Area, CA, USA", "founded": 2014, "funding_m": 177, "funding_note": "~$177M disclosed across rounds ($50M Series C, $77M, $50M growth capital)", "mechanism": "Wearable TAPS peripheral nerve stim at wrist (Cala Trio)", "regulatory": "FDA De Novo (Apr 2018)", "reg_class": "approved", "best": "Only non-invasive prescription therapy for essential tremor on the market; FDA-cleared since 2018 (long track record for a wearable)", "worst": "Effect is explicitly 'transient relief' per FDA label, not curative; specific efficacy percentages not independently confirmed against a primary trial source in this pass", "profile": "docs/profiles/neuro-musculoskeletal-pain-movement/cala-health.md", "cite": "https://www.essentialtremor.org/wp-content/uploads/2018/05/CalaHealth-FDAClearance-2018Apr26.pdf"}, {"name": "Saluda Medical", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Private", "hq": "Sydney, Australia", "founded": 2011, "funding_m": 100, "funding_note": "$100M raised (Redmile Group-led round)", "mechanism": "ECAP-based closed-loop spinal cord stimulation (Evoke)", "regulatory": "FDA PMA (Mar 2022)", "reg_class": "approved", "best": "First-ever FDA PMA for an SCS system based on double-blind RCT results; 24-month responder rate 79.1% (closed-loop) vs 53.7% (open-loop)", "worst": "Total lifetime funding beyond the $100M round not independently confirmed; standard SCS risks (lead migration, battery replacement) still apply", "profile": "docs/profiles/neuro-musculoskeletal-pain-movement/saluda-medical.md", "cite": "https://www.fda.gov/medical-devices/recently-approved-devices/evoke-spinal-cord-stimulation-scs-system-p190002"}]
+;
+
+const maxFunding = Math.max(...companies.filter(c => c.funding_m).map(c => c.funding_m));
+
+function fmtFunding(c) {
+  if (!c.funding_m) return "Not disclosed";
+  return "$" + c.funding_m + "M+";
+}
+
+function catColor(cat) { return CAT_COLOR[cat] || "var(--link)"; }
+
+function cardHTML(c) {
+  const pct = c.funding_m ? Math.max(4, Math.round((c.funding_m / maxFunding) * 100)) : 0;
+  return `
+  <div class="card" style="--cat:${catColor(c.category)}" data-name="${c.name.toLowerCase()}" data-mech="${c.mechanism.toLowerCase()}">
+    <h3>${c.name}</h3>
+    <div class="card-sub">${c.status} &middot; ${c.hq} &middot; est. ${c.founded}</div>
+    <div class="badge-row">
+      <span class="badge cat">${c.category.split(' / ')[0]}</span>
+      <span class="badge status-${c.reg_class}">${REG_LABEL[c.reg_class] || c.regulatory}</span>
+    </div>
+    <div class="mech">${c.mechanism}</div>
+    <div class="fundbar-row">
+      <div class="fundbar-label"><span>Disclosed funding</span><span>${fmtFunding(c)}</span></div>
+      <div class="fundbar-track"><div class="fundbar-fill" style="width:${pct}%"></div></div>
+      <div class="fundbar-note">${c.funding_note}</div>
+    </div>
+    <div class="quality best">${c.best}</div>
+    <div class="quality worst">${c.worst}</div>
+    <div class="card-footer">
+      <a href="${c.profile}">Full profile &rarr;</a>
+      <a href="${c.cite}" target="_blank" rel="noopener">Key source &#8599;</a>
+    </div>
+  </div>`;
+}
+
+function tableRowHTML(c) {
+  return `<tr data-name="${c.name.toLowerCase()}" data-mech="${c.mechanism.toLowerCase()}">
+    <td><strong>${c.name}</strong><br><span style="color:var(--text-muted);font-size:11.5px">${c.hq}</span></td>
+    <td><span class="cat-dot" style="background:${catColor(c.category)}"></span>${c.category}</td>
+    <td>${c.founded}</td>
+    <td>${fmtFunding(c)}</td>
+    <td>${REG_LABEL[c.reg_class] || c.regulatory}</td>
+    <td><a href="${c.profile}">Profile</a></td>
+  </tr>`;
+}
+
+function render() {
+  const cat = document.getElementById('catFilter').value;
+  const reg = document.getElementById('regFilter').value;
+  const q = document.getElementById('searchBox').value.trim().toLowerCase();
+  const sortBy = document.getElementById('sortBy').value;
+
+  let list = companies.filter(c => {
+    if (cat && c.category !== cat) return false;
+    if (reg && c.reg_class !== reg) return false;
+    if (q && !(c.name.toLowerCase().includes(q) || c.mechanism.toLowerCase().includes(q))) return false;
+    return true;
+  });
+
+  list.sort((a, b) => {
+    if (sortBy === 'funding_desc') return (b.funding_m||0) - (a.funding_m||0);
+    if (sortBy === 'founded_desc') return b.founded - a.founded;
+    if (sortBy === 'founded_asc') return a.founded - b.founded;
+    return a.name.localeCompare(b.name);
+  });
+
+  document.getElementById('cardGrid').innerHTML = list.map(cardHTML).join('');
+  document.getElementById('tableBody').innerHTML = list.map(tableRowHTML).join('');
+  document.getElementById('countNote').textContent = `Showing ${list.length} of ${companies.length} companies`;
+}
+
+function init() {
+  document.getElementById('totalCount').textContent = companies.length;
+  const cats = [...new Set(companies.map(c => c.category))];
+  const catSelect = document.getElementById('catFilter');
+  cats.forEach(cat => {
+    const opt = document.createElement('option');
+    opt.value = cat; opt.textContent = cat;
+    catSelect.appendChild(opt);
+  });
+  document.getElementById('legendRow').innerHTML = cats.map(cat =>
+    `<span><span class="dot" style="background:${catColor(cat)}"></span>${cat}</span>`
+  ).join('');
+
+  ['catFilter','regFilter','sortBy'].forEach(id => document.getElementById(id).addEventListener('change', render));
+  document.getElementById('searchBox').addEventListener('input', render);
+
+  document.getElementById('btnCards').addEventListener('click', () => {
+    document.getElementById('cardGrid').hidden = false;
+    document.getElementById('tableWrap').hidden = true;
+    document.getElementById('btnCards').classList.add('active');
+    document.getElementById('btnTable').classList.remove('active');
+  });
+  document.getElementById('btnTable').addEventListener('click', () => {
+    document.getElementById('cardGrid').hidden = true;
+    document.getElementById('tableWrap').hidden = false;
+    document.getElementById('btnTable').classList.add('active');
+    document.getElementById('btnCards').classList.remove('active');
+  });
+
+  let sortKey = null, sortDir = 1;
+  document.querySelectorAll('#tableView th[data-key]').forEach(th => {
+    th.addEventListener('click', () => {
+      const key = th.dataset.key;
+      sortDir = (sortKey === key) ? -sortDir : 1;
+      sortKey = key;
+      const sel = document.getElementById('sortBy');
+      if (key === 'funding_m') sel.value = sortDir === 1 ? 'funding_desc' : 'name';
+      else if (key === 'founded') sel.value = sortDir === 1 ? 'founded_desc' : 'founded_asc';
+      else sel.value = 'name';
+      render();
+    });
+  });
+
+  render();
+}
+
+init();
+</script>
+</body>
+</html>
