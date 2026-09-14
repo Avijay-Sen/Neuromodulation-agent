@@ -2,6 +2,72 @@
 
 All research batches are logged here, newest first.
 
+## 2026-09-14 — Third batch (10 startups)
+
+Researched 10 startups across all four categories, clearing the entire prior
+backlog queue (11 entries, consolidated into 10 profiles — see note below):
+
+- **Sleep Apnea (1):** LivaNova (aura6000 System, originally developed by
+  ImThera Medical) — proximal hypoglossal nerve stimulation; FDA PMA approved
+  March 19, 2026. **Note:** this profile consolidates two separate backlog
+  entries ("ImThera Medical" and "LivaNova plc — aura6000 program") into one,
+  since ImThera no longer operates independently — LivaNova acquired it
+  outright in 2018 and owns the aura6000 program directly.
+- **Cognitive Disorders / Neural Interface (3):** Precision Neuroscience
+  (Layer 7 subdural cortical interface, FDA 510(k) cleared Apr 2025),
+  Motif Neurotech (DOT epidural cortical microstimulator for
+  treatment-resistant depression), Rune Labs (StrivePD — Apple Watch-based
+  Parkinson's symptom monitoring + Medtronic DBS data integration; included
+  as a non-stimulation software/data platform, flagged as an atypical fit
+  for this tracker's mechanism-based taxonomy)
+- **Mental Health / Psychiatric (3):** Sooma (at-home/clinic tDCS for
+  depression, EU MDR certified, FDA IDE pivotal trial ongoing), Nexstim
+  (navigated TMS — NBT System, FDA cleared for MDD since 2018), Neurolief
+  (Relivion for migraine + Proliv Rx for MDD, FDA PMA approved Jan 2026;
+  financially tied to BrainsWay via convertible loans + acquisition call
+  option)
+- **Neuro-Musculoskeletal / Pain / Movement (3):** Nalu Medical (micro-IPG
+  PNS/SCS platform — acquired by Boston Scientific for ~$533M, closed Jan
+  2026), SPR Therapeutics (SPRINT — percutaneous, temporary PNS for chronic
+  and acute pain), Presidio Medical (ULF spinal cord stimulation — novel
+  reversible conduction-block mechanism via sodium channel inactivation,
+  FDA IDE pivotal trial underway)
+
+**Tech-tree updates:** Added three new L3 branches under Electrical
+Neurostimulation — "Percutaneous / Temporary Peripheral Nerve Stimulation"
+(SPR Therapeutics) and "Surface / Epicortical Interface (ECoG, Non-Penetrating)"
+(Precision Neuroscience, Motif Neurotech); added a new L3 "Navigated TMS
+(nTMS)" branch under Magnetic Stimulation (Nexstim); added a new L2 branch
+"Digital Health / Neurostimulation Data Platforms" → L3 "Wearable-based
+Symptom Monitoring" for Rune Labs (non-stimulation). Added LivaNova and Nalu
+Medical to the existing "Implanted Peripheral / Cranial Nerve" L3; Neurolief
+to "Non-invasive / Transcutaneous Peripheral"; Presidio Medical to "Implanted
+Spinal Cord"; Sooma to "Direct Current (tDCS)". Also corrected a factual
+error carried over from the prior batch: the tech tree listed Paradromics as
+"10,000+ channel" when its verified profile figure is 421 electrodes — fixed
+to match.
+
+**Comparison.html:** Appended 10 new entries to the embedded `companies`
+array (verified valid JSON after edit — 30 total companies), each using the
+full GitHub blob URL format for the `profile` field per established
+convention.
+
+**Backlog replenishment:** The prior backlog had only 11 unresearched entries
+before this batch (below the ~15 threshold), so 14 new credible candidates
+were sourced via live web search and appended across all four categories
+(3 Sleep Apnea, 4 Cognitive, 3 Mental Health, 4 Neuro-Musculoskeletal) —
+each verified as a real, currently-operating company via at least one
+independent source before being added. Notably, SonoMind (focused ultrasound
+for depression) would populate the tech tree's long-standing placeholder for
+a "Low-Intensity Focused Ultrasound Neuromodulation" branch once researched.
+
+**Citation discipline:** Every funding figure, regulatory date, and
+mechanism claim in this batch's profiles is either linked to a live-verified
+primary/credible-secondary source or explicitly marked `[unverified]` —
+several founding years (ImThera, Motif Neurotech, Neurolief) and some
+funding totals could not be pinned to a primary source in this pass and are
+flagged accordingly rather than stated as fact.
+
 ## 2026-09-13 — Second batch (5 startups)
 
 Researched 5 startups across three categories:
