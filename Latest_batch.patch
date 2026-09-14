@@ -1,0 +1,1116 @@
+From e76476ebb43b7bc43a93310193a39104284e64a1 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Mon, 14 Sep 2026 14:26:12 +0000
+Subject: [PATCH] Add third research batch: 10 startups across all four
+ categories
+
+Researched LivaNova aura6000 (ex-ImThera), Precision Neuroscience, Motif
+Neurotech, Rune Labs, Sooma, Nexstim, Neurolief, Nalu Medical, SPR
+Therapeutics, and Presidio Medical, clearing the prior backlog. Added new
+technology-tree branches for ECoG surface interfaces, percutaneous PNS,
+navigated TMS, and a digital-health/data-platform category for Rune Labs.
+Appended 10 entries to comparison.html and replenished the backlog with 14
+newly sourced, verified candidates. Corrected a stale Paradromics channel
+count in the tech tree to match its already-corrected profile.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Aoa8rnqX3uzHj14z1Gfhks
+---
+ CHANGELOG.md                                  | 66 +++++++++++++++
+ docs/BACKLOG.md                               | 38 ++++++---
+ docs/comparison.html                          |  2 +-
+ .../motif-neurotech.md                        | 79 ++++++++++++++++++
+ .../precision-neuroscience.md                 | 74 +++++++++++++++++
+ .../cognitive-neural-interface/rune-labs.md   | 80 ++++++++++++++++++
+ .../mental-health-psychiatric/neurolief.md    | 82 +++++++++++++++++++
+ .../mental-health-psychiatric/nexstim.md      | 74 +++++++++++++++++
+ .../mental-health-psychiatric/sooma.md        | 75 +++++++++++++++++
+ .../nalu-medical.md                           | 75 +++++++++++++++++
+ .../presidio-medical.md                       | 77 +++++++++++++++++
+ .../spr-therapeutics.md                       | 77 +++++++++++++++++
+ .../profiles/sleep-apnea/livanova-aura6000.md | 80 ++++++++++++++++++
+ docs/technology-tree.md                       | 29 ++++++-
+ 14 files changed, 893 insertions(+), 15 deletions(-)
+ create mode 100644 docs/profiles/cognitive-neural-interface/motif-neurotech.md
+ create mode 100644 docs/profiles/cognitive-neural-interface/precision-neuroscience.md
+ create mode 100644 docs/profiles/cognitive-neural-interface/rune-labs.md
+ create mode 100644 docs/profiles/mental-health-psychiatric/neurolief.md
+ create mode 100644 docs/profiles/mental-health-psychiatric/nexstim.md
+ create mode 100644 docs/profiles/mental-health-psychiatric/sooma.md
+ create mode 100644 docs/profiles/neuro-musculoskeletal-pain-movement/nalu-medical.md
+ create mode 100644 docs/profiles/neuro-musculoskeletal-pain-movement/presidio-medical.md
+ create mode 100644 docs/profiles/neuro-musculoskeletal-pain-movement/spr-therapeutics.md
+ create mode 100644 docs/profiles/sleep-apnea/livanova-aura6000.md
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 6ffccd9..6a96cda 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -2,6 +2,72 @@
+ 
+ All research batches are logged here, newest first.
+ 
++## 2026-09-14 — Third batch (10 startups)
++
++Researched 10 startups across all four categories, clearing the entire prior
++backlog queue (11 entries, consolidated into 10 profiles — see note below):
++
++- **Sleep Apnea (1):** LivaNova (aura6000 System, originally developed by
++  ImThera Medical) — proximal hypoglossal nerve stimulation; FDA PMA approved
++  March 19, 2026. **Note:** this profile consolidates two separate backlog
++  entries ("ImThera Medical" and "LivaNova plc — aura6000 program") into one,
++  since ImThera no longer operates independently — LivaNova acquired it
++  outright in 2018 and owns the aura6000 program directly.
++- **Cognitive Disorders / Neural Interface (3):** Precision Neuroscience
++  (Layer 7 subdural cortical interface, FDA 510(k) cleared Apr 2025),
++  Motif Neurotech (DOT epidural cortical microstimulator for
++  treatment-resistant depression), Rune Labs (StrivePD — Apple Watch-based
++  Parkinson's symptom monitoring + Medtronic DBS data integration; included
++  as a non-stimulation software/data platform, flagged as an atypical fit
++  for this tracker's mechanism-based taxonomy)
++- **Mental Health / Psychiatric (3):** Sooma (at-home/clinic tDCS for
++  depression, EU MDR certified, FDA IDE pivotal trial ongoing), Nexstim
++  (navigated TMS — NBT System, FDA cleared for MDD since 2018), Neurolief
++  (Relivion for migraine + Proliv Rx for MDD, FDA PMA approved Jan 2026;
++  financially tied to BrainsWay via convertible loans + acquisition call
++  option)
++- **Neuro-Musculoskeletal / Pain / Movement (3):** Nalu Medical (micro-IPG
++  PNS/SCS platform — acquired by Boston Scientific for ~$533M, closed Jan
++  2026), SPR Therapeutics (SPRINT — percutaneous, temporary PNS for chronic
++  and acute pain), Presidio Medical (ULF spinal cord stimulation — novel
++  reversible conduction-block mechanism via sodium channel inactivation,
++  FDA IDE pivotal trial underway)
++
++**Tech-tree updates:** Added three new L3 branches under Electrical
++Neurostimulation — "Percutaneous / Temporary Peripheral Nerve Stimulation"
++(SPR Therapeutics) and "Surface / Epicortical Interface (ECoG, Non-Penetrating)"
++(Precision Neuroscience, Motif Neurotech); added a new L3 "Navigated TMS
++(nTMS)" branch under Magnetic Stimulation (Nexstim); added a new L2 branch
++"Digital Health / Neurostimulation Data Platforms" → L3 "Wearable-based
++Symptom Monitoring" for Rune Labs (non-stimulation). Added LivaNova and Nalu
++Medical to the existing "Implanted Peripheral / Cranial Nerve" L3; Neurolief
++to "Non-invasive / Transcutaneous Peripheral"; Presidio Medical to "Implanted
++Spinal Cord"; Sooma to "Direct Current (tDCS)". Also corrected a factual
++error carried over from the prior batch: the tech tree listed Paradromics as
++"10,000+ channel" when its verified profile figure is 421 electrodes — fixed
++to match.
++
++**Comparison.html:** Appended 10 new entries to the embedded `companies`
++array (verified valid JSON after edit — 30 total companies), each using the
++full GitHub blob URL format for the `profile` field per established
++convention.
++
++**Backlog replenishment:** The prior backlog had only 11 unresearched entries
++before this batch (below the ~15 threshold), so 14 new credible candidates
++were sourced via live web search and appended across all four categories
++(3 Sleep Apnea, 4 Cognitive, 3 Mental Health, 4 Neuro-Musculoskeletal) —
++each verified as a real, currently-operating company via at least one
++independent source before being added. Notably, SonoMind (focused ultrasound
++for depression) would populate the tech tree's long-standing placeholder for
++a "Low-Intensity Focused Ultrasound Neuromodulation" branch once researched.
++
++**Citation discipline:** Every funding figure, regulatory date, and
++mechanism claim in this batch's profiles is either linked to a live-verified
++primary/credible-secondary source or explicitly marked `[unverified]` —
++several founding years (ImThera, Motif Neurotech, Neurolief) and some
++funding totals could not be pinned to a primary source in this pass and are
++flagged accordingly rather than stated as fact.
++
+ ## 2026-09-13 — Second batch (5 startups)
+ 
+ Researched 5 startups across three categories:
+diff --git a/docs/BACKLOG.md b/docs/BACKLOG.md
+index 6361e6c..da47a25 100644
+--- a/docs/BACKLOG.md
++++ b/docs/BACKLOG.md
+@@ -18,29 +18,43 @@ Queue of candidate neuromodulation startups for future daily batches
+    neuro-musculoskeletal / sleep apnea) roughly even over time.
+ 
+ ## Sleep Apnea
+-- [ ] ImThera Medical (aura6000 hypoglossal nerve stimulation, acquired by LivaNova)
+-- [ ] LivaNova plc — aura6000 sleep apnea program
++- [x] ImThera Medical (aura6000 hypoglossal nerve stimulation, acquired by LivaNova) — added 2026-09-14 (consolidated with LivaNova entry below into one profile — see note)
++- [x] LivaNova plc — aura6000 sleep apnea program — added 2026-09-14 (see `docs/profiles/sleep-apnea/livanova-aura6000.md`; ImThera no longer operates independently, so both backlog rows share one profile)
++- [ ] Invicta Medical (percutaneous hypoglossal nerve + ansa cervicalis stimulation, wearable/minimally-invasive alternative to CPAP; ~$29.5M raised — verified real via PitchBook/industry press)
++- [ ] Somnair Inc. (first non-invasive neurostimulation treatment for OSA, Johns Hopkins spinout; $4.3M oversubscribed seed, Sept 2025 — verified real via WSJ/company site)
++- [ ] XII Medical (Union City, CA — neuromodulation therapy for sleep apnea; $45M Series B — verified real via industry press)
+ 
+ ## Cognitive Disorders / Neural Interface
+ - [x] Blackrock Neurotech (BCI, Utah array — paralysis/communication) — added 2026-09-13
+ - [x] Paradromics (high-bandwidth BCI) — added 2026-09-13
+-- [ ] Precision Neuroscience (Layer 7 cortical interface, BCI)
+-- [ ] Motif Neurotech (minimally invasive neurostimulation for depression/epilepsy)
+-- [ ] Rune Labs (Parkinson's DBS data/programming platform)
++- [x] Precision Neuroscience (Layer 7 cortical interface, BCI) — added 2026-09-14
++- [x] Motif Neurotech (minimally invasive neurostimulation for depression/epilepsy) — added 2026-09-14
++- [x] Rune Labs (Parkinson's DBS data/programming platform) — added 2026-09-14
++- [ ] Neuralink (high-bandwidth intracortical BCI — evaluate: extremely well-covered elsewhere, confirm still meets "startup" bar before writing profile)
++- [ ] Science Corporation (PRIMA retinal implant / Science Eye — BCI-based vision restoration for retinitis pigmentosa & AMD; $230M Series C closed 2026 — verified real via BusinessWire/MedTech Dive)
++- [ ] Cognixion (Cognixion ONE Axon-R — non-invasive EEG+AR BCI headset for ALS/communication; $25M raised — verified real via Forbes/TechCrunch coverage)
++- [ ] MicroTransponder (Vivistim Paired VNS System — vagus nerve stimulation paired with rehab therapy for post-stroke upper-limb impairment, FDA approved; $65M financing round, Mar 2025 — verified real via industry press)
+ 
+ ## Mental Health / Psychiatric
+ - [x] Soterix Medical (tDCS/tACS research & clinical devices) — added 2026-09-13
+-- [ ] Sooma (tDCS for depression, Finland, CE marked)
+-- [ ] Nexstim (NBT system — navigated TMS for depression & stroke rehab)
+-- [ ] Neurolief (Relivion — multi-nerve stimulation for migraine; borderline
+-      neurological/pain, evaluate fit before including)
++- [x] Sooma (tDCS for depression, Finland, CE marked) — added 2026-09-14
++- [x] Nexstim (NBT system — navigated TMS for depression & stroke rehab) — added 2026-09-14
++- [x] Neurolief (Relivion — multi-nerve stimulation for migraine; borderline
++      neurological/pain, evaluate fit before including) — added 2026-09-14 (kept in Mental Health given newer Proliv Rx MDD indication; also cross-relevant to Neuro-Musculoskeletal/Pain)
++- [ ] Nexalin Technology (Deep Intracranial Frequency Stimulation / HALO Clarity — transcranial AC dynamic-frequency stimulation for anxiety, depression, insomnia; publicly traded, Nasdaq: NXL — verified real via Sleep Review/Renaissance Capital)
++- [ ] Wave Neuroscience (MeRT — EEG-guided personalized TMS platform; FDA-cleared for PTSD, Breakthrough Device 2024 — verified real via PRNewswire/PatientCareOnline)
++- [ ] SonoMind (non-invasive, low-intensity focused ultrasound neuromodulation for treatment-resistant depression; €3M seed 2025 + $23.5M/€20M Series A, May 2026 — verified real via MassDevice/Vestbee; would also populate the tech-tree's placeholder "Low-Intensity Focused Ultrasound Neuromodulation" branch)
+ 
+ ## Neuro-Musculoskeletal / Pain / Movement
+ - [x] Cala Health (Cala Trio — wrist-worn peripheral nerve stimulation, essential tremor) — added 2026-09-13
+ - [x] Saluda Medical (Evoke closed-loop spinal cord stimulation, chronic pain) — added 2026-09-13
+-- [ ] Nalu Medical (microIPG peripheral nerve stimulation)
+-- [ ] SPR Therapeutics (Sprint PNS — percutaneous peripheral nerve stimulation for pain)
+-- [ ] Presidio Medical (novel DC spinal cord stimulation for chronic pain)
++- [x] Nalu Medical (microIPG peripheral nerve stimulation) — added 2026-09-14 (note: acquired by Boston Scientific, closed Jan 2026)
++- [x] SPR Therapeutics (Sprint PNS — percutaneous peripheral nerve stimulation for pain) — added 2026-09-14
++- [x] Presidio Medical (novel DC spinal cord stimulation for chronic pain) — added 2026-09-14
++- [ ] Curonix (formerly Bioness StimRouter — implantable peripheral nerve stimulation for chronic pain, high-frequency electromagnetic wireless power transfer — verified real via PubMed/company site)
++- [ ] Cionic (Neural Sleeve — AI-driven functional electrical stimulation for gait, FDA-cleared for foot drop, studied in MS/cerebral palsy — verified real via BusinessWire/ODT Magazine)
++- [ ] Nēsos (in-ear auricular vagus nerve stimulator for rheumatoid arthritis inflammation, founded by Nevro founder Konstantinos Alataris; $16M raised, FDA Breakthrough Device — verified real via Fast Company/Lancet Rheumatology study; same bioelectronic-anti-inflammatory space as SetPoint Medical)
++- [ ] Nervonik (peripheral nerve stimulation systems for chronic pain; $13M Series A, Mar 2025, led by USVP — verified real via UCLA TDG coverage)
+ 
+ ## Notes / candidate categories to consider opening up later
+ - Metabolic/appetite (e.g., vagal blocking for obesity — ReShape Lifesciences/
+diff --git a/docs/comparison.html b/docs/comparison.html
+index c8c3c43..e37be03 100644
+--- a/docs/comparison.html
++++ b/docs/comparison.html
+@@ -205,7 +205,7 @@ const REG_LABEL = {
+   approved_disputed: "Approved (disputed)"
+ };
+ 
+-const companies = [{"name": "Inspire Medical Systems", "category": "Sleep Apnea", "status": "Public (NYSE: INSP)", "hq": "Maple Grove, MN, USA", "founded": 2007, "funding_m": 109, "funding_note": "~$109M pre-IPO + $112M IPO (2018); market cap ~$1.22B (mid-2026)", "mechanism": "Unilateral hypoglossal nerve stim, breath-synchronized closed-loop", "regulatory": "FDA PMA (2014) + supplements", "reg_class": "approved", "best": "First-ever FDA-approved implant for OSA; largest evidence base (STAR trial, 100k+ patients); breath-synchronized closed-loop", "worst": "Surgical implant ($30k-65k); excludes ~20-30% of OSA patients with complete concentric palatal collapse; 2026 revenue cut on reimbursement disruption", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/sleep-apnea/inspire-medical-systems.md", "cite": "https://pubmed.ncbi.nlm.nih.gov/24401051/"}, {"name": "Nyxoah", "category": "Sleep Apnea", "status": "Public (NASDAQ: NYXH)", "hq": "Mont-Saint-Guibert, Belgium", "founded": 2009, "funding_m": 360, "funding_note": "\u20ac332.5M raised since inception + 2024/2025/2026 raises (~\u20ac332.5M+, FX approx.)", "mechanism": "Bilateral hypoglossal nerve stim, leadless battery-free implant", "regulatory": "FDA PMA (Aug 2025)", "reg_class": "approved", "best": "Bilateral stimulation + leadless/battery-free design; broader MRI compatibility; targets excluded-by-Inspire complete-concentric-collapse patients", "worst": "8.7% serious adverse event rate in DREAM trial; nightly external wearable compliance burden; active Inspire patent lawsuit (May 2025)", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/sleep-apnea/nyxoah.md", "cite": "https://clinicaltrials.gov/study/NCT03868618"}, {"name": "Signifier Medical Technologies", "category": "Sleep Apnea", "status": "Private", "hq": "London, UK", "founded": 2015, "funding_m": 57, "funding_note": "~$57-58M disclosed across 4 rounds", "mechanism": "Daytime transcutaneous NMES of tongue muscles (eXciteOSA)", "regulatory": "FDA De Novo (2021)", "reg_class": "approved", "best": "Only non-invasive, non-implant, daytime-use device; targets mild OSA/snoring population excluded from Inspire/Nyxoah eligibility", "worst": "Requires 6-week daily course + indefinite weekly maintenance; not indicated for moderate/severe OSA; thinner peer-reviewed evidence base", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/sleep-apnea/signifier-medical-technologies.md", "cite": "https://www.fiercebiotech.com/medtech/signifier-hypes-up-excite-tongue-stimulation-device-for-sleep-apnea-35m-series-d"}, {"name": "NeuroPace", "category": "Cognitive Disorders / Neural Interface", "status": "Public (NASDAQ: NPCE)", "hq": "Mountain View, CA, USA", "founded": 1997, "funding_m": 117, "funding_note": "$117.3M IPO (2021); market cap ~$560.5M (July 2026)", "mechanism": "Closed-loop responsive cortical/subcortical stimulation (RNS System)", "regulatory": "FDA PMA (2013)", "reg_class": "approved", "best": "Only FDA-approved closed-loop responsive brain stimulator for epilepsy; unique chronic iEEG dataset asset", "worst": "Requires craniotomy; only ~20% of drug-resistant epilepsy patients are surgical candidates; 2025 IGE indication expansion ruled 'not approvable' by FDA", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/neuropace.md", "cite": "https://www.science.org/doi/10.1126/scitranslmed.abf6588"}, {"name": "Cognito Therapeutics", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "Cambridge, MA, USA", "founded": 2016, "funding_m": 269, "funding_note": "~$269M disclosed total (Series B/C, incl. $105M Series C)", "mechanism": "Non-invasive 40Hz gamma light+sound entrainment (Spectris)", "regulatory": "Breakthrough Device (2021); pre-market", "reg_class": "investigational", "best": "Fully non-invasive, no surgery; targets network-level mechanism (gamma entrainment) distinct from anti-amyloid antibodies", "worst": "No completed Phase 3 (HOPE study) readout yet; independent commentary (ALZFORUM) has questioned preclinical reproducibility; targeting ~2027 market entry", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/cognito-therapeutics.md", "cite": "https://www.nature.com/articles/s41586-018-0351-4"}, {"name": "Insightec", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "Tirat Carmel, Israel", "founded": 1999, "funding_m": 574, "funding_note": "~$574M cumulative disclosed; 2024 valuation ~$375M (down from ~$1B)", "mechanism": "Incisionless focused-ultrasound thermal ablation (Exablate Neuro)", "regulatory": "FDA PMA (2016)", "reg_class": "approved", "best": "Only incisionless option vs. DBS craniotomy; unique BBB-opening application for Alzheimer's drug delivery", "worst": "Ablation is permanent/non-adjustable (vs. reversible DBS); requires favorable skull density ratio; targeting errors can cause irreversible side effects", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/insightec.md", "cite": "https://www.nejm.org/doi/full/10.1056/NEJMoa1600159"}, {"name": "Synchron", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "Brooklyn, NY, USA", "founded": 2016, "funding_m": 345, "funding_note": "~$345M disclosed (incl. $200M Series D, Nov 2025); ~$1B reported valuation", "mechanism": "Endovascular Stentrode (16-channel) via jugular vein, no craniotomy", "regulatory": "Breakthrough Device (2020); pre-market", "reg_class": "investigational", "best": "Only BCI requiring no brain surgery at all (catheter-based, interventional radiology); backed by Gates/Bezos/ARCH", "worst": "Only 16 channels vs. 96-10,000+ for intracortical rivals; often paired with external eye-tracking; no implantable BCI has FDA marketing authorization yet industry-wide", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/synchron.md", "cite": "https://www.sciencedirect.com/science/article/pii/S0165027025001128"}, {"name": "Blackrock Neurotech", "category": "Cognitive Disorders / Neural Interface", "status": "Majority-owned by Tether (crypto)", "hq": "Salt Lake City, UT, USA", "founded": 2008, "funding_m": 200, "funding_note": "$200M for majority stake from Tether (Apr 2024), valuing co. at ~$350M; prior funding only ~$10M", "mechanism": "Intracortical Utah Array (96-128 ch), percutaneous/pedestal", "regulatory": "Breakthrough Device (2021); pre-market", "reg_class": "investigational", "best": "20+ years of clinical use via BrainGate consortium \u2014 longest track record of any intracortical BCI", "worst": "Majority owned by a stablecoin company, not a traditional med-tech investor \u2014 unusual governance/strategic-intent profile worth diligence; no confirmed full FDA clearance yet", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/blackrock-neurotech.md", "cite": "https://www.coindesk.com/business/2024/04/29/tether-buys-200m-majority-stake-in-brain-computer-interface-company-blackrock-neurotech"}, {"name": "Paradromics", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "Austin, TX, USA", "founded": 2015, "funding_m": 33, "funding_note": "$33M Series A (disclosed); ~$127M PitchBook estimate (unverified)", "mechanism": "421-electrode cortical array + wireless chest transceiver (Connexus)", "regulatory": "FDA IDE for Connect-One study (Nov 2025); first human implant done", "reg_class": "investigational", "best": "First human implant completed under FDA-approved IDE (Connect-One, Univ. of Michigan, 2025) \u2014 real regulatory/clinical milestone reached", "worst": "Still first-in-human/early feasibility stage; no efficacy results published yet; prior '10,000+ channel' claim was unverified (real figure: 421 electrodes)", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/paradromics.md", "cite": "https://www.michiganmedicine.org/news-release/university-michigan-implants-first-human-paradromics-wireless-brain-computer-interface-designed"}, {"name": "Neuronetics (NeuroStar)", "category": "Mental Health / Psychiatric", "status": "Public (NASDAQ: STIM)", "hq": "Malvern, PA, USA", "founded": 2003, "funding_m": 294, "funding_note": "~$294.5M lifetime (incl. $107.5M IPO); market cap ~$170-224M", "mechanism": "Figure-8 coil rTMS over left DLPFC", "regulatory": "FDA cleared (2008, expanded since)", "reg_class": "approved", "best": "First TMS device ever FDA-cleared (2008); largest installed base; TrakStar real-world registry (83% relief, 62% remission)", "worst": "Daily in-clinic visits x6 weeks; $8k-12k self-pay cost; bipolar depression indication only Breakthrough-designated, not cleared", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/mental-health-psychiatric/neuronetics.md", "cite": "https://pubmed.ncbi.nlm.nih.gov/26349810/"}, {"name": "BrainsWay", "category": "Mental Health / Psychiatric", "status": "Public (NASDAQ: BWAY)", "hq": "Burlington, MA, USA / Jerusalem, Israel", "founded": 2003, "funding_m": 27, "funding_note": "~$27.5M IPO gross (2019); market cap ~$230M-611M (2025-2026)", "mechanism": "Patented H-coil Deep TMS (H1/H7 variants)", "regulatory": "FDA cleared (2013 MDD, 2018 OCD, 2020 smoking)", "reg_class": "approved", "best": "Only device FDA-cleared for OCD (2018, first-ever) and only TMS cleared for smoking cessation (2020)", "worst": "Broader field = less spatial focality than figure-8 coils; smoking-cessation quit rates (19-25%) statistically significant but modest in absolute terms", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/mental-health-psychiatric/brainsway.md", "cite": "https://psychiatryonline.org/doi/10.1176/appi.ajp.2019.18101180"}, {"name": "Flow Neuroscience", "category": "Mental Health / Psychiatric", "status": "Private", "hq": "Malm\u00f6, Sweden", "founded": 2016, "funding_m": 13, "funding_note": "$9.3M Series A disclosed; ~$10-26M lifetime range (sources conflict)", "mechanism": "At-home tDCS headset (FL-100) + app-guided behavioral activation", "regulatory": "FDA PMA (Dec 8, 2025) - first home-use tDCS depression device ever approved", "reg_class": "approved", "best": "First and only FDA-authorized at-home neuromodulation device for depression in the US; broader (non-treatment-refractory) label than TMS competitors", "worst": "tDCS mechanism more contested in literature than TMS; US commercial launch not until mid-2026; self-administration reduces clinician oversight", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/mental-health-psychiatric/flow-neuroscience.md", "cite": "https://www.nature.com/articles/s41591-024-03305-y"}, {"name": "NeuroSigma", "category": "Mental Health / Psychiatric", "status": "Private", "hq": "Los Angeles, CA, USA", "founded": 2008, "funding_m": 18, "funding_note": "~$17.9M disclosed (conflicting reports as low as ~$1.7M)", "mechanism": "External trigeminal nerve stimulation (eTNS), nightly during sleep (Monarch)", "regulatory": "FDA De Novo (2019) - efficacy now disputed", "reg_class": "approved_disputed", "best": "First (and only) FDA-cleared non-drug treatment for pediatric ADHD; fully at-home use", "worst": "MAJOR FLAG: Jan 2026 Nature Medicine confirmatory trial (n=150) found NO significant benefit vs sham, contradicting the original clearance basis; investigators publicly called for FDA to revisit clearance", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/mental-health-psychiatric/neurosigma.md", "cite": "https://www.nature.com/articles/s41591-025-04075-x"}, {"name": "Soterix Medical", "category": "Mental Health / Psychiatric", "status": "Private", "hq": "New York, NY, USA", "founded": 2008, "funding_m": null, "funding_note": "Not publicly disclosed", "mechanism": "Multi-modality: HD-tDCS, TMS (SPRY), tFUS platform", "regulatory": "FDA cleared - SPRY TMS (Mar 2026); tDCS depression still IDE-stage", "reg_class": "mixed", "best": "Broad multi-modality platform (tDCS+TMS+tFUS+monitoring) serving 1,200+ medical centers globally, not a single-product bet", "worst": "Its actual FDA depression clearance (SPRY) is TMS, not tDCS as commonly assumed; home tDCS-for-depression program remains IDE-stage, not cleared", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/mental-health-psychiatric/soterix-medical.md", "cite": "https://www.prnewswire.com/news-releases/soterix-medical-announces-clearance-of-spry-transcranial-magnetic-stimulation-tms-therapy-for-the-treatment-of-major-depression-302704534.html"}, {"name": "Nevro (HFX/Senza)", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Acquired by Globus Medical (Apr 2025)", "hq": "Redwood City, CA, USA", "founded": 2006, "funding_m": 250, "funding_note": "~$153M pre-IPO + $126.5M IPO; acquired for ~$250M total equity value (2025)", "mechanism": "10kHz paresthesia-free spinal cord stimulation", "regulatory": "FDA PMA (2015, expanded)", "reg_class": "approved", "best": "Only SCS with FDA label for painful diabetic neuropathy; AI-personalized HFX iQ platform (first of its kind)", "worst": "Lead migration in 13-22.6% of cases across studies; no longer independently traded (acquired, delisted April 2025)", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/nevro.md", "cite": "https://www.nevro.com/app/uploads/sites/3/2025/01/Kapural-Anesthesiology-2015-The-SENZA-RCT.pdf"}, {"name": "SetPoint Medical", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Private", "hq": "Valencia, CA, USA", "founded": 2007, "funding_m": 389, "funding_note": "~$388-389M cumulative disclosed (incl. $140M Aug 2025 round)", "mechanism": "Cervical vagus nerve stimulation (cholinergic anti-inflammatory pathway)", "regulatory": "FDA PMA (Jul 2025)", "reg_class": "approved", "best": "First FDA-approved neuroimmune-modulation implant for any indication; mechanistically distinct from every other company in this tracker (systemic immune biology, not pain/motor)", "worst": "RESET-RA effect sizes (35.2% vs 24.2% ACR20 at 3mo) statistically significant but modest vs. biologic response rates; nascent reimbursement pathway for a brand-new device category", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/setpoint-medical.md", "cite": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10935935/"}, {"name": "Neuros Medical (Altius)", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Private", "hq": "Willoughby, OH, USA", "founded": 2008, "funding_m": 145, "funding_note": "~$145-225M disclosed (aggregators conflict); $56M Series D (Jul 2025)", "mechanism": "Peripheral nerve cuff, on-demand high-frequency conduction block", "regulatory": "FDA PMA (Aug 2024)", "reg_class": "approved", "best": "Mechanistically distinct on-demand conduction block (not gate-control SCS); QUEST trial used genuinely blinded active-sham comparator, rare in device trials", "worst": "Newly commercial (approved 2024) with limited early site availability; long-term durability vs. surgical alternatives (TMR/RPNI) not yet established", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/neuros-medical.md", "cite": "https://www.fda.gov/medical-devices/recently-approved-devices/altius-direct-electrical-nerve-stimulation-system-p230020"}, {"name": "ONWARD Medical", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Public (Euronext: ONWD)", "hq": "Eindhoven, Netherlands", "founded": 2014, "funding_m": 380, "funding_note": "\u20ac380M market cap at 2021 IPO; market cap ~\u20ac180.4M (Sept 2026, de-rated)", "mechanism": "Transcutaneous (ARC-EX) + implantable (ARC-IM) spinal cord stimulation", "regulatory": "FDA De Novo - ARC-EX only (Dec 2024)", "reg_class": "mixed", "best": "Aims for restorative/functional gain (not just symptom suppression); first FDA-authorized non-invasive SCS system for SCI", "worst": "ARC-IM (the more dramatic 'walking again' platform) remains investigational, not FDA-cleared; commercial ARC-EX revenue still tiny (\u20ac3.7M in 2025)", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/onward-medical.md", "cite": "https://www.nature.com/articles/s41591-024-02940-9"}, {"name": "Cala Health", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Private", "hq": "San Francisco Bay Area, CA, USA", "founded": 2014, "funding_m": 177, "funding_note": "~$177M disclosed across rounds ($50M Series C, $77M, $50M growth capital)", "mechanism": "Wearable TAPS peripheral nerve stim at wrist (Cala Trio)", "regulatory": "FDA De Novo (Apr 2018)", "reg_class": "approved", "best": "Only non-invasive prescription therapy for essential tremor on the market; FDA-cleared since 2018 (long track record for a wearable)", "worst": "Effect is explicitly 'transient relief' per FDA label, not curative; specific efficacy percentages not independently confirmed against a primary trial source in this pass", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/cala-health.md", "cite": "https://www.essentialtremor.org/wp-content/uploads/2018/05/CalaHealth-FDAClearance-2018Apr26.pdf"}, {"name": "Saluda Medical", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Private", "hq": "Sydney, Australia", "founded": 2011, "funding_m": 100, "funding_note": "$100M raised (Redmile Group-led round)", "mechanism": "ECAP-based closed-loop spinal cord stimulation (Evoke)", "regulatory": "FDA PMA (Mar 2022)", "reg_class": "approved", "best": "First-ever FDA PMA for an SCS system based on double-blind RCT results; 24-month responder rate 79.1% (closed-loop) vs 53.7% (open-loop)", "worst": "Total lifetime funding beyond the $100M round not independently confirmed; standard SCS risks (lead migration, battery replacement) still apply", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/saluda-medical.md", "cite": "https://www.fda.gov/medical-devices/recently-approved-devices/evoke-spinal-cord-stimulation-scs-system-p190002"}]
++const companies = [{"name": "Inspire Medical Systems", "category": "Sleep Apnea", "status": "Public (NYSE: INSP)", "hq": "Maple Grove, MN, USA", "founded": 2007, "funding_m": 109, "funding_note": "~$109M pre-IPO + $112M IPO (2018); market cap ~$1.22B (mid-2026)", "mechanism": "Unilateral hypoglossal nerve stim, breath-synchronized closed-loop", "regulatory": "FDA PMA (2014) + supplements", "reg_class": "approved", "best": "First-ever FDA-approved implant for OSA; largest evidence base (STAR trial, 100k+ patients); breath-synchronized closed-loop", "worst": "Surgical implant ($30k-65k); excludes ~20-30% of OSA patients with complete concentric palatal collapse; 2026 revenue cut on reimbursement disruption", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/sleep-apnea/inspire-medical-systems.md", "cite": "https://pubmed.ncbi.nlm.nih.gov/24401051/"}, {"name": "Nyxoah", "category": "Sleep Apnea", "status": "Public (NASDAQ: NYXH)", "hq": "Mont-Saint-Guibert, Belgium", "founded": 2009, "funding_m": 360, "funding_note": "\u20ac332.5M raised since inception + 2024/2025/2026 raises (~\u20ac332.5M+, FX approx.)", "mechanism": "Bilateral hypoglossal nerve stim, leadless battery-free implant", "regulatory": "FDA PMA (Aug 2025)", "reg_class": "approved", "best": "Bilateral stimulation + leadless/battery-free design; broader MRI compatibility; targets excluded-by-Inspire complete-concentric-collapse patients", "worst": "8.7% serious adverse event rate in DREAM trial; nightly external wearable compliance burden; active Inspire patent lawsuit (May 2025)", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/sleep-apnea/nyxoah.md", "cite": "https://clinicaltrials.gov/study/NCT03868618"}, {"name": "Signifier Medical Technologies", "category": "Sleep Apnea", "status": "Private", "hq": "London, UK", "founded": 2015, "funding_m": 57, "funding_note": "~$57-58M disclosed across 4 rounds", "mechanism": "Daytime transcutaneous NMES of tongue muscles (eXciteOSA)", "regulatory": "FDA De Novo (2021)", "reg_class": "approved", "best": "Only non-invasive, non-implant, daytime-use device; targets mild OSA/snoring population excluded from Inspire/Nyxoah eligibility", "worst": "Requires 6-week daily course + indefinite weekly maintenance; not indicated for moderate/severe OSA; thinner peer-reviewed evidence base", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/sleep-apnea/signifier-medical-technologies.md", "cite": "https://www.fiercebiotech.com/medtech/signifier-hypes-up-excite-tongue-stimulation-device-for-sleep-apnea-35m-series-d"}, {"name": "NeuroPace", "category": "Cognitive Disorders / Neural Interface", "status": "Public (NASDAQ: NPCE)", "hq": "Mountain View, CA, USA", "founded": 1997, "funding_m": 117, "funding_note": "$117.3M IPO (2021); market cap ~$560.5M (July 2026)", "mechanism": "Closed-loop responsive cortical/subcortical stimulation (RNS System)", "regulatory": "FDA PMA (2013)", "reg_class": "approved", "best": "Only FDA-approved closed-loop responsive brain stimulator for epilepsy; unique chronic iEEG dataset asset", "worst": "Requires craniotomy; only ~20% of drug-resistant epilepsy patients are surgical candidates; 2025 IGE indication expansion ruled 'not approvable' by FDA", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/neuropace.md", "cite": "https://www.science.org/doi/10.1126/scitranslmed.abf6588"}, {"name": "Cognito Therapeutics", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "Cambridge, MA, USA", "founded": 2016, "funding_m": 269, "funding_note": "~$269M disclosed total (Series B/C, incl. $105M Series C)", "mechanism": "Non-invasive 40Hz gamma light+sound entrainment (Spectris)", "regulatory": "Breakthrough Device (2021); pre-market", "reg_class": "investigational", "best": "Fully non-invasive, no surgery; targets network-level mechanism (gamma entrainment) distinct from anti-amyloid antibodies", "worst": "No completed Phase 3 (HOPE study) readout yet; independent commentary (ALZFORUM) has questioned preclinical reproducibility; targeting ~2027 market entry", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/cognito-therapeutics.md", "cite": "https://www.nature.com/articles/s41586-018-0351-4"}, {"name": "Insightec", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "Tirat Carmel, Israel", "founded": 1999, "funding_m": 574, "funding_note": "~$574M cumulative disclosed; 2024 valuation ~$375M (down from ~$1B)", "mechanism": "Incisionless focused-ultrasound thermal ablation (Exablate Neuro)", "regulatory": "FDA PMA (2016)", "reg_class": "approved", "best": "Only incisionless option vs. DBS craniotomy; unique BBB-opening application for Alzheimer's drug delivery", "worst": "Ablation is permanent/non-adjustable (vs. reversible DBS); requires favorable skull density ratio; targeting errors can cause irreversible side effects", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/insightec.md", "cite": "https://www.nejm.org/doi/full/10.1056/NEJMoa1600159"}, {"name": "Synchron", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "Brooklyn, NY, USA", "founded": 2016, "funding_m": 345, "funding_note": "~$345M disclosed (incl. $200M Series D, Nov 2025); ~$1B reported valuation", "mechanism": "Endovascular Stentrode (16-channel) via jugular vein, no craniotomy", "regulatory": "Breakthrough Device (2020); pre-market", "reg_class": "investigational", "best": "Only BCI requiring no brain surgery at all (catheter-based, interventional radiology); backed by Gates/Bezos/ARCH", "worst": "Only 16 channels vs. 96-10,000+ for intracortical rivals; often paired with external eye-tracking; no implantable BCI has FDA marketing authorization yet industry-wide", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/synchron.md", "cite": "https://www.sciencedirect.com/science/article/pii/S0165027025001128"}, {"name": "Blackrock Neurotech", "category": "Cognitive Disorders / Neural Interface", "status": "Majority-owned by Tether (crypto)", "hq": "Salt Lake City, UT, USA", "founded": 2008, "funding_m": 200, "funding_note": "$200M for majority stake from Tether (Apr 2024), valuing co. at ~$350M; prior funding only ~$10M", "mechanism": "Intracortical Utah Array (96-128 ch), percutaneous/pedestal", "regulatory": "Breakthrough Device (2021); pre-market", "reg_class": "investigational", "best": "20+ years of clinical use via BrainGate consortium \u2014 longest track record of any intracortical BCI", "worst": "Majority owned by a stablecoin company, not a traditional med-tech investor \u2014 unusual governance/strategic-intent profile worth diligence; no confirmed full FDA clearance yet", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/blackrock-neurotech.md", "cite": "https://www.coindesk.com/business/2024/04/29/tether-buys-200m-majority-stake-in-brain-computer-interface-company-blackrock-neurotech"}, {"name": "Paradromics", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "Austin, TX, USA", "founded": 2015, "funding_m": 33, "funding_note": "$33M Series A (disclosed); ~$127M PitchBook estimate (unverified)", "mechanism": "421-electrode cortical array + wireless chest transceiver (Connexus)", "regulatory": "FDA IDE for Connect-One study (Nov 2025); first human implant done", "reg_class": "investigational", "best": "First human implant completed under FDA-approved IDE (Connect-One, Univ. of Michigan, 2025) \u2014 real regulatory/clinical milestone reached", "worst": "Still first-in-human/early feasibility stage; no efficacy results published yet; prior '10,000+ channel' claim was unverified (real figure: 421 electrodes)", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/paradromics.md", "cite": "https://www.michiganmedicine.org/news-release/university-michigan-implants-first-human-paradromics-wireless-brain-computer-interface-designed"}, {"name": "Neuronetics (NeuroStar)", "category": "Mental Health / Psychiatric", "status": "Public (NASDAQ: STIM)", "hq": "Malvern, PA, USA", "founded": 2003, "funding_m": 294, "funding_note": "~$294.5M lifetime (incl. $107.5M IPO); market cap ~$170-224M", "mechanism": "Figure-8 coil rTMS over left DLPFC", "regulatory": "FDA cleared (2008, expanded since)", "reg_class": "approved", "best": "First TMS device ever FDA-cleared (2008); largest installed base; TrakStar real-world registry (83% relief, 62% remission)", "worst": "Daily in-clinic visits x6 weeks; $8k-12k self-pay cost; bipolar depression indication only Breakthrough-designated, not cleared", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/mental-health-psychiatric/neuronetics.md", "cite": "https://pubmed.ncbi.nlm.nih.gov/26349810/"}, {"name": "BrainsWay", "category": "Mental Health / Psychiatric", "status": "Public (NASDAQ: BWAY)", "hq": "Burlington, MA, USA / Jerusalem, Israel", "founded": 2003, "funding_m": 27, "funding_note": "~$27.5M IPO gross (2019); market cap ~$230M-611M (2025-2026)", "mechanism": "Patented H-coil Deep TMS (H1/H7 variants)", "regulatory": "FDA cleared (2013 MDD, 2018 OCD, 2020 smoking)", "reg_class": "approved", "best": "Only device FDA-cleared for OCD (2018, first-ever) and only TMS cleared for smoking cessation (2020)", "worst": "Broader field = less spatial focality than figure-8 coils; smoking-cessation quit rates (19-25%) statistically significant but modest in absolute terms", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/mental-health-psychiatric/brainsway.md", "cite": "https://psychiatryonline.org/doi/10.1176/appi.ajp.2019.18101180"}, {"name": "Flow Neuroscience", "category": "Mental Health / Psychiatric", "status": "Private", "hq": "Malm\u00f6, Sweden", "founded": 2016, "funding_m": 13, "funding_note": "$9.3M Series A disclosed; ~$10-26M lifetime range (sources conflict)", "mechanism": "At-home tDCS headset (FL-100) + app-guided behavioral activation", "regulatory": "FDA PMA (Dec 8, 2025) - first home-use tDCS depression device ever approved", "reg_class": "approved", "best": "First and only FDA-authorized at-home neuromodulation device for depression in the US; broader (non-treatment-refractory) label than TMS competitors", "worst": "tDCS mechanism more contested in literature than TMS; US commercial launch not until mid-2026; self-administration reduces clinician oversight", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/mental-health-psychiatric/flow-neuroscience.md", "cite": "https://www.nature.com/articles/s41591-024-03305-y"}, {"name": "NeuroSigma", "category": "Mental Health / Psychiatric", "status": "Private", "hq": "Los Angeles, CA, USA", "founded": 2008, "funding_m": 18, "funding_note": "~$17.9M disclosed (conflicting reports as low as ~$1.7M)", "mechanism": "External trigeminal nerve stimulation (eTNS), nightly during sleep (Monarch)", "regulatory": "FDA De Novo (2019) - efficacy now disputed", "reg_class": "approved_disputed", "best": "First (and only) FDA-cleared non-drug treatment for pediatric ADHD; fully at-home use", "worst": "MAJOR FLAG: Jan 2026 Nature Medicine confirmatory trial (n=150) found NO significant benefit vs sham, contradicting the original clearance basis; investigators publicly called for FDA to revisit clearance", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/mental-health-psychiatric/neurosigma.md", "cite": "https://www.nature.com/articles/s41591-025-04075-x"}, {"name": "Soterix Medical", "category": "Mental Health / Psychiatric", "status": "Private", "hq": "New York, NY, USA", "founded": 2008, "funding_m": null, "funding_note": "Not publicly disclosed", "mechanism": "Multi-modality: HD-tDCS, TMS (SPRY), tFUS platform", "regulatory": "FDA cleared - SPRY TMS (Mar 2026); tDCS depression still IDE-stage", "reg_class": "mixed", "best": "Broad multi-modality platform (tDCS+TMS+tFUS+monitoring) serving 1,200+ medical centers globally, not a single-product bet", "worst": "Its actual FDA depression clearance (SPRY) is TMS, not tDCS as commonly assumed; home tDCS-for-depression program remains IDE-stage, not cleared", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/mental-health-psychiatric/soterix-medical.md", "cite": "https://www.prnewswire.com/news-releases/soterix-medical-announces-clearance-of-spry-transcranial-magnetic-stimulation-tms-therapy-for-the-treatment-of-major-depression-302704534.html"}, {"name": "Nevro (HFX/Senza)", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Acquired by Globus Medical (Apr 2025)", "hq": "Redwood City, CA, USA", "founded": 2006, "funding_m": 250, "funding_note": "~$153M pre-IPO + $126.5M IPO; acquired for ~$250M total equity value (2025)", "mechanism": "10kHz paresthesia-free spinal cord stimulation", "regulatory": "FDA PMA (2015, expanded)", "reg_class": "approved", "best": "Only SCS with FDA label for painful diabetic neuropathy; AI-personalized HFX iQ platform (first of its kind)", "worst": "Lead migration in 13-22.6% of cases across studies; no longer independently traded (acquired, delisted April 2025)", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/nevro.md", "cite": "https://www.nevro.com/app/uploads/sites/3/2025/01/Kapural-Anesthesiology-2015-The-SENZA-RCT.pdf"}, {"name": "SetPoint Medical", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Private", "hq": "Valencia, CA, USA", "founded": 2007, "funding_m": 389, "funding_note": "~$388-389M cumulative disclosed (incl. $140M Aug 2025 round)", "mechanism": "Cervical vagus nerve stimulation (cholinergic anti-inflammatory pathway)", "regulatory": "FDA PMA (Jul 2025)", "reg_class": "approved", "best": "First FDA-approved neuroimmune-modulation implant for any indication; mechanistically distinct from every other company in this tracker (systemic immune biology, not pain/motor)", "worst": "RESET-RA effect sizes (35.2% vs 24.2% ACR20 at 3mo) statistically significant but modest vs. biologic response rates; nascent reimbursement pathway for a brand-new device category", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/setpoint-medical.md", "cite": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10935935/"}, {"name": "Neuros Medical (Altius)", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Private", "hq": "Willoughby, OH, USA", "founded": 2008, "funding_m": 145, "funding_note": "~$145-225M disclosed (aggregators conflict); $56M Series D (Jul 2025)", "mechanism": "Peripheral nerve cuff, on-demand high-frequency conduction block", "regulatory": "FDA PMA (Aug 2024)", "reg_class": "approved", "best": "Mechanistically distinct on-demand conduction block (not gate-control SCS); QUEST trial used genuinely blinded active-sham comparator, rare in device trials", "worst": "Newly commercial (approved 2024) with limited early site availability; long-term durability vs. surgical alternatives (TMR/RPNI) not yet established", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/neuros-medical.md", "cite": "https://www.fda.gov/medical-devices/recently-approved-devices/altius-direct-electrical-nerve-stimulation-system-p230020"}, {"name": "ONWARD Medical", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Public (Euronext: ONWD)", "hq": "Eindhoven, Netherlands", "founded": 2014, "funding_m": 380, "funding_note": "\u20ac380M market cap at 2021 IPO; market cap ~\u20ac180.4M (Sept 2026, de-rated)", "mechanism": "Transcutaneous (ARC-EX) + implantable (ARC-IM) spinal cord stimulation", "regulatory": "FDA De Novo - ARC-EX only (Dec 2024)", "reg_class": "mixed", "best": "Aims for restorative/functional gain (not just symptom suppression); first FDA-authorized non-invasive SCS system for SCI", "worst": "ARC-IM (the more dramatic 'walking again' platform) remains investigational, not FDA-cleared; commercial ARC-EX revenue still tiny (\u20ac3.7M in 2025)", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/onward-medical.md", "cite": "https://www.nature.com/articles/s41591-024-02940-9"}, {"name": "Cala Health", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Private", "hq": "San Francisco Bay Area, CA, USA", "founded": 2014, "funding_m": 177, "funding_note": "~$177M disclosed across rounds ($50M Series C, $77M, $50M growth capital)", "mechanism": "Wearable TAPS peripheral nerve stim at wrist (Cala Trio)", "regulatory": "FDA De Novo (Apr 2018)", "reg_class": "approved", "best": "Only non-invasive prescription therapy for essential tremor on the market; FDA-cleared since 2018 (long track record for a wearable)", "worst": "Effect is explicitly 'transient relief' per FDA label, not curative; specific efficacy percentages not independently confirmed against a primary trial source in this pass", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/cala-health.md", "cite": "https://www.essentialtremor.org/wp-content/uploads/2018/05/CalaHealth-FDAClearance-2018Apr26.pdf"}, {"name": "Saluda Medical", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Private", "hq": "Sydney, Australia", "founded": 2011, "funding_m": 100, "funding_note": "$100M raised (Redmile Group-led round)", "mechanism": "ECAP-based closed-loop spinal cord stimulation (Evoke)", "regulatory": "FDA PMA (Mar 2022)", "reg_class": "approved", "best": "First-ever FDA PMA for an SCS system based on double-blind RCT results; 24-month responder rate 79.1% (closed-loop) vs 53.7% (open-loop)", "worst": "Total lifetime funding beyond the $100M round not independently confirmed; standard SCS risks (lead migration, battery replacement) still apply", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/saluda-medical.md", "cite": "https://www.fda.gov/medical-devices/recently-approved-devices/evoke-spinal-cord-stimulation-scs-system-p190002"}, {"name": "LivaNova (aura6000, ex-ImThera Medical)", "category": "Sleep Apnea", "status": "Public (NASDAQ/LSE: LIVN)", "hq": "London, UK", "founded": null, "funding_m": 225, "funding_note": "LivaNova acquired ImThera for up to $225M ($78M upfront); ImThera's pre-acquisition funding ~$19-29M (sources conflict)", "mechanism": "Proximal hypoglossal nerve stimulation (p-HGNS), multi-branch trunk cuff", "regulatory": "FDA PMA (Mar 19, 2026)", "reg_class": "approved", "best": "Third hypoglossal nerve stimulator to reach FDA approval; approved without Inspire's complete-concentric-collapse exclusion; backed by LivaNova's existing commercial infrastructure", "worst": "Very recent approval (Mar 2026) with no independent long-term outcomes data yet; ImThera's founding year and full funding history are thinly documented", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/sleep-apnea/livanova-aura6000.md", "cite": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10080405/"}, {"name": "Precision Neuroscience", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "New York, NY, USA", "founded": 2021, "funding_m": 155, "funding_note": "~$155M disclosed (incl. $102M Series C, Dec 2024); valuation ~$500M (Nov 2024); additional Nov 2025 round amount undisclosed", "mechanism": "Subdural surface (ECoG) array, 1,024 electrodes, non-penetrating", "regulatory": "FDA 510(k) cleared (Apr 17, 2025) - up to 30-day implantation", "reg_class": "approved", "best": "First full FDA regulatory clearance for a next-generation wireless BCI company; non-penetrating design may reduce chronic biocompatibility risk vs. intracortical arrays", "worst": "Current clearance is time-limited (≤30 days), not yet a chronic/permanent implant approval; lower spatial resolution than penetrating arrays", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/precision-neuroscience.md", "cite": "https://pubmed.ncbi.nlm.nih.gov/32610290/"}, {"name": "Motif Neurotech", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "Houston, TX, USA", "founded": null, "funding_m": 19, "funding_note": "$18.75M Series A (Jan 2024, oversubscribed); no later disclosed round found", "mechanism": "Millimeter-scale epidural cortical microstimulator (DOT), magnetoelectric wireless power", "regulatory": "First-in-human completed; FDA trial pathway [unverified detail]", "reg_class": "investigational", "best": "Fully implanted always-available device via 20-minute outpatient procedure; novel wireless magnetoelectric power transfer avoids battery/RF tradeoffs", "worst": "Still early feasibility/first-in-human stage; epidural (non-penetrating) stimulation is less spatially precise than intracortical or subdural targeting", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/motif-neurotech.md", "cite": "https://pubmed.ncbi.nlm.nih.gov/38608028/"}, {"name": "Rune Labs", "category": "Cognitive Disorders / Neural Interface", "status": "Private", "hq": "San Francisco, CA, USA", "founded": 2018, "funding_m": 42, "funding_note": "$12M strategic round (Jan 2024) brought total disclosed funding to over $42M", "mechanism": "Software/data platform - Apple Watch-based tremor/dyskinesia tracking + Medtronic DBS data integration (not a stimulation device itself)", "regulatory": "FDA 510(k) cleared (StrivePD monitoring software, 2022)", "reg_class": "approved", "best": "Direct commercial data-integration partnership with Medtronic (dominant DBS incumbent); aggregates wearable + DBS telemetry + genetics for precision Parkinson's care", "worst": "Not a stimulation-delivering device - business model depends on continued interoperability partnerships; consumer wearable sensing has known clinical-grade specificity limitations", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/cognitive-neural-interface/rune-labs.md", "cite": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7979931/"}, {"name": "Sooma", "category": "Mental Health / Psychiatric", "status": "Private", "hq": "Helsinki, Finland", "founded": 2013, "funding_m": 6, "funding_note": "€5M (~$5.5M) growth round, Mar 2024; total lifetime funding beyond this round not independently confirmed", "mechanism": "At-home/clinic tDCS cap, bilateral DLPFC electrodes", "regulatory": "EU MDR certified (Sep 2023); FDA IDE granted (Mar 2025), US pivotal trial ongoing", "reg_class": "investigational", "best": "First tDCS manufacturer to receive EU MDR certification; 20,000+ patients treated worldwide under EU authorization", "worst": "No FDA clearance/approval yet - competing directly against Flow Neuroscience which already has FDA PMA for at-home tDCS depression", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/mental-health-psychiatric/sooma.md", "cite": "https://clinicaltrials.gov/study/NCT06976697"}, {"name": "Nexstim", "category": "Mental Health / Psychiatric", "status": "Public (Nasdaq First North Finland: NXTMH)", "hq": "Helsinki, Finland", "founded": 2000, "funding_m": null, "funding_note": "Public since 2014 IPO; market cap ~€64-81M (varies by source/date); lifetime funding not independently confirmed", "mechanism": "Navigated TMS (nTMS) with 3D MRI-based electric-field targeting (SmartFocus)", "regulatory": "FDA cleared - motor mapping (2009), speech mapping (2012), NBT for MDD (2018)", "reg_class": "approved", "best": "Only company with FDA clearances for both navigated motor AND speech mapping; individualized 3D field navigation vs. standardized coil placement used by competitors", "worst": "Small market cap relative to Neuronetics/BrainsWay suggesting limited commercial scale; reported remission/response figures are company registry data, not an independent RCT", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/mental-health-psychiatric/nexstim.md", "cite": "https://cdn.clinicaltrials.gov/large-docs/62/NCT03010462/Prot_SAP_000.pdf"}, {"name": "Neurolief", "category": "Mental Health / Psychiatric", "status": "Private (BrainsWay holds call option to acquire)", "hq": "Netanya, Israel", "founded": null, "funding_m": 11, "funding_note": "$5M + $6M convertible loans from BrainsWay (Aug 2025, Mar 2026); other investor funding not independently confirmed", "mechanism": "Multi-channel headset, 6 branches of occipital + trigeminal nerves (Relivion/Proliv Rx)", "regulatory": "FDA cleared - Relivion migraine; FDA PMA - Proliv Rx MDD (Jan 2026)", "reg_class": "approved", "best": "Dual-indication platform (migraine + depression) from shared hardware; Proliv Rx is first prescription, physician-directed at-home neuromodulation therapy for MDD", "worst": "Financial/strategic dependence on BrainsWay via convertible loans + call option creates acquisition-timeline risk; category fit is borderline (pain vs. psychiatric)", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/mental-health-psychiatric/neurolief.md", "cite": "https://clinicaltrials.gov/study/NCT03631550"}, {"name": "Nalu Medical", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Acquired by Boston Scientific (Jan 2026)", "hq": "Carlsbad, CA, USA", "founded": 2014, "funding_m": 533, "funding_note": "$65M growth round; acquired by Boston Scientific for ~$533M total (~$523M net of cash), closed Jan 27, 2026", "mechanism": "Battery-free wirelessly-powered micro-IPG, PNS + SCS indications", "regulatory": "FDA 510(k) cleared (2020); expanded whole-body MRI labeling (Jan 2025)", "reg_class": "approved", "best": "Fully battery-free micro-IPG with 18-year claimed service life; dual PNS+SCS clearance from one platform; $533M acquisition validates commercial traction", "worst": "No longer an independent company as of Jan 2026 - not accessible as a standalone VC investment; exact 2020 clearance details not independently verified", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/nalu-medical.md", "cite": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10003676/"}, {"name": "SPR Therapeutics", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Private", "hq": "Cleveland (Highland Hills), OH, USA", "founded": 2010, "funding_m": 67, "funding_note": "$37M Series D (Oct 2021) + $30M cumulative non-dilutive DoD/NIH grants and contracts", "mechanism": "Percutaneous (temporary, up to 60-day) peripheral nerve stimulation (SPRINT endura/extensa)", "regulatory": "FDA cleared (2016, expanded 2021 for head/neck/torso)", "reg_class": "approved", "best": "Only percutaneous PNS system FDA-cleared for both chronic AND acute pain; avoids permanent-implant surgical risk since leads are removed after use", "worst": "Non-permanent nature means repeat procedures needed if pain recurs after lead removal; total lifetime equity funding beyond Series D not independently confirmed", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/spr-therapeutics.md", "cite": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10003676/"}, {"name": "Presidio Medical", "category": "Neuro-Musculoskeletal / Pain / Movement", "status": "Private", "hq": "South San Francisco, CA, USA", "founded": 2017, "funding_m": 103, "funding_note": "~$102-103M total, incl. $72M Series C (Jun 2023) led by Deerfield Management", "mechanism": "Ultra-low frequency (ULF) epidural spinal cord stimulation, reversible conduction block via sodium channel inactivation", "regulatory": "FDA IDE approved - FULFILL pivotal trial (NCT06763653)", "reg_class": "investigational", "best": "Mechanistically distinct from both paresthesia-masking (Nevro) and closed-loop ECAP (Saluda) SCS; backed by 2021 peer-reviewed mechanism publication ahead of pivotal trial", "worst": "Pre-pivotal-trial-completion - no confirmatory RCT efficacy data yet; exact journal of record for foundational mechanism paper needs confirmation", "profile": "https://github.com/Avijay-Sen/Neuromodulation-agent/blob/claude/neuromodulation-startup-research-ack2pl/docs/profiles/neuro-musculoskeletal-pain-movement/presidio-medical.md", "cite": "https://clinicaltrials.gov/study/NCT06763653"}]
+ ;
+ 
+ const maxFunding = Math.max(...companies.filter(c => c.funding_m).map(c => c.funding_m));
+diff --git a/docs/profiles/cognitive-neural-interface/motif-neurotech.md b/docs/profiles/cognitive-neural-interface/motif-neurotech.md
+new file mode 100644
+index 0000000..4bbb5b9
+--- /dev/null
++++ b/docs/profiles/cognitive-neural-interface/motif-neurotech.md
+@@ -0,0 +1,79 @@
++# Motif Neurotech
++
++## Company Profile
++
++**Company Name:** Motif Neurotech, Inc.
++**HQ Location:** Houston, TX, USA
++**Founded:** Exact incorporation year **not confirmed** in this research pass — **[unverified]**. Motif was formed as a spinout through the Rice Biotech Launch Pad by Rice faculty Jacob Robinson and Kaiyuan Yang and physicians Sunil Sheth and Sameer Sheth ([Rice News](https://news.rice.edu/news/2024/rice-biotech-launch-pad-startup-motif-neurotech-closes-series-financing-1875-million)); its Series A closed in January 2024, indicating the company was operating by at least 2022–2023.
++**Flagship product:** **DOT (Digitally-programmable Over-brain Therapeutic) microstimulator**
++**Website:** https://www.motifneurotech.com
++
++---
++
++## Funding
++
++Motif closed an oversubscribed **$18.75 million Series A** in January 2024, led by **Arboretum Ventures**, with participation from KdT Ventures, Satori Neuro, Dolby Family Ventures, re.Mind Capital, Max Hodak (individual investor), Divergent Capital, TMC Innovation, PsyMed Ventures, Empath Ventures, and Capital Factory ([BusinessWire](https://www.businesswire.com/news/home/20240124154216/en/Motif-Neurotech-Raises-$18.75-Million-in-Series-A-Financing-to-Advance-Implantable-Device-for-Treatment-Resistant-Depression); [Rice News](https://news.rice.edu/news/2024/rice-biotech-launch-pad-startup-motif-neurotech-closes-series-financing-1875-million)). No later disclosed funding round was found in this research pass — **[unverified]** whether additional capital has been raised since January 2024.
++
++---
++
++## Clinical Indication
++
++**Disorder Category:** Cognitive Disorders / Neural Interface (mental-health application; also explored for epilepsy per backlog description)
++**Primary Indication:** Treatment-resistant depression (TRD) — defined as major depressive disorder that fails to respond to two or more antidepressant medications ([BusinessWire](https://www.businesswire.com/news/home/20240124154216/en/Motif-Neurotech-Raises-$18.75-Million-in-Series-A-Financing-to-Advance-Implantable-Device-for-Treatment-Resistant-Depression)). This research pass found no confirmed evidence of an active epilepsy program — **[unverified]**.
++
++---
++
++## Target Nerve or Mechanism
++
++**Anatomical Target:** Epidural cortical surface (dorsolateral prefrontal cortex, optimal placement over gyral crowns)
++**Delivery Mechanism:** The **DOT microstimulator** is a millimeter-scale (~9mm wide), wireless, battery-free implant placed in the epidural space (above the dura, not penetrating brain tissue) that delivers bursts of electrical stimulation through the dura to the cortical surface, powered wirelessly via magnetoelectric power transfer developed at Rice University; designed for a ~20-minute outpatient implant procedure ([Rice News](https://news.rice.edu/news/2024/rice-team-demonstrates-miniature-brain-stimulator-humans); [Medical Design & Outsourcing](https://www.medicaldesignandoutsourcing.com/motif-neurotech-dot-brain-pacemaker-neurostimulator-design-depression/)).
++**Biological basis:** Epidural cortical stimulation (ECS) is a peer-reviewed neuromodulation approach; the underlying device physics and cortical field modeling are described in **"Miniature battery-free epidural cortical stimulators"** ([PubMed](https://pubmed.ncbi.nlm.nih.gov/38608028/)) and a follow-on placement-optimization study ([PubMed](https://pubmed.ncbi.nlm.nih.gov/42413552/)), both associated with the Rice research group underlying Motif's technology.
++
++---
++
++## Regulatory Status & Clinical Trial
++
++- Motif has conducted **first-in-human brain stimulation** with the DOT device as an early feasibility milestone ([BioSpace](https://www.biospace.com/motif-neurotech-conducts-first-in-human-brain-stimulation-with-millimeter-sized-implantable-device-for-treatment-resistant-depression)).
++- Rice News reports the underlying BCI/stimulator technology **"wins FDA approval for first clinical trial"** ([Rice News, 2026](https://news.rice.edu/news/2026/brain-computer-interface-based-rice-research-wins-fda-approval-first-clinical-trial)) — the exact regulatory pathway (IDE vs. Breakthrough Device Designation) and date were **not independently confirmed against an FDA primary source in this research pass — [unverified]**.
++- No PMA, 510(k), or De Novo clearance was found — device remains investigational/pre-market.
++
++---
++
++## Novelty & Differentiation
++
++- **vs. Neuronetics/BrainsWay (TMS):** Motif's DOT is a fully implanted, always-available device (no daily in-clinic visits required after implantation) vs. TMS's requirement for repeated clinic sessions over weeks.
++- **vs. SetPoint Medical/traditional VNS-style implants:** DOT is dramatically smaller (millimeter-scale) and battery-free, implanted via a short outpatient procedure rather than a more invasive surgical implant with a battery/generator.
++- Novel wireless magnetoelectric power-transfer approach, distinct from RF or inductive coupling used by most existing implanted neurostimulators.
++
++---
++
++## Limitations: Practical & Theoretical
++
++- Still in **early feasibility/first-in-human** stage; no confirmed efficacy data from a controlled trial was found in this research pass — **[unverified]**.
++- Epidural (non-penetrating) stimulation of the cortex is a less spatially precise targeting approach than intracortical or even subdural (ECoG-surface) stimulation — general field-level tradeoff.
++- Reliance on a novel wireless magnetoelectric power-transfer mechanism introduces engineering risk not yet proven at commercial scale.
++- Company funding history beyond the January 2024 Series A is sparsely documented — **[unverified]**.
++
++---
++
++## Market Size
++
++Treatment-resistant depression affects an estimated **1–3% of the US population**, with up to two-thirds of depressed patients remaining symptomatic after first-line treatment; the broader treatment-resistant-depression market was estimated at **$14.48 billion in 2024** ([Market Research Future](https://www.marketresearchfuture.com/reports/treatment-resistant-depression-market-42592)).
++
++---
++
++## Sources
++
++- [Motif Neurotech Raises $18.75 Million in Series A Financing — BusinessWire](https://www.businesswire.com/news/home/20240124154216/en/Motif-Neurotech-Raises-$18.75-Million-in-Series-A-Financing-to-Advance-Implantable-Device-for-Treatment-Resistant-Depression)
++- [Rice Biotech Launch Pad startup Motif Neurotech closes Series A financing — Rice News](https://news.rice.edu/news/2024/rice-biotech-launch-pad-startup-motif-neurotech-closes-series-financing-1875-million)
++- [Rice team demonstrates miniature brain stimulator in humans — Rice News](https://news.rice.edu/news/2024/rice-team-demonstrates-miniature-brain-stimulator-humans)
++- [Brain-computer interface based on Rice research wins FDA approval for first clinical trial — Rice News, 2026](https://news.rice.edu/news/2026/brain-computer-interface-based-rice-research-wins-fda-approval-first-clinical-trial)
++- [Motif Neurotech conducts first-in-human brain stimulation — BioSpace](https://www.biospace.com/motif-neurotech-conducts-first-in-human-brain-stimulation-with-millimeter-sized-implantable-device-for-treatment-resistant-depression)
++- [How Motif Neurotech designed a miniaturized neurostimulator — Medical Design & Outsourcing](https://www.medicaldesignandoutsourcing.com/motif-neurotech-dot-brain-pacemaker-neurostimulator-design-depression/)
++- [Miniature battery-free epidural cortical stimulators — PubMed](https://pubmed.ncbi.nlm.nih.gov/38608028/)
++- [Model-based design and placement analysis for epidural cortical stimulation — PubMed](https://pubmed.ncbi.nlm.nih.gov/42413552/)
++- [Treatment Resistant Depression Market Size — Market Research Future](https://www.marketresearchfuture.com/reports/treatment-resistant-depression-market-42592)
++
++**Items marked [unverified] above were not confirmed against a primary source in this research pass and should be independently checked before being relied upon for an investment decision.**
++
++**Profile verified via live web research:** 2026-09-14
+diff --git a/docs/profiles/cognitive-neural-interface/precision-neuroscience.md b/docs/profiles/cognitive-neural-interface/precision-neuroscience.md
+new file mode 100644
+index 0000000..9a03076
+--- /dev/null
++++ b/docs/profiles/cognitive-neural-interface/precision-neuroscience.md
+@@ -0,0 +1,74 @@
++# Precision Neuroscience
++
++## Company Profile
++
++**Company Name:** Precision Neuroscience Corporation
++**HQ Location:** New York, NY, USA (additional sites in Santa Clara, CA and Addison, TX)
++**Founded:** 2021, by Benjamin Rapoport, Michael Mager, Demetrios Papageorgiou, and Mark Hettick ([Wikipedia](https://en.wikipedia.org/wiki/Precision_Neuroscience))
++**Flagship product:** **Layer 7 Cortical Interface**
++**Website:** https://precisionneuro.io
++
++---
++
++## Funding
++
++Precision Neuroscience has raised approximately **$155 million** in disclosed venture funding as of a **$102 million Series C** closed in December 2024, led by **General Equity Holdings** with participation from B Capital, Steadview Capital, and Duquesne Family Office (Stanley Druckenmiller's investment firm) ([GlobeNewswire](https://www.globenewswire.com/news-release/2024/12/16/2997364/0/en/Precision-Neuroscience-Raises-102-Million-to-Advance-AI-Powered-Brain-Implant.html); [company X/Twitter announcement](https://x.com/PrecisionNeuro_/status/1868650846088532314)). That Series C followed a **$41 million Series B** (January 2023, led by Forepont Capital Partners) and an undisclosed 2021 Series A. Valuation was reported at approximately **$500 million** as of November 2024. A further funding round led by SCI Ventures closed in November 2025 with an **undisclosed amount** — **[unverified]**, total post-2025-round funding not independently confirmed ([Tracxn funding summary](https://tracxn.com/d/companies/precision-neuroscience/__z4shNX_DBChmW-jgz7QGVN85zzpOfTP5Qj_vMlA1o7M/funding-and-investors)).
++
++---
++
++## Clinical Indication
++
++**Disorder Category:** Cognitive Disorders / Neural Interface
++**Primary Indication:** Brain-computer interface applications spanning epilepsy/tumor mapping and (longer-term) communication/motor restoration for paralysis ([FierceBiotech](https://www.fiercebiotech.com/medtech/fda-clears-precision-neurosciences-minimally-invasive-brain-computer-interface-implant)).
++
++---
++
++## Target Nerve or Mechanism
++
++**Anatomical Target:** Cerebral cortex surface (subdural, non-penetrating)
++**Delivery Mechanism:** The **Layer 7 Cortical Interface** is an ultra-thin (thinner than a human hair) micro-electrode array of **1,024 electrodes** that lies directly on the cortical surface without penetrating brain tissue, sliding beneath the skull through a small slit ([CNBC](https://www.cnbc.com/2025/04/17/brain-implant-cleared-fda-musk-neuralink-rival-precision-neuroscience.html); [GlobeNewswire clearance release](https://www.globenewswire.com/news-release/2025/04/17/3063418/0/en/Precision-Neuroscience-Receives-FDA-Clearance-for-High-Resolution-Cortical-Electrode-Array.html)). It can both record and stimulate electrical activity on the brain's surface.
++**Biological basis:** This is an **electrocorticography (ECoG)**-based interface — a well-established, decades-old clinical recording modality (used routinely for epilepsy surgical mapping) now being adapted for chronic BCI use. See the peer-reviewed review of ECoG-based BCI state of the art ([Miller, Hermes & Staff, *Neurosurgical Focus* 2020 — PubMed](https://pubmed.ncbi.nlm.nih.gov/32610290/)) and the original Seattle ECoG-BCI experience paper ([Leuthardt et al., IEEE TNSRE 2006 — PubMed](https://pubmed.ncbi.nlm.nih.gov/16792292/)).
++
++---
++
++## Regulatory Status & Clinical Trial
++
++- **FDA 510(k) clearance** granted **April 17, 2025** for the Layer 7 array, authorizing implantation in patients for **up to 30 days** for clinical/mapping use ([CNBC](https://www.cnbc.com/2025/04/17/brain-implant-cleared-fda-musk-neuralink-rival-precision-neuroscience.html); [MedTech Dive](https://www.medtechdive.com/news/precision-neuroscience-brain-implant-fda-cleared/745913/)).
++- This is reported as the **first full FDA regulatory clearance granted to a company developing a next-generation wireless BCI** ([MedTech Dive](https://www.medtechdive.com/news/precision-neuroscience-brain-implant-fda-cleared/745913/)).
++- The clearance covers short-duration (≤30-day) clinical use (e.g., intraoperative/epilepsy mapping), **not** a chronic/permanent implant indication — **[unverified]** whether a chronic-use submission has since been filed; not found in this research pass.
++
++---
++
++## Novelty & Differentiation
++
++- **vs. Blackrock Neurotech / Paradromics (intracortical/penetrating arrays):** Layer 7 does not penetrate brain tissue, which may reduce chronic biocompatibility/gliosis risk at the cost of lower single-neuron spatial resolution than penetrating electrodes.
++- **vs. Synchron (endovascular):** Precision's array sits directly on the cortical surface (higher signal fidelity than vascular recording) but requires a craniotomy/cranial access procedure, unlike Synchron's catheter-based approach.
++- First BCI company in this next-generation wireless cohort to reach a full FDA clearance (rather than only Breakthrough Device Designation or IDE status), a meaningfully different regulatory milestone than most peers in this tracker.
++
++---
++
++## Limitations: Practical & Theoretical
++
++- Current clearance is time-limited (≤30 days), not yet a chronic/permanent implant approval — commercial chronic-use deployment timeline **[unverified]**.
++- ECoG surface recording generally offers lower spatial/single-unit resolution than penetrating intracortical arrays (a general field-level tradeoff, not specific to Precision) — see review literature above.
++- Highly competitive, well-capitalized field (Neuralink, Synchron, Paradromics, Blackrock); relative long-term clinical performance data across companies is not yet available industry-wide.
++- Exact addressable market size for next-generation BCI was not independently sized in this research pass — **[unverified]**; broader neuromodulation device market estimated at $6.37B (2025) growing to $13.93B by 2033 is a poor proxy since it includes unrelated device categories ([ResearchAndMarkets](https://www.researchandmarkets.com/reports/5644957/neuromodulation-devices-market-size-share-and)).
++
++---
++
++## Sources
++
++- [Precision Neuroscience — Wikipedia](https://en.wikipedia.org/wiki/Precision_Neuroscience)
++- [Precision Neuroscience Raises $102 Million — GlobeNewswire](https://www.globenewswire.com/news-release/2024/12/16/2997364/0/en/Precision-Neuroscience-Raises-102-Million-to-Advance-AI-Powered-Brain-Implant.html)
++- [Precision Neuroscience funding rounds — Tracxn](https://tracxn.com/d/companies/precision-neuroscience/__z4shNX_DBChmW-jgz7QGVN85zzpOfTP5Qj_vMlA1o7M/funding-and-investors)
++- [Brain implant cleared by FDA for Precision Neuroscience — CNBC](https://www.cnbc.com/2025/04/17/brain-implant-cleared-fda-musk-neuralink-rival-precision-neuroscience.html)
++- [FDA clears Precision Neuroscience's minimally invasive BCI implant — FierceBiotech](https://www.fiercebiotech.com/medtech/fda-clears-precision-neurosciences-minimally-invasive-brain-computer-interface-implant)
++- [Precision Neuroscience Receives FDA Clearance for High-Resolution Cortical Electrode Array — GlobeNewswire](https://www.globenewswire.com/news-release/2025/04/17/3063418/0/en/Precision-Neuroscience-Receives-FDA-Clearance-for-High-Resolution-Cortical-Electrode-Array.html)
++- [Precision Neuroscience receives FDA clearance — MedTech Dive](https://www.medtechdive.com/news/precision-neuroscience-brain-implant-fda-cleared/745913/)
++- [The current state of electrocorticography-based BCIs — Miller, Hermes & Staff, Neurosurgical Focus 2020 — PubMed](https://pubmed.ncbi.nlm.nih.gov/32610290/)
++- [Electrocorticography-based brain computer interface — the Seattle experience — Leuthardt et al., IEEE TNSRE 2006 — PubMed](https://pubmed.ncbi.nlm.nih.gov/16792292/)
++- [Neuromodulation Devices Market Size — ResearchAndMarkets](https://www.researchandmarkets.com/reports/5644957/neuromodulation-devices-market-size-share-and)
++
++**Items marked [unverified] above were not confirmed against a primary source in this research pass and should be independently checked before being relied upon for an investment decision.**
++
++**Profile verified via live web research:** 2026-09-14
+diff --git a/docs/profiles/cognitive-neural-interface/rune-labs.md b/docs/profiles/cognitive-neural-interface/rune-labs.md
+new file mode 100644
+index 0000000..ba030ed
+--- /dev/null
++++ b/docs/profiles/cognitive-neural-interface/rune-labs.md
+@@ -0,0 +1,80 @@
++# Rune Labs
++
++## Company Profile
++
++**Company Name:** Rune Labs, Inc.
++**HQ Location:** San Francisco, CA, USA
++**Founded:** 2018 ([PitchBook company profile](https://pitchbook.com/profiles/company/265355-56); [Built In SF](https://www.builtinsf.com/company/rune-labs))
++**Flagship product:** **StrivePD** (software care ecosystem, including Apple Watch-based symptom monitoring)
++**Website:** https://runelabs.io
++
++**Note on fit:** Rune Labs is a **software/data platform**, not a device that itself delivers energy to neural tissue. It is included here because it is directly integrated with implanted DBS therapy (via a Medtronic data-sharing partnership) and is a recognized player in the neuromodulation ecosystem, but it does not fit this tracker's mechanism-based technology tree the way stimulation-delivering companies do.
++
++---
++
++## Funding
++
++Rune Labs raised a **$12 million strategic round** (announced January 2024) led by **Nexus NeuroTech Ventures**, with participation from existing investors Eclipse, DigiTx Partners, Moment Ventures, and TruVenturo GmbH, bringing total disclosed funding to **over $42 million** ([Healthcare IT Today](https://www.healthcareittoday.com/2024/02/06/rune-labs-unveils-12-million-strategic-round-to-accelerate-adoption-of-novel-parkinsons-technologies/); [STAT News](https://www.statnews.com/2024/01/11/parkinsons-symptoms-app-strive-pd-rune-labs/)).
++
++---
++
++## Clinical Indication
++
++**Disorder Category:** Cognitive Disorders / Neural Interface (movement-disorder digital biomarker & DBS-data platform)
++**Primary Indication:** Parkinson's disease — symptom tracking (tremor, dyskinesia) and clinical decision support for patients on DBS therapy ([PRNewswire](https://www.prnewswire.com/news-releases/rune-labs-secures-fda-clearance-for-parkinsons-disease-monitoring-through-strivepd-ecosystem-on-apple-watch-301566472.html)).
++
++---
++
++## Target Nerve or Mechanism
++
++**Anatomical Target:** N/A — Rune Labs does not deliver stimulation itself.
++**Delivery Mechanism:** StrivePD combines **Apple Watch accelerometer/gyroscope-based movement sensing** with a cloud software platform to continuously track FDA-cleared metrics (tremor, dyskinesia) alongside patient-reported outcomes, and — via a partnership with Medtronic — lets clinicians correlate this data with programming data from **Medtronic's Percept PC Deep Brain Stimulation (DBS)** device ([PRNewswire](https://www.prnewswire.com/news-releases/rune-labs-secures-fda-clearance-for-parkinsons-disease-monitoring-through-strivepd-ecosystem-on-apple-watch-301566472.html)).
++**Biological basis:** Wrist-worn accelerometry for quantifying parkinsonian tremor and dyskinesia is an established, peer-reviewed digital-biomarker approach; see the crowdsourced validation study of digital measures for Parkinson's severity prediction ([Parkinson's Disease Digital Biomarker DREAM Challenge — PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7979931/)).
++
++---
++
++## Regulatory Status & Clinical Trial
++
++- **FDA 510(k) clearance** for StrivePD's Apple Watch-based Parkinson's symptom-monitoring software, announced 2022 ([MobiHealthNews](https://www.mobihealthnews.com/news/rune-labs-scores-fda-510k-monitor-parkinsons-symptoms-apple-watch); [PRNewswire](https://www.prnewswire.com/news-releases/rune-labs-secures-fda-clearance-for-parkinsons-disease-monitoring-through-strivepd-ecosystem-on-apple-watch-301566472.html)). Exact clearance date within 2022 was not pinned down further in this pass — **[unverified]** to the day.
++- Not a stimulation therapy itself, so it carries no PMA/IDE trial of its own; it interoperates with Medtronic's independently FDA-approved **Percept PC DBS** device (approved June 2021) ([PRNewswire](https://www.prnewswire.com/news-releases/rune-labs-secures-fda-clearance-for-parkinsons-disease-monitoring-through-strivepd-ecosystem-on-apple-watch-301566472.html)).
++- Rune Labs and the Parkinson's Foundation launched a clinical program correlating genetic and digital biomarkers for Parkinson's disease (2025) ([BusinessWire](https://www.businesswire.com/news/home/20250528049608/en/Rune-Labs-and-Parkinsons-Foundation-Launch-First-Clinical-Program-to-Correlate-Genetic-and-Digital-Biomarkers-for-Parkinsons-Disease)).
++
++---
++
++## Novelty & Differentiation
++
++- Unlike every other company in this tracker, Rune Labs is a **data/software layer**, not a device manufacturer — its moat is aggregating multimodal Parkinson's data (wearable + DBS device telemetry + genetics) rather than delivering novel stimulation.
++- Direct commercial partnership with Medtronic (the dominant DBS incumbent) positions it as connective infrastructure across the DBS ecosystem rather than a competitor to DBS makers.
++
++---
++
++## Limitations: Practical & Theoretical
++
++- Business model depends on continued interoperability/data-sharing partnerships with device incumbents (principally Medtronic) — a platform risk not present for companies that sell a self-contained device.
++- Consumer wearable-based sensing (Apple Watch) has known limitations in specificity/sensitivity for clinical-grade symptom quantification compared to purpose-built clinical sensors — a general field-level caveat.
++- No independent revenue or customer-count figures were found in this research pass — **[unverified]**.
++
++---
++
++## Market Size
++
++Parkinson's disease affects an estimated **8.5 million people globally** ([Fortune Business Insights](https://www.fortunebusinessinsights.com/industry-reports/parkinson-s-disease-drugs-market-100655)); the broader digital neuro-biomarkers market (US) is estimated at roughly **$0.29 billion in 2025**, projected to reach **$2.68 billion by 2035** ([GlobeNewswire, SNS Insider](https://www.globenewswire.com/news-release/2026/08/24/3349982/0/en/digital-neuro-biomarkers-market-size-to-hit-usd-8-34-billion-by-2035-as-wearables-and-ai-reshape-neurological-monitoring-sns-insider.html)).
++
++---
++
++## Sources
++
++- [Rune Labs 2026 Company Profile — PitchBook](https://pitchbook.com/profiles/company/265355-56)
++- [Rune Labs San Francisco Office — Built In SF](https://www.builtinsf.com/company/rune-labs)
++- [Rune Labs Unveils $12 Million Strategic Round — Healthcare IT Today](https://www.healthcareittoday.com/2024/02/06/rune-labs-unveils-12-million-strategic-round-to-accelerate-adoption-of-novel-parkinsons-technologies/)
++- [Rune Labs, which makes an app to track Parkinson's symptoms, raises $12 million — STAT News](https://www.statnews.com/2024/01/11/parkinsons-symptoms-app-strive-pd-rune-labs/)
++- [Rune Labs scores FDA 510(k) — MobiHealthNews](https://www.mobihealthnews.com/news/rune-labs-scores-fda-510k-monitor-parkinsons-symptoms-apple-watch)
++- [Rune Labs Secures FDA Clearance for Parkinson's Disease Monitoring — PRNewswire](https://www.prnewswire.com/news-releases/rune-labs-secures-fda-clearance-for-parkinsons-disease-monitoring-through-strivepd-ecosystem-on-apple-watch-301566472.html)
++- [Rune Labs and Parkinson's Foundation Launch Clinical Program — BusinessWire](https://www.businesswire.com/news/home/20250528049608/en/Rune-Labs-and-Parkinsons-Foundation-Launch-First-Clinical-Program-to-Correlate-Genetic-and-Digital-Biomarkers-for-Parkinsons-Disease)
++- [Parkinson's Disease Digital Biomarker DREAM Challenge — PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7979931/)
++- [Parkinson's Disease Drugs Market — Fortune Business Insights](https://www.fortunebusinessinsights.com/industry-reports/parkinson-s-disease-drugs-market-100655)
++- [Digital Neuro Biomarkers Market — GlobeNewswire/SNS Insider](https://www.globenewswire.com/news-release/2026/08/24/3349982/0/en/digital-neuro-biomarkers-market-size-to-hit-usd-8-34-billion-by-2035-as-wearables-and-ai-reshape-neurological-monitoring-sns-insider.html)
++
++**Items marked [unverified] above were not confirmed against a primary source in this research pass and should be independently checked before being relied upon for an investment decision.**
++
++**Profile verified via live web research:** 2026-09-14
+diff --git a/docs/profiles/mental-health-psychiatric/neurolief.md b/docs/profiles/mental-health-psychiatric/neurolief.md
+new file mode 100644
+index 0000000..0039eb2
+--- /dev/null
++++ b/docs/profiles/mental-health-psychiatric/neurolief.md
+@@ -0,0 +1,82 @@
++# Neurolief
++
++## Company Profile
++
++**Company Name:** Neurolief Ltd.
++**HQ Location:** Netanya, Israel
++**Founded:** Reported as 2013 by founder Amit Dar, though sources vary between 2012–2014 — **[unverified]** to the exact year ([Tracxn](https://tracxn.com/d/companies/neurolief/__fCX-MC5jwB9f2DEU6pJOOv7k3Wwehu_8-Ns9Vd_6eS8)).
++**Flagship products:** **Relivion** (acute migraine) and **Proliv Rx** (major depressive disorder)
++**Website:** https://www.neurolief.com
++
++---
++
++## Funding
++
++Neurolief's funding is substantially tied to strategic investment from **BrainsWay** (already covered separately in this tracker): BrainsWay closed an initial **$5 million** strategic investment (convertible loan) in Neurolief in August 2025, followed by an additional **$6 million** milestone-based convertible loan in March 2026, triggered by FDA approval of Proliv Rx ([BrainsWay investor release](https://investors.brainsway.com/news-releases/news-release-details/brainsway-completes-additional-6-million-milestone-based)). BrainsWay holds a **call option** (not a current equity stake) to acquire all outstanding Neurolief equity within defined future windows ([SEC Form 6-K](https://www.sec.gov/Archives/edgar/data/1505065/000117184326001925/exh_991.htm)). Neurolief's total funding from other investors prior to the BrainsWay relationship was not independently confirmed in this research pass — **[unverified]**.
++
++---
++
++## Clinical Indication
++
++**Disorder Category:** Mental Health / Psychiatric (with an adjacent, FDA-cleared migraine/pain indication — evaluated as a borderline fit per `docs/BACKLOG.md`, included here given its newer, primary depression clearance)
++**Primary Indications:** (1) Acute migraine — at-home treatment; (2) Major depressive disorder (MDD) in patients with inadequate response to antidepressants ([Neurolief PRNewswire, Proliv Rx approval](https://www.prnewswire.com/news-releases/neurolief-receives-fda-pma-approval-for-first-at-home-brain-neuromodulation-therapy-for-adults-whose-depression-was-not-adequately-improved-by-antidepressants-302658098.html)).
++
++---
++
++## Target Nerve or Mechanism
++
++**Anatomical Target:** Occipital and trigeminal cranial nerve branches (6 branches total), stimulated to influence brainstem and higher brain regions
++**Delivery Mechanism:** A non-invasive, adjustable headset delivers modulated electrical pulses through **3 adaptive output channels** to six branches of the occipital and trigeminal nerves, with pathways conducting stimulation to the brainstem and connected regions implicated in both pain processing and mood regulation ([NeurologyLive](https://www.neurologylive.com/view/relivion-neuromodulation-system-acute-migraine-fda); [PRNewswire](https://www.prnewswire.com/news-releases/neurolief-receives-fda-pma-approval-for-first-at-home-brain-neuromodulation-therapy-for-adults-whose-depression-was-not-adequately-improved-by-antidepressants-302658098.html)).
++**Biological basis:** Combined occipital/trigeminal nerve stimulation for migraine is grounded in the trigeminocervical complex model of migraine pathophysiology, studied in Neurolief-sponsored registered trials ([RIME Study, ClinicalTrials.gov NCT03631550](https://clinicaltrials.gov/study/NCT03631550)).
++
++---
++
++## Regulatory Status & Clinical Trial
++
++- **FDA clearance (migraine)**: Relivion cleared for at-home treatment of acute migraine in adults, based on a clinical trial of 131 migraine patients ([Medscape](https://www.medscape.com/viewarticle/946700); [NeurologyLive](https://www.neurologylive.com/view/relivion-neuromodulation-system-acute-migraine-fda)). That trial showed **46% of Relivion users achieved complete pain relief** vs. **11.8%** of sham-control users.
++- Supporting registered trials: **RIME Study** ("Combined Occipital and Supraorbital Transcutaneous Nerve Stimulation for Treatment of Migraine"), **NCT03631550**; an earlier related study, **NCT03398668** ([ClinicalTrials.gov](https://clinicaltrials.gov/study/NCT03631550)).
++- **Japan regulatory approval** for Relivion for at-home migraine treatment, announced via PRNewswire ([PRNewswire](https://www.prnewswire.com/news-releases/neuroliefs-relivion-secures-regulatory-approval-in-japan-pioneering-at-home-migraine-treatment-302029104.html)).
++- **FDA Premarket Approval (PMA)** for **Proliv Rx** (MDD indication) granted, with approval reported around **December 2025 / announced January 12, 2026**, supported by the randomized, controlled, multicenter **MOOD Study** ([Psychiatric Times](https://www.psychiatrictimes.com/view/fda-approves-prolivrx-first-prescription-physician-directed-at-home-brain-neuromodulation-therapy-for-mdd); [PRNewswire](https://www.prnewswire.com/news-releases/neurolief-receives-fda-pma-approval-for-first-at-home-brain-neuromodulation-therapy-for-adults-whose-depression-was-not-adequately-improved-by-antidepressants-302658098.html)). Proliv Rx is described as the first prescription, physician-directed at-home neuromodulation therapy for MDD.
++
++---
++
++## Novelty & Differentiation
++
++- **vs. NeuroSigma (Monarch eTNS):** Both target trigeminal-pathway stimulation non-invasively, but Neurolief's Relivion/Proliv Rx platform adds occipital-nerve channels and targets both migraine and depression from a shared hardware platform, a broader indication footprint than NeuroSigma's single-indication (pediatric ADHD) device.
++- **vs. Flow Neuroscience/Sooma (tDCS for depression):** Proliv Rx uses multi-channel peripheral/cranial nerve stimulation rather than direct-current cortical stimulation — mechanistically distinct from the tDCS-based at-home depression competitors in this tracker.
++- Dual-indication platform (migraine + depression) from one hardware base is uncommon among peer companies tracked here.
++
++---
++
++## Limitations: Practical & Theoretical
++
++- Financial and strategic dependence on BrainsWay via convertible loans and a call option creates **acquisition/ownership-transition risk** — Neurolief's independence could end on BrainsWay's timeline, not necessarily Neurolief's own.
++- Company founding year and full independent funding history are inconsistently reported across sources — **[unverified]**.
++- As with all headset-based cranial nerve stimulators, real-world adherence/compliance data for at-home, unsupervised use were not found in this research pass — **[unverified]**.
++- Category placement is deliberately borderline: migraine is a pain/neurological indication, while Proliv Rx is psychiatric — investors should evaluate Neurolief against both the Mental Health/Psychiatric and Neuro-Musculoskeletal/Pain peer sets in this tracker.
++
++---
++
++## Market Size
++
++Migraine affects an estimated **39 million Americans** ([American Migraine Foundation, via search summary](https://www.delveinsight.com/blog/neuromodulation-devices-in-migraine)); the digital migraine treatment device market specifically is projected to grow from **~$137 million (2025) to ~$299 million by 2030** ([DataM Intelligence/PRNewswire](https://www.prnewswire.com/news-releases/digital-migraine-treatment-devices-market-to-reach-usd-298-71-million-by-2030--fueled-by-non-invasive-neuromodulation-and-expanding-clinical-adoption--datam-intelligence-302565801.html)).
++
++---
++
++## Sources
++
++- [Relivion Noninvasive Neuromodulation System Cleared for Acute Migraine — NeurologyLive](https://www.neurologylive.com/view/relivion-neuromodulation-system-acute-migraine-fda)
++- [FDA Clears Neuromodulation Device for Acute Migraine Pain — Medscape](https://www.medscape.com/viewarticle/946700)
++- [BrainsWay Completes Additional $6 Million Investment in Neurolief — investor release](https://investors.brainsway.com/news-releases/news-release-details/brainsway-completes-additional-6-million-milestone-based)
++- [BrainsWay Form 6-K, call-option structure — SEC](https://www.sec.gov/Archives/edgar/data/1505065/000117184326001925/exh_991.htm)
++- [The RIME Study — ClinicalTrials.gov NCT03631550](https://clinicaltrials.gov/study/NCT03631550)
++- [Neurolief's Relivion Secures Regulatory Approval in Japan — PRNewswire](https://www.prnewswire.com/news-releases/neuroliefs-relivion-secures-regulatory-approval-in-japan-pioneering-at-home-migraine-treatment-302029104.html)
++- [Neurolief Receives FDA PMA Approval for Proliv Rx — PRNewswire](https://www.prnewswire.com/news-releases/neurolief-receives-fda-pma-approval-for-first-at-home-brain-neuromodulation-therapy-for-adults-whose-depression-was-not-adequately-improved-by-antidepressants-302658098.html)
++- [FDA Approves ProlivRX — Psychiatric Times](https://www.psychiatrictimes.com/view/fda-approves-prolivrx-first-prescription-physician-directed-at-home-brain-neuromodulation-therapy-for-mdd)
++- [Neurolief company profile — Tracxn](https://tracxn.com/d/companies/neurolief/__fCX-MC5jwB9f2DEU6pJOOv7k3Wwehu_8-Ns9Vd_6eS8)
++- [Neuromodulation Devices in Migraine — DelveInsight](https://www.delveinsight.com/blog/neuromodulation-devices-in-migraine)
++- [Digital Migraine Treatment Devices Market — PRNewswire/DataM Intelligence](https://www.prnewswire.com/news-releases/digital-migraine-treatment-devices-market-to-reach-usd-298-71-million-by-2030--fueled-by-non-invasive-neuromodulation-and-expanding-clinical-adoption--datam-intelligence-302565801.html)
++
++**Items marked [unverified] above were not confirmed against a primary source in this research pass and should be independently checked before being relied upon for an investment decision.**
++
++**Profile verified via live web research:** 2026-09-14
+diff --git a/docs/profiles/mental-health-psychiatric/nexstim.md b/docs/profiles/mental-health-psychiatric/nexstim.md
+new file mode 100644
+index 0000000..dcf5cbd
+--- /dev/null
++++ b/docs/profiles/mental-health-psychiatric/nexstim.md
+@@ -0,0 +1,74 @@
++# Nexstim
++
++## Company Profile
++
++**Company Name:** Nexstim Plc
++**HQ Location:** Helsinki, Finland
++**Founded:** 2000, by professor Risto Ilmoniemi and colleagues from Helsinki University of Technology's BioMag Laboratory ([Nexstim company history](https://www.nexstim.com/about-nexstim/history))
++**Flagship product:** **NBT (Navigated Brain Therapy) System**
++**Website:** https://www.nexstim.com
++
++---
++
++## Funding
++
++Nexstim is a **publicly traded company** listed on the Helsinki Stock Exchange (Nasdaq First North Finland: **NXTMH**), with an IPO prospectus dated October 2014 ([Nexstim IPO prospectus](https://www.nexstim.com/fileadmin/Downloads/IPO/nexstim_prospectus.pdf)). Current market capitalization is approximately **€64–81 million** depending on source/date ([Investing.com](https://www.investing.com/equities/nexstim-ltd-he)); exact IPO proceeds and cumulative lifetime funding were not independently confirmed in this research pass — **[unverified]**.
++
++---
++
++## Clinical Indication
++
++**Disorder Category:** Mental Health / Psychiatric (also stroke motor rehabilitation and neurosurgical mapping)
++**Primary Indication:** Major depressive disorder (MDD); CE-marked in Europe additionally for stroke rehabilitation and chronic neuropathic pain ([Nexstim depression page](https://www.nexstim.com/healthcare-professionals/depression-disorder)).
++
++---
++
++## Target Nerve or Mechanism
++
++**Anatomical Target:** Cortical regions implicated in depression (e.g., dorsolateral prefrontal cortex), individually localized per patient
++**Delivery Mechanism:** **Navigated transcranial magnetic stimulation (nTMS)** — Nexstim's **SmartFocus** technology uses real-time 3D MRI-based navigation to calculate and target the induced electric field in the brain, aiming for more reproducible, patient-specific coil placement than non-navigated TMS ([Nexstim company history](https://www.nexstim.com/about-nexstim/history)).
++**Biological basis:** TMS-induced cortical neuroplasticity as an antidepressant mechanism is an established, peer-reviewed area of research; navigated targeting accuracy specifically has been validated against neurosurgical motor/speech mapping, the basis of Nexstim's original FDA clearances ([Nexstim clearance history](https://www.nexstim.com/news-and-events/news/press-release/nexstim-gains-fda-clearance-to-commercialise-its-nbtr-system-in-the-us-for-the-treatment-of-depressi)).
++
++---
++
++## Regulatory Status & Clinical Trial
++
++- **FDA clearance for motor mapping**: 2009; **FDA clearance for speech mapping**: 2012 — Nexstim states it remains the only company with both of these specific navigated-TMS mapping clearances ([Nexstim company history](https://www.nexstim.com/about-nexstim/history)).
++- **FDA clearance for the NBT System to treat MDD**: 2018 launch in the US following clearance ([MassDevice](https://www.massdevice.com/nexstim-launches-nbt-major-depressive-disorder-tms-treatment-device-in-us/); [BioSpace](https://www.biospace.com/nexstim-gains-fda-clearance-to-commercialize-its-nbt-system-to-treat-depression)).
++- **CE marked** in Europe for stroke, major depression, and chronic neuropathic pain ([Nexstim depression page](https://www.nexstim.com/healthcare-professionals/depression-disorder)).
++- Phase 3 trial investigating NBT for **stroke rehabilitation** is referenced by the company; a related registered study is the electric-field-navigated 1Hz rTMS trial for post-stroke motor recovery ([ClinicalTrials.gov protocol document, NCT03010462](https://cdn.clinicaltrials.gov/large-docs/62/NCT03010462/Prot_SAP_000.pdf)).
++- Real-world outcomes reported by the company: of 403 patients completing NBT treatment for MDD, **49.6% achieved remission** and **76.2% achieved clinical response** at end of treatment — company-reported registry data, not an independent RCT readout — **[unverified]** against a peer-reviewed publication.
++
++---
++
++## Novelty & Differentiation
++
++- **vs. Neuronetics (NeuroStar) and BrainsWay:** Nexstim's core differentiator is individualized 3D electric-field navigation (SmartFocus) for coil placement, versus standardized anatomical-landmark placement used by most competing TMS systems.
++- Unique dual FDA clearance history in **neurosurgical mapping** (motor 2009, speech 2012) predates and is separate from its psychiatric-indication clearance — a broader clinical footprint than TMS-only competitors.
++- Multi-indication CE marking (depression + stroke + neuropathic pain) gives it a broader European label than most single-indication competitors, though the US indication remains depression-only.
++
++---
++
++## Limitations: Practical & Theoretical
++
++- Small public-company market capitalization (tens of millions of euros) relative to larger competitors (Neuronetics, BrainsWay), suggesting more limited commercial scale — **[unverified]** revenue figures were not independently confirmed in this pass.
++- Requires in-clinic visits and specialized navigation hardware, raising cost/complexity relative to non-navigated TMS systems.
++- Stroke rehabilitation indication remains investigational in the US (Phase 3) even though CE-marked in Europe — regulatory status differs by geography.
++- Reported remission/response figures are company registry data rather than an independently published randomized controlled trial in the sources reviewed — **[unverified]**.
++
++---
++
++## Sources
++
++- [Nexstim — History](https://www.nexstim.com/about-nexstim/history)
++- [Nexstim Ltd stock — Investing.com](https://www.investing.com/equities/nexstim-ltd-he)
++- [Nexstim IPO Prospectus, 10 October 2014](https://www.nexstim.com/fileadmin/Downloads/IPO/nexstim_prospectus.pdf)
++- [Nexstim — Depression Disorder page](https://www.nexstim.com/healthcare-professionals/depression-disorder)
++- [Nexstim gains FDA clearance to commercialise NBT for depression — company press release](https://www.nexstim.com/news-and-events/news/press-release/nexstim-gains-fda-clearance-to-commercialise-its-nbtr-system-in-the-us-for-the-treatment-of-depressi)
++- [Nexstim launches NBT MDD TMS treatment device in US — MassDevice](https://www.massdevice.com/nexstim-launches-nbt-major-depressive-disorder-tms-treatment-device-in-us/)
++- [Nexstim Gains FDA Clearance to Commercialize NBT — BioSpace](https://www.biospace.com/nexstim-gains-fda-clearance-to-commercialize-its-nbt-system-to-treat-depression)
++- [Electric Field Navigated 1Hz rTMS for Post-stroke Motor Recovery — ClinicalTrials.gov protocol, NCT03010462](https://cdn.clinicaltrials.gov/large-docs/62/NCT03010462/Prot_SAP_000.pdf)
++
++**Items marked [unverified] above were not confirmed against a primary source in this research pass and should be independently checked before being relied upon for an investment decision.**
++
++**Profile verified via live web research:** 2026-09-14
+diff --git a/docs/profiles/mental-health-psychiatric/sooma.md b/docs/profiles/mental-health-psychiatric/sooma.md
+new file mode 100644
+index 0000000..a616796
+--- /dev/null
++++ b/docs/profiles/mental-health-psychiatric/sooma.md
+@@ -0,0 +1,75 @@
++# Sooma
++
++## Company Profile
++
++**Company Name:** Sooma Oy (Sooma Medical)
++**HQ Location:** Helsinki, Finland
++**Founded:** 2013 ([Silicon Canals](https://siliconcanals.com/finnish-medtech-sooma-bags-5m/); [Tracxn](https://tracxn.com/d/companies/sooma-oy/__-Ovqnuk5VyGSK0ge42p331u5ph2PkQGUd7-aM2vtXSM))
++**Flagship product:** **Sooma tDCS system**
++**Website:** https://soomamedical.com
++
++---
++
++## Funding
++
++Sooma raised a **€5 million (~$5.5M) growth round** in March 2024, led by Nordic early-stage investor **Voima Ventures** ([EU-Startups](https://www.eu-startups.com/2024/03/helsinki-based-sooma-secures-e5-million-to-brain-stimulate-yourself-out-of-depression-from-home/); [Voima Ventures](https://voimaventures.com/sooma-secures-funding-to-make-at-home-depression-treatment-widely-available/)). Total lifetime funding beyond this round was not independently confirmed in this research pass — **[unverified]**.
++
++---
++
++## Clinical Indication
++
++**Disorder Category:** Mental Health / Psychiatric
++**Primary Indication:** Major depressive disorder; the company has also launched a chronic-pain application in Finland and Germany ([Sooma company release](https://soomamedical.com/sooma-launches-direct-to-patient-brain-stimulation-therapy-for-depression-and-chronic-pain-in-finland-and-germany/)).
++
++---
++
++## Target Nerve or Mechanism
++
++**Anatomical Target:** Dorsolateral prefrontal cortex (bilateral, via scalp electrodes)
++**Delivery Mechanism:** **Transcranial direct current stimulation (tDCS)** — a mild constant electrical current delivered through two electrodes in a wearable cap, increasing cortical excitability near the anode and decreasing it near the cathode ([Sooma company site](https://soomamedical.com/about-sooma/)).
++**Biological basis:** Repeated tDCS sessions are proposed to induce long-term potentiation-like **neuroplastic changes** in cortical excitability that underlie its antidepressant effect — this mechanism is described in the broader tDCS-for-depression literature that Sooma cites in its own published pilot work ([Sooma-affiliated publication summary](https://soomamedical.com/publications/transcranial-direct-current-stimulation-tdcs-in-the-treatment-of-youth-depression-integrating-literature-review-insights-in-a-pilot-clinical-trial/)).
++
++---
++
++## Regulatory Status & Clinical Trial
++
++- **EU MDR certification** achieved **September 2023** — Sooma states it was the first tDCS device manufacturer to receive certification under the EU's Medical Device Regulation ([Sooma company release](https://soomamedical.com/fda-approved-tdcs-for-at-home-depression-treatment/)).
++- **FDA Investigational Device Exemption (IDE)** granted **March 11, 2025**, enabling a US pivotal trial ([Sooma company release](https://soomamedical.com/fda-ide-approval-for-sooma/)).
++- US pivotal trial: **REACH-tDCS** ("Home-Based tDCS Treatment of Major Depressive Disorder"), study ID SM-001, **NCT06976697** — began June 27, 2025, recruiting as of this research pass, with primary completion estimated October 2026 ([ClinicalTrials.gov NCT06976697](https://clinicaltrials.gov/study/NCT06976697)).
++- **No FDA marketing clearance/approval yet** — the device remains investigational in the US; it is CE-marked/MDR-certified for EU sale.
++- Sooma states it has treated **over 20,000–25,000 patients worldwide** (figures vary slightly by source date) via its EU-authorized commercial device — company-reported, not independently audited — **[unverified]**.
++
++---
++
++## Novelty & Differentiation
++
++- **vs. Flow Neuroscience (also at-home tDCS):** Flow has FDA PMA approval (Dec 2025) for at-home depression tDCS in the US, while Sooma is still in its FDA IDE/pivotal-trial stage — a direct head-to-head regulatory race between the two leading at-home tDCS depression companies.
++- **vs. Soterix Medical:** Sooma is a single-product, consumer/clinic-hybrid company focused specifically on depression (and now chronic pain), versus Soterix's broader multi-modality (tDCS+TMS+tFUS) research/clinical platform business.
++- First tDCS manufacturer to receive EU MDR certification, ahead of competitors under the EU's stricter post-2021 regulatory framework.
++
++---
++
++## Limitations: Practical & Theoretical
++
++- **No FDA clearance/approval yet** — US regulatory outcome and timeline remain uncertain pending the REACH-tDCS pivotal trial results.
++- tDCS's mechanism and effect sizes remain more contested in the peer-reviewed literature than TMS's, a field-level caveat that also applies to Sooma specifically.
++- Home/self-administered use reduces clinician oversight relative to in-clinic TMS — a tradeoff shared with all at-home neuromodulation devices.
++- Total funding and revenue figures beyond the disclosed €5M round were not found in this research pass — **[unverified]**.
++
++---
++
++## Sources
++
++- [Helsinki-based Sooma secures €5 million — EU-Startups](https://www.eu-startups.com/2024/03/helsinki-based-sooma-secures-e5-million-to-brain-stimulate-yourself-out-of-depression-from-home/)
++- [Sooma Secures €5M Funding — Voima Ventures](https://voimaventures.com/sooma-secures-funding-to-make-at-home-depression-treatment-widely-available/)
++- [Sooma Oy company profile — Tracxn](https://tracxn.com/d/companies/sooma-oy/__-Ovqnuk5VyGSK0ge42p331u5ph2PkQGUd7-aM2vtXSM)
++- [About Sooma — company site](https://soomamedical.com/about-sooma/)
++- [Sooma launches direct-to-patient therapy for depression and chronic pain — company release](https://soomamedical.com/sooma-launches-direct-to-patient-brain-stimulation-therapy-for-depression-and-chronic-pain-in-finland-and-germany/)
++- [FDA approved tDCS for at-home depression treatment — Sooma (EU MDR announcement)](https://soomamedical.com/fda-approved-tdcs-for-at-home-depression-treatment/)
++- [Sooma Medical Announces Pivotal FDA IDE Clinical Trial — company release](https://soomamedical.com/fda-ide-approval-for-sooma/)
++- [Home-Based tDCS Treatment of Major Depressive Disorder — ClinicalTrials.gov NCT06976697](https://clinicaltrials.gov/study/NCT06976697)
++- [tDCS in the Treatment of Youth Depression — Sooma publication summary](https://soomamedical.com/publications/transcranial-direct-current-stimulation-tdcs-in-the-treatment-of-youth-depression-integrating-literature-review-insights-in-a-pilot-clinical-trial/)
++
++**Items marked [unverified] above were not confirmed against a primary source in this research pass and should be independently checked before being relied upon for an investment decision.**
++
++**Profile verified via live web research:** 2026-09-14
+diff --git a/docs/profiles/neuro-musculoskeletal-pain-movement/nalu-medical.md b/docs/profiles/neuro-musculoskeletal-pain-movement/nalu-medical.md
+new file mode 100644
+index 0000000..1dc84ec
+--- /dev/null
++++ b/docs/profiles/neuro-musculoskeletal-pain-movement/nalu-medical.md
+@@ -0,0 +1,75 @@
++# Nalu Medical
++
++## Company Profile
++
++**Company Name:** Nalu Medical, Inc.
++**HQ Location:** Carlsbad, CA, USA
++**Founded:** 2014 ([Craft.co company profile](https://craft.co/nalu-medical))
++**Flagship product:** **Nalu Neurostimulation System** (micro-IPG)
++**Status:** **Acquired by Boston Scientific** — deal completed January 27, 2026
++**Website:** https://nalumed.com
++
++---
++
++## Funding & Acquisition
++
++Nalu Medical raised **$65 million** in a growth financing round to accelerate commercial expansion ([MassDevice](https://www.massdevice.com/nalu-medical-raises-65m-neurostim-tech/)). Boston Scientific, which had been an investor in Nalu since 2017 holding an approximate **9% equity stake**, announced an agreement in October 2025 to acquire the remainder of the company; the acquisition **closed January 27, 2026** for an upfront cash payment of approximately **$523 million, net of cash acquired** (total transaction value reported at **~$533 million**) ([Boston Scientific press release](https://news.bostonscientific.com/2025-10-17-Boston-Scientific-Announces-Agreement-to-Acquire-Nalu-Medical,-Inc); [BioXconomy](https://www.bioxconomy.com/partnering/boston-scientific-expands-pain-management-portfolio-with-533m-nalu-medical-buy)). The Nalu business has been integrated into **Boston Scientific's Neuromodulation division** ([MassDevice](https://www.massdevice.com/boston-scientific-completes-nalu-medical-acquisition/)).
++
++---
++
++## Clinical Indication
++
++**Disorder Category:** Neuro-Musculoskeletal / Pain / Movement
++**Primary Indication:** Chronic, intractable pain of peripheral nerve origin (e.g., shoulder, lower back, knee) and spinal cord stimulation (SCS) indications ([Boston Scientific press release](https://news.bostonscientific.com/2025-10-17-Boston-Scientific-Announces-Agreement-to-Acquire-Nalu-Medical,-Inc)).
++
++---
++
++## Target Nerve or Mechanism
++
++**Anatomical Target:** Peripheral nerves (PNS) and spinal cord (SCS), per indication
++**Delivery Mechanism:** The **Nalu micro-IPG** is a miniaturized, battery-free implantable pulse generator wirelessly powered by an externally worn Therapy Disc and controlled via a smartphone app; mild electrical impulses interrupt pain signals before they reach the brain ([ExpertPainCare](https://www.expertpaincare.com/blog/how-the-novel-nalu-micro-ipg-pns-system-redefines-the-chronic-pain-treatment-paradigm); [Boston Scientific press release](https://news.bostonscientific.com/2025-10-17-Boston-Scientific-Announces-Agreement-to-Acquire-Nalu-Medical,-Inc)).
++**Biological basis:** Peripheral nerve stimulation for chronic pain is grounded in the **gate control theory of pain** (Melzack & Wall, 1965) — stimulating large-diameter, non-nociceptive fibers activates inhibitory interneurons that suppress nociceptive signal transmission in the dorsal horn; see the modern mechanistic review ([Mechanism of Action of Peripheral Nerve Stimulation for Chronic Pain: A Narrative Review — PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10003676/)) and the golden-anniversary retrospective on the original theory ([Gate control theory 50th anniversary — PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC4676495/)).
++
++---
++
++## Regulatory Status & Clinical Trial
++
++- **FDA 510(k) clearance** for SCS and PNS indications: **2020** ([search-summarized industry reporting](https://www.massdevice.com/fda-clears-nalu-nerve-stim-whole-body-mri/)) — **[unverified]** against a primary FDA database record in this pass.
++- **FDA clearance for expanded whole-body MRI-conditional labeling**: **January 2025** ([Nalu Medical company release](https://nalumed.com/nalu-expands-mri-conditional-labeling-for-peripheral-nerve-stimulation-with-fda-clearance-for-whole-body-mri/); [BusinessWire](https://www.businesswire.com/news/home/20250121198040/en/Nalu-Expands-MRI-Conditional-Labeling-for-Peripheral-Nerve-Stimulation-with-FDA-Clearance-for-Whole-Body-MRI)).
++- **COMFORT-2**: randomized controlled trial of PNS, first enrollment announced by the company ([Nalu Medical company release](https://nalumed.com/comfort-2-peripheral-nerve-stimulation-enrollment/)); efficacy readout not yet found in this research pass — **[unverified]**.
++- Company-reported clinical study results were published in *Pain Physician* journal, per company release ([Nalu Medical company release](https://nalumed.com/us-spinal-cord-stimulation-clinical-study-in-pain-physician-journal/)) — treat as company-summarized, verify against the original journal article before citing specific outcome figures.
++
++---
++
++## Novelty & Differentiation
++
++- **vs. SetPoint Medical/Saluda/Neuros Medical (implanted neurostimulation peers):** Nalu's micro-IPG is fully battery-free and wirelessly powered, with an expected **18-year service life** claimed by the company, differentiating it from battery-based competing IPGs that require periodic replacement.
++- Dual-indication clearance for both PNS and SCS from one implant platform is a differentiator relative to single-indication peers.
++- Acquisition by Boston Scientific (a top-3 global neuromodulation incumbent) at a ~$533M valuation validates the platform commercially, but also removes it from the independent-startup landscape investors would otherwise be evaluating.
++
++---
++
++## Limitations: Practical & Theoretical
++
++- **No longer an independent company** — as of January 2026 it is wholly owned by Boston Scientific; VC-style investment access to Nalu specifically no longer exists.
++- Exact FDA clearance date (2020) and specific clinical trial outcome data were not independently verified against primary FDA/journal sources in this pass — **[unverified]**.
++- General field-level limitation shared with all peripheral/spinal implants: infection risk, lead migration, and eventual device revision surgery.
++
++---
++
++## Sources
++
++- [Nalu Medical company profile — Craft.co](https://craft.co/nalu-medical)
++- [Nalu Medical raises $65M for neurostim tech — MassDevice](https://www.massdevice.com/nalu-medical-raises-65m-neurostim-tech/)
++- [Boston Scientific Announces Agreement to Acquire Nalu Medical — company press release](https://news.bostonscientific.com/2025-10-17-Boston-Scientific-Announces-Agreement-to-Acquire-Nalu-Medical,-Inc)
++- [Boston Scientific buys Nalu Medical for $533m — BioXconomy](https://www.bioxconomy.com/partnering/boston-scientific-expands-pain-management-portfolio-with-533m-nalu-medical-buy)
++- [Boston Scientific completes Nalu Medical acquisition — MassDevice](https://www.massdevice.com/boston-scientific-completes-nalu-medical-acquisition/)
++- [How the Novel Nalu Micro-IPG PNS system redefines chronic pain treatment — ExpertPainCare](https://www.expertpaincare.com/blog/how-the-novel-nalu-micro-ipg-pns-system-redefines-the-chronic-pain-treatment-paradigm)
++- [Nalu Expands MRI-Conditional Labeling — company release](https://nalumed.com/nalu-expands-mri-conditional-labeling-for-peripheral-nerve-stimulation-with-fda-clearance-for-whole-body-mri/)
++- [Nalu Medical Announces First Enrollment of COMFORT-2 Trial — company release](https://nalumed.com/comfort-2-peripheral-nerve-stimulation-enrollment/)
++- [Mechanism of Action of Peripheral Nerve Stimulation for Chronic Pain: A Narrative Review — PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10003676/)
++- [The golden anniversary of Melzack and Wall's gate control theory — PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC4676495/)
++
++**Items marked [unverified] above were not confirmed against a primary source in this research pass and should be independently checked before being relied upon for an investment decision.**
++
++**Profile verified via live web research:** 2026-09-14
+diff --git a/docs/profiles/neuro-musculoskeletal-pain-movement/presidio-medical.md b/docs/profiles/neuro-musculoskeletal-pain-movement/presidio-medical.md
+new file mode 100644
+index 0000000..166dfee
+--- /dev/null
++++ b/docs/profiles/neuro-musculoskeletal-pain-movement/presidio-medical.md
+@@ -0,0 +1,77 @@
++# Presidio Medical
++
++## Company Profile
++
++**Company Name:** Presidio Medical, Inc.
++**HQ Location:** South San Francisco, CA, USA
++**Founded:** 2017 ([PitchBook company profile summary](https://pitchbook.com/profiles/company/226452-43))
++**Flagship product:** **ULF (Ultra Low Frequency) Neuromodulation platform**
++**Website:** https://presidiomedical.com
++
++---
++
++## Funding
++
++Presidio Medical has raised a total of approximately **$102–103 million**, including a **$72 million Series C** in June 2023 led by **Deerfield Management**, with participation from existing investors Invus Opportunities and Action Potential Venture Capital, joined by ShangBay Capital ([Knobbe Martens](https://www.knobbe.com/blog/presidio-medical-raises-72-million-ulf-neuromodulation-platform/); [CB Insights](https://www.cbinsights.com/company/presidio-medical)).
++
++---
++
++## Clinical Indication
++
++**Disorder Category:** Neuro-Musculoskeletal / Pain / Movement
++**Primary Indication:** Chronic nociceptive (axial) low back pain ([Medical Economics](https://www.medicaleconomics.com/view/presidio-medical-wins-fda-ide-approval-for-neuromodulation-trial-names-new-cfo)).
++
++---
++
++## Target Nerve or Mechanism
++
++**Anatomical Target:** Spinal cord (epidural space, dorsal column region)
++**Delivery Mechanism:** **Ultra-low frequency (ULF) spinal cord stimulation** — delivers epidural currents at frequencies far below conventional SCS, aiming to produce a **reversible conduction block** of pain-signaling neurons via **sodium channel inactivation**, rather than the paresthesia-masking or gate-control mechanisms used by conventional/high-frequency SCS ([MassDevice](https://www.massdevice.com/presidio-fda-ide-for-ulf-neuromod/); [company release](https://presidiomedical.com/press-releases/presidio-medicaltm-receives-ide-approval-for-ultra-low-frequency-ulftm-neuromodulation-clinical-study-and-appoints-dimas-jimenez-as-chief-financial-officer/)).
++**Biological basis:** Presidio-sponsored research published in *Science* (2021) demonstrated that ULF waveforms produce a rapidly developing, completely reversible conduction block in animal models, and reported a 2-week human trial testing epidural ULF currents in 20 subjects with chronic leg and back pain ([Presidio company release summarizing the Science publication](https://www.businesswire.com/news/home/20210825005742/en/Presidio-Medical-Announces-Publication-of-ULF-Neuromodulation-Research-in-Science-Translational-Medicine)) — note the company release title references *Science Translational Medicine* while search summaries reference *Science*; the exact journal should be confirmed against the original citation before further use — **[unverified]** journal name discrepancy.
++
++---
++
++## Regulatory Status & Clinical Trial
++
++- **FDA Investigational Device Exemption (IDE)** approved for the **FULFILL Study** — a prospective, multi-center, randomized, controlled pivotal trial comparing ULF spinal cord stimulation plus conservative medical management (CMM) to CMM alone for chronic axial low back pain with a prominent nociceptive etiology, to be run in the US and Australia (**NCT06763653**) ([ClinicalTrials.gov](https://clinicaltrials.gov/study/NCT06763653); [MassDevice](https://www.massdevice.com/presidio-fda-ide-for-ulf-neuromod/)).
++- An earlier first-in-human feasibility trial (**NCT05837234**) reported that **53% of patients** who received ULF SCS experienced **80–100% pain relief** — early feasibility data, not yet confirmatory ([search-summarized reporting](https://clinicaltrials.gov/study/NCT05837234)).
++- No FDA marketing approval yet — device remains investigational, pending the FULFILL pivotal trial.
++
++---
++
++## Novelty & Differentiation
++
++- **vs. Nevro (10kHz paresthesia-free SCS) and Saluda (closed-loop ECAP-based SCS):** Presidio's ULF approach is mechanistically distinct — it targets a **reversible nerve conduction block via sodium channel inactivation** rather than paresthesia masking or closed-loop amplitude titration, positioning it as a third, mechanistically novel branch of implanted SCS technology in this tracker.
++- Backed by a peer-reviewed mechanistic publication (2021) preceding its pivotal trial, providing stronger mechanistic grounding at an earlier stage than is typical for early-stage neurostimulation companies.
++
++---
++
++## Limitations: Practical & Theoretical
++
++- Still pre-pivotal-trial-completion; **no confirmatory RCT efficacy data available yet — [unverified]**, as FULFILL is an ongoing pivotal study.
++- Standard implanted SCS risks apply (surgical implant, lead migration, infection, battery/generator considerations).
++- The exact peer-reviewed journal of record for the foundational mechanism paper needs confirmation (Science vs. Science Translational Medicine framing found in different sources) — **[unverified]**.
++- $20 billion market-size figure for nociceptive low back pain, cited in company materials, was not independently corroborated against a third-party market research source in this pass — **[unverified]**.
++
++---
++
++## Market Size
++
++Chronic low back pain represents a large addressable population; company materials cite a potential market of **~$20 billion** for nociceptive low back pain specifically — **[unverified]** against an independent market-research source in this research pass ([Medical Economics](https://www.medicaleconomics.com/view/presidio-medical-wins-fda-ide-approval-for-neuromodulation-trial-names-new-cfo)).
++
++---
++
++## Sources
++
++- [Presidio Medical wins FDA IDE approval for neuromodulation trial — Medical Economics](https://www.medicaleconomics.com/view/presidio-medical-wins-fda-ide-approval-for-neuromodulation-trial-names-new-cfo)
++- [Presidio wins FDA IDE for ultra-low frequency neuromod — MassDevice](https://www.massdevice.com/presidio-fda-ide-for-ulf-neuromod/)
++- [Presidio Medical Receives IDE Approval for ULF Neuromodulation Clinical Study — company release](https://presidiomedical.com/press-releases/presidio-medicaltm-receives-ide-approval-for-ultra-low-frequency-ulftm-neuromodulation-clinical-study-and-appoints-dimas-jimenez-as-chief-financial-officer/)
++- [Presidio Medical company profile — CB Insights](https://www.cbinsights.com/company/presidio-medical)
++- [Presidio Medical Raises $72 Million for ULF Neuromodulation Platform — Knobbe Martens](https://www.knobbe.com/blog/presidio-medical-raises-72-million-ulf-neuromodulation-platform/)
++- [Presidio Medical Announces Publication of ULF Neuromodulation Research — company release](https://www.businesswire.com/news/home/20210825005742/en/Presidio-Medical-Announces-Publication-of-ULF-Neuromodulation-Research-in-Science-Translational-Medicine)
++- [Ultra Low Frequency Neuromodulation for Nociceptive Chronic Low Back Pain — FULFILL Study, ClinicalTrials.gov NCT06763653](https://clinicaltrials.gov/study/NCT06763653)
++- [Ultra Low Frequency Spinal Cord Stimulation for Chronic Low Back Pain — ClinicalTrials.gov NCT05837234](https://clinicaltrials.gov/study/NCT05837234)
++
++**Items marked [unverified] above were not confirmed against a primary source in this research pass and should be independently checked before being relied upon for an investment decision.**
++
++**Profile verified via live web research:** 2026-09-14
+diff --git a/docs/profiles/neuro-musculoskeletal-pain-movement/spr-therapeutics.md b/docs/profiles/neuro-musculoskeletal-pain-movement/spr-therapeutics.md
+new file mode 100644
+index 0000000..bb93628
+--- /dev/null
++++ b/docs/profiles/neuro-musculoskeletal-pain-movement/spr-therapeutics.md
+@@ -0,0 +1,77 @@
++# SPR Therapeutics
++
++## Company Profile
++
++**Company Name:** SPR Therapeutics, Inc.
++**HQ Location:** Cleveland (Highland Hills), OH, USA
++**Founded:** 2010, by Maria Bennett, growing out of her biomedical-engineering graduate research at **Case Western Reserve University** ([Crain's Cleveland Business](https://www.crainscleveland.com/real-estate/medical-device-company-spr-therapeutics-expands-headquarters-highland-hills); [Greater Cleveland Partnership](https://greatercle.com/blog/gcp-news/cleveland-continues-to-revolutionize-medical-research-at-spr-therapeutics/))
++**Flagship product:** **SPRINT PNS System** (endura single-lead / extensa dual-lead)
++**Website:** https://www.sprpainrelief.com
++
++---
++
++## Funding
++
++SPR Therapeutics closed an oversubscribed **$37 million Series D** growth-equity financing in October 2021 ([FierceBiotech](https://www.fiercebiotech.com/medtech/spr-therapeutics-runs-up-37m-vc-funding-for-sprint-pain-relief-device); [SPR company release](https://www.sprpainrelief.com/press-releases/spr-closes-37-million-growth-equity-financing-sprint-pns)). Separately, the company has received **$10 million** in combined grants/contracts from the **US Department of Defense**, part of a cumulative **$30 million** in non-dilutive NIH and DoD grants and contracts ([SPR company release](https://www.sprpainrelief.com/press-releases/spr-awarded-10m-us-department-defense)). Total disclosed capital (equity + non-dilutive) is approximately **$67 million**; a fuller lifetime equity total was not independently confirmed — **[unverified]**.
++
++---
++
++## Clinical Indication
++
++**Disorder Category:** Neuro-Musculoskeletal / Pain / Movement
++**Primary Indication:** Chronic and acute pain in the back and/or extremities, with an expanded indication covering areas of the head, neck, and front of the torso ([Healio](https://www.healio.com/news/orthopedics/20211105/fda-clears-spr-therapeutics-peripheral-nerve-stimulation-system-for-head-neck-torso)).
++
++---
++
++## Target Nerve or Mechanism
++
++**Anatomical Target:** Peripheral nerves near the site of pain (percutaneous lead placement)
++**Delivery Mechanism:** **Percutaneous peripheral nerve stimulation (PNS)** — a thin lead is placed near a target peripheral nerve for up to 60 days, delivering stimulation via an external wearable pulse generator, then removed (non-permanent implant), distinguishing it from fully implanted PNS/SCS systems ([SPR Indications page](https://www.sprpainrelief.com/indications); [PharmaSalmanac](https://www.pharmasalmanac.com/articles/spr-therapeutics-single-and-dual-lead-peripheral-nerve-stimulation-devices-pass-fda)).
++**Biological basis:** As with other peripheral nerve stimulators in this tracker, SPRINT's proposed mechanism rests on the **gate control theory of pain** (Melzack & Wall, 1965), in which stimulation of large-diameter afferent fibers inhibits nociceptive transmission at the dorsal horn ([Mechanism of Action of Peripheral Nerve Stimulation for Chronic Pain — PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10003676/)); SPR's own trial registrations reference sustained pain relief outlasting the 60-day treatment period, suggesting an additional neuroplastic/central-modulation component beyond simple gating — **[unverified]** mechanistic detail beyond the general PNS literature.
++
++---
++
++## Regulatory Status & Clinical Trial
++
++- **Original FDA clearance for the SPRINT PNS System**: **2016** ([search-summarized industry reporting](https://www.mddionline.com/business/spr-therapeutics-wins-nod-for-dual-lead-pns-system)) — **[unverified]** against a primary FDA 510(k) database record in this pass.
++- **FDA clearance for the "endura" and "extensa" (single- and dual-lead) SPRINT systems**, confirming SPRINT as the only percutaneous PNS system cleared for up to 60 days of use in the back and/or extremities for both chronic and acute pain ([SPR company release](https://www.sprpainrelief.com/press-releases/fda-clears-sprs-non-opioid-sprint-endura-and-extensa-peripheral-nerve-stimulation)).
++- **Expanded FDA clearance (October 2021)** extending indications to areas of the head, neck, and front of torso ([Healio](https://www.healio.com/news/orthopedics/20211105/fda-clears-spr-therapeutics-peripheral-nerve-stimulation-system-for-head-neck-torso); [Medical Alley](https://www.medicalalley.org/fda-clearance-of-an-expanded-indication-for-the-sprint-pns-system-now-enables-treatment-in-areas-of-the-head-neck-and-torso/)).
++- Registered trials include the **RESET** trial for back pain (**NCT04246281**) and a post-operative orthopedic-pain trial (**NCT04341948**) ([ClinicalTrials.gov](https://clinicaltrials.gov/study/NCT04246281)).
++
++---
++
++## Novelty & Differentiation
++
++- **vs. Nalu Medical/SetPoint Medical (fully implanted PNS):** SPRINT is deliberately **non-permanent** — a percutaneous lead used for up to 60 days, then removed, avoiding the surgical-implant risk profile of permanent IPG-based systems, at the cost of requiring reapplication if pain recurs.
++- Only percutaneous PNS system FDA-cleared for **both chronic and acute pain**, a broader acute-pain indication than most competing implanted systems, which typically target chronic pain only.
++- Backed by meaningful non-dilutive DoD/NIH funding (unusual for this tracker's typical VC-only-funded companies), reflecting interest from military pain-management use cases (e.g., post-amputation, combat injury).
++
++---
++
++## Limitations: Practical & Theoretical
++
++- Being **temporary/percutaneous** rather than permanently implanted means patients may require repeat procedures if pain recurs after lead removal — a different treatment-burden profile than permanent implants.
++- Exact original 2016 FDA clearance details were not independently confirmed against a primary FDA source in this pass — **[unverified]**.
++- Total lifetime equity funding beyond the disclosed $37M Series D was not found — **[unverified]**.
++- General field-level limitation shared with all gate-control-theory-based PNS devices: individual patient response variability and lack of a universally accepted predictive biomarker for responders.
++
++---
++
++## Sources
++
++- [Medical device company SPR Therapeutics expands headquarters — Crain's Cleveland Business](https://www.crainscleveland.com/real-estate/medical-device-company-spr-therapeutics-expands-headquarters-highland-hills)
++- [Cleveland continues to revolutionize medical research at SPR Therapeutics — Greater Cleveland Partnership](https://greatercle.com/blog/gcp-news/cleveland-continues-to-revolutionize-medical-research-at-spr-therapeutics/)
++- [SPR Therapeutics runs up $37M VC funding — FierceBiotech](https://www.fiercebiotech.com/medtech/spr-therapeutics-runs-up-37m-vc-funding-for-sprint-pain-relief-device)
++- [SPR closes $37 million growth equity financing — company release](https://www.sprpainrelief.com/press-releases/spr-closes-37-million-growth-equity-financing-sprint-pns)
++- [SPR awarded $10M from US Department of Defense — company release](https://www.sprpainrelief.com/press-releases/spr-awarded-10m-us-department-defense)
++- [Indications for Use — SPR](https://www.sprpainrelief.com/indications)
++- [SPR Therapeutics' Single- and Dual-Lead PNS Devices Pass FDA — PharmaSalmanac](https://www.pharmasalmanac.com/articles/spr-therapeutics-single-and-dual-lead-peripheral-nerve-stimulation-devices-pass-fda)
++- [FDA clears SPR's SPRINT endura and extensa PNS systems — company release](https://www.sprpainrelief.com/press-releases/fda-clears-sprs-non-opioid-sprint-endura-and-extensa-peripheral-nerve-stimulation)
++- [FDA clears SPR Therapeutics' PNS system for head, neck, torso — Healio](https://www.healio.com/news/orthopedics/20211105/fda-clears-spr-therapeutics-peripheral-nerve-stimulation-system-for-head-neck-torso)
++- [FDA Clearance of an Expanded Indication for SPRINT — Medical Alley](https://www.medicalalley.org/fda-clearance-of-an-expanded-indication-for-the-sprint-pns-system-now-enables-treatment-in-areas-of-the-head-neck-and-torso/)
++- [The RESET Clinical Trial — ClinicalTrials.gov NCT04246281](https://clinicaltrials.gov/study/NCT04246281)
++- [Mechanism of Action of Peripheral Nerve Stimulation for Chronic Pain — PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10003676/)
++
++**Items marked [unverified] above were not confirmed against a primary source in this research pass and should be independently checked before being relied upon for an investment decision.**
++
++**Profile verified via live web research:** 2026-09-14
+diff --git a/docs/profiles/sleep-apnea/livanova-aura6000.md b/docs/profiles/sleep-apnea/livanova-aura6000.md
+new file mode 100644
+index 0000000..2d8fff9
+--- /dev/null
++++ b/docs/profiles/sleep-apnea/livanova-aura6000.md
+@@ -0,0 +1,80 @@
++# LivaNova aura6000 (originally ImThera Medical)
++
++## Company Profile
++
++**Company Name:** LivaNova PLC (device originally developed by ImThera Medical, Inc., acquired 2018)
++**HQ Location:** London, UK (LivaNova plc corporate HQ); ImThera Medical was originally San Diego, CA, USA
++**Founded:** ImThera Medical's founding year was not confirmed in this research pass — **[unverified]**. ImThera received FDA investigational device exemption for its pivotal trial in November 2014 ([MassDevice](https://www.massdevice.com/livanova-puts-225m-table-imthera-medical/)).
++**Flagship product:** **aura6000 System** (proximal hypoglossal nerve stimulation)
++**Website:** https://www.livanova.com
++
++**Note on entity structure:** This profile consolidates two backlog entries ("ImThera Medical" and "LivaNova plc — aura6000 sleep apnea program") because ImThera Medical no longer operates as an independent company — LivaNova acquired it outright in 2018 and now owns the aura6000 program directly ([MassDevice](https://www.massdevice.com/livanova-closes-225m-imthera-buyout/)).
++
++---
++
++## Funding
++
++LivaNova (already an investor in ImThera) agreed to acquire the remainder of ImThera Medical for up to **$225 million** — **$78 million paid upfront** plus up to **$147 million** in regulatory- and sales-based milestone payments ([MassDevice, deal announcement](https://www.massdevice.com/livanova-puts-225m-table-imthera-medical/); [MassDevice, deal close](https://www.massdevice.com/livanova-closes-225m-imthera-buyout/)). Pre-acquisition equity funding raised by ImThera Medical is inconsistently reported across aggregators (estimates range from **~$19M to ~$29M**) — **[unverified]**, treat as aggregator estimates ([PitchBook via Tracxn summary](https://tracxn.com/d/companies/imtheramedical/__IVwOF7gcPmiBuWBooh-PrgxN7dpzVi9vpfTxDi-BCKo)). LivaNova itself is a large public company (NASDAQ/LSE: LIVN) — the aura6000 program is one product line within a diversified cardiovascular/neuromodulation portfolio, not a standalone VC-backed startup today.
++
++---
++
++## Clinical Indication
++
++**Disorder Category:** Sleep Apnea
++**Primary Indication:** Moderate to severe Obstructive Sleep Apnea (OSA) in adults who have failed, do not tolerate, or are ineligible for first-line therapies such as CPAP — apnea-hypopnea index (AHI) 15–65 ([LivaNova investor press release](https://investor.livanova.com/news-releases/news-release-details/livanova-receives-us-food-and-drug-administration-premarket)).
++
++---
++
++## Target Nerve or Mechanism
++
++**Anatomical Target:** Hypoglossal nerve (proximal trunk, targeting multiple branches via a cuff electrode)
++**Delivery Mechanism:** Implanted **proximal hypoglossal nerve stimulation (p-HGNS)** — a stimulation lead placed around the proximal hypoglossal nerve trunk activates multiple tongue-protrusor muscle groups (via the genioglossus and other branches) to keep the upper airway open during sleep, paired with an implanted pulse generator near the collarbone ([FDA patient guide, P250013](https://www.accessdata.fda.gov/cdrh_docs/pdf25/P250013C.pdf)).
++**Biological basis:** Hypoglossal nerve stimulation activating the genioglossus and other tongue-protrusor muscles to relieve upper-airway collapse is a peer-reviewed, clinically validated mechanism for OSA — see the randomized clinical trial of targeted hypoglossal nerve stimulation (the ImThera/THN device lineage) published in *JAMA Otolaryngology* ([PMC10080405](https://pmc.ncbi.nlm.nih.gov/articles/PMC10080405/)).
++
++---
++
++## Regulatory Status & Clinical Trial
++
++- **FDA Premarket Approval (PMA)** granted **March 19, 2026** for the aura6000 System to treat moderate-to-severe OSA ([LivaNova investor press release](https://investor.livanova.com/news-releases/news-release-details/livanova-receives-us-food-and-drug-administration-premarket); [Sleep Review](https://sleepreviewmag.com/sleep-treatments/therapy-devices/neurostimulators/fda-approves-livanovas-aura6000-neurostimulator-for-osa/)).
++- Approved **without a contraindication for complete concentric collapse (CCC)** at the soft palate — a patient-selection limitation that applies to Inspire's device — making aura6000 usable in a broader anatomical subgroup ([Sleep Review](https://sleepreviewmag.com/sleep-treatments/therapy-devices/neurostimulators/fda-approves-livanovas-aura6000-neurostimulator-for-osa/)).
++- **OSPREY pivotal trial**: responder criteria met by **65% of patients at 12 months**; median AHI fell from **34.3 to 11.0 events/hour** ([LivaNova investor press release](https://investor.livanova.com/news-releases/news-release-details/livanova-receives-us-food-and-drug-administration-premarket)).
++- Underlying THN3 randomized trial (multi-branch/targeted stimulation of the hypoglossal nerve, the mechanism aura6000 is built on) previously published in a peer-reviewed randomized clinical trial ([PMC10080405](https://pmc.ncbi.nlm.nih.gov/articles/PMC10080405/)).
++
++---
++
++## Novelty & Differentiation
++
++- Third hypoglossal nerve stimulator to reach FDA approval in the US (after Inspire Medical Systems and Nyxoah), and — like Nyxoah — approved without Inspire's complete-concentric-collapse exclusion, but via a different mechanism: multi-branch proximal trunk stimulation rather than bilateral leadless stimulation.
++- Backed by LivaNova's existing commercial/regulatory infrastructure (the company already markets VNS Therapy for epilepsy), which could accelerate US commercial rollout relative to a standalone startup.
++
++---
++
++## Limitations: Practical & Theoretical
++
++- FDA approval is very recent (March 2026); **no independent long-term (multi-year) real-world outcomes or adverse-event-rate data were found in this research pass — [unverified]**.
++- Surgical implant with the same general implant risks (infection, lead-related revision) common to all hypoglossal nerve stimulators.
++- OSA neurostimulation device market is competitive and crowded (Inspire, Nyxoah, now LivaNova); LivaNova's aura6000-specific US commercial revenue was not found in this pass — **[unverified]**.
++- ImThera's pre-acquisition history (founding year, full funding history) is thinly documented in public sources — **[unverified]**, flagged rather than guessed.
++
++---
++
++## Market Size
++
++Obstructive sleep apnea affects an estimated **30 million US adults**, with roughly **80% undiagnosed**; the hypoglossal nerve stimulation device segment specifically is projected to exceed **$4.3 billion by 2034** (CAGR ~17.9%) ([GM Insights, US Sleep Apnea Implants Market](https://www.gminsights.com/industry-analysis/us-sleep-apnea-implants-market)).
++
++---
++
++## Sources
++
++- [LivaNova puts $225m on the table for ImThera Medical — MassDevice](https://www.massdevice.com/livanova-puts-225m-table-imthera-medical/)
++- [UPDATE: LivaNova closes $225m ImThera buyout — MassDevice](https://www.massdevice.com/livanova-closes-225m-imthera-buyout/)
++- [LivaNova Receives FDA PMA for aura6000 System — LivaNova investor relations](https://investor.livanova.com/news-releases/news-release-details/livanova-receives-us-food-and-drug-administration-premarket)
++- [FDA Approves LivaNova's aura6000 Neurostimulator for OSA — Sleep Review](https://sleepreviewmag.com/sleep-treatments/therapy-devices/neurostimulators/fda-approves-livanovas-aura6000-neurostimulator-for-osa/)
++- [Patient's Guide, Proximal Hypoglossal Nerve Stimulation — FDA P250013](https://www.accessdata.fda.gov/cdrh_docs/pdf25/P250013C.pdf)
++- [Targeted Hypoglossal Nerve Stimulation for OSA: A Randomized Clinical Trial — PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10080405/)
++- [ImThera Medical funding/acquisition profile — Tracxn](https://tracxn.com/d/companies/imtheramedical/__IVwOF7gcPmiBuWBooh-PrgxN7dpzVi9vpfTxDi-BCKo)
++- [US Sleep Apnea Implants Market — GM Insights](https://www.gminsights.com/industry-analysis/us-sleep-apnea-implants-market)
++
++**Items marked [unverified] above were not confirmed against a primary source in this research pass and should be independently checked before being relied upon for an investment decision.**
++
++**Profile verified via live web research:** 2026-09-14
+diff --git a/docs/technology-tree.md b/docs/technology-tree.md
+index 3053d9b..fe60070 100644
+--- a/docs/technology-tree.md
++++ b/docs/technology-tree.md
+@@ -17,7 +17,7 @@ automation — see `docs/BACKLOG.md` / the daily trigger):
+    live database, so it only updates when someone (me, on request or via the
+    daily job) regenerates it from this source.
+ 
+-Last synced to diagram: 2026-09-13
++Last synced to diagram: 2026-09-14
+ 
+ ---
+ 
+@@ -35,25 +35,38 @@ Last synced to diagram: 2026-09-13
+ - **Nevro** (Senza / HFX, 10kHz) — paresthesia-free high-frequency dorsal column stimulation — Chronic back/leg pain, painful diabetic neuropathy — added 2026-09-07
+ - **Onward Medical** (ARC-IM, investigational) — implantable epidural stimulation, spatiotemporally patterned to intended movement — Spinal cord injury (restorative) — added 2026-09-07
+ - **Saluda Medical** (Evoke) — closed-loop spinal cord stimulation with ECAP-based feedback, automatic adjustment to maintain pain relief — Chronic back/leg pain, failed back surgery syndrome — added 2026-09-13
++- **Presidio Medical** (ULF Neuromodulation) — ultra-low frequency epidural stimulation, reversible conduction block via sodium channel inactivation (mechanistically distinct from paresthesia-masking/closed-loop SCS) — Chronic nociceptive low back pain — added 2026-09-14
+ 
+ ### L3: Intracortical BCI (Penetrating)
+ - **Blackrock Neurotech** (Utah Array) — 96–128 channel intracortical microelectrode arrays, single-unit recording for motor intent decoding — Paralysis/SCI communication & prosthetic control — added 2026-09-13
+-- **Paradromics** — 10,000+ channel ultra-high-density intracortical arrays, bidirectional motor decoding + sensory feedback — Paralysis/SCI communication, sensorimotor prosthetic control — added 2026-09-13
++- **Paradromics** (Connexus) — 421-electrode cortical array + wireless chest transceiver, motor/speech decoding — Paralysis/SCI communication, sensorimotor prosthetic control — added 2026-09-13 (channel count corrected 2026-09-14; see profile)
+ 
+ ### L3: Implanted Peripheral / Cranial Nerve
+ - **Inspire Medical Systems** — unilateral hypoglossal nerve stimulation, breath-synchronized closed loop — Obstructive sleep apnea — added 2026-09-07
+ - **Nyxoah** (Genio) — bilateral hypoglossal nerve stimulation, leadless/battery-free implant — Obstructive sleep apnea — added 2026-09-07
+ - **SetPoint Medical** — cervical vagus nerve stimulation, cholinergic anti-inflammatory pathway — Rheumatoid arthritis (bioelectronic/neuroimmune) — added 2026-09-07
+ - **Neuros Medical** (Altius) — peripheral nerve cuff, on-demand high-frequency conduction block — Post-amputation phantom/residual limb pain — added 2026-09-07
++- **LivaNova** (aura6000, originally ImThera Medical) — proximal hypoglossal nerve stimulation (multi-branch trunk cuff) — Obstructive sleep apnea — added 2026-09-14
++- **Nalu Medical** (micro-IPG, acquired by Boston Scientific Jan 2026) — battery-free wirelessly-powered implantable pulse generator, PNS + SCS indications — Chronic peripheral-nerve-origin pain — added 2026-09-14
++
++### L3: Percutaneous / Temporary Peripheral Nerve Stimulation
++*Distinct from permanently implanted PNS above — a thin lead placed near a target nerve for a defined period (typically up to 60 days), then removed.*
++- **SPR Therapeutics** (SPRINT PNS, endura/extensa) — percutaneous lead + external wearable pulse generator, up to 60-day use — Chronic and acute pain of the back/extremities/head/neck/torso — added 2026-09-14
+ 
+ ### L3: Endovascular Neural Interface (BCI)
+ - **Synchron** (Stentrode) — 16-channel stent-electrode array delivered via jugular vein into the superior sagittal sinus, no craniotomy — Paralysis/ALS communication & device control — added 2026-09-07
+ 
++### L3: Surface / Epicortical Interface (ECoG, Non-Penetrating)
++*Electrode arrays placed on or just above the cortical surface (subdural or epidural) — distinct from both penetrating intracortical arrays and endovascular interfaces.*
++- **Precision Neuroscience** (Layer 7) — 1,024-electrode subdural surface array, thinner-than-hair, records + stimulates — BCI communication/motor restoration, neurosurgical mapping — added 2026-09-14
++- **Motif Neurotech** (DOT microstimulator) — millimeter-scale epidural cortical stimulator, wireless magnetoelectric power transfer — Treatment-resistant depression — added 2026-09-14
++
+ ### L3: Non-invasive / Transcutaneous Peripheral
+ - **NeuroSigma** (Monarch eTNS) — external trigeminal nerve stimulation, nightly during sleep — Pediatric ADHD — added 2026-09-07
+ - **Signifier Medical Technologies** (eXciteOSA) — transcutaneous neuromuscular stimulation (NMES) of the tongue, daytime use — Mild OSA / primary snoring — added 2026-09-07
+ - **Onward Medical** (ARC-EX) — transcutaneous spinal cord stimulation during rehab — Spinal cord injury (hand/arm function) — added 2026-09-07
+ - **Cala Health** (Cala Trio) — wearable transcutaneous peripheral nerve stimulation (radial/ulnar nerves), on-demand use — Essential tremor, Parkinson's tremor — added 2026-09-13
++- **Neurolief** (Relivion / Proliv Rx) — multi-channel headset, 6 branches of occipital + trigeminal nerves — Acute migraine; major depressive disorder — added 2026-09-14
+ 
+ ---
+ 
+@@ -66,6 +79,9 @@ Last synced to diagram: 2026-09-13
+ ### L3: Deep TMS (H-coil)
+ - **BrainsWay** — patented H-coil (H1/H7 variants), broader/deeper cortical field — MDD, OCD, smoking cessation — added 2026-09-07
+ 
++### L3: Navigated TMS (nTMS)
++- **Nexstim** (NBT System / SmartFocus) — real-time 3D MRI-based navigation of induced cortical electric field, individualized coil targeting — MDD; CE-marked also for stroke rehab & chronic neuropathic pain — added 2026-09-14
++
+ ---
+ 
+ ## L2: Transcranial Electrical Stimulation (tES)
+@@ -74,6 +90,7 @@ Last synced to diagram: 2026-09-13
+ ### L3: Direct Current (tDCS)
+ - **Flow Neuroscience** (FL-100) — at-home 2-electrode tDCS, anode over left DLPFC — MDD (non-treatment-refractory) — added 2026-09-07
+ - **Soterix Medical** — clinical-grade tDCS (conventional and HD variants), research & clinical devices — MDD, treatment-resistant depression, stroke rehabilitation — added 2026-09-13
++- **Sooma** — at-home/clinic tDCS cap, bilateral DLPFC electrodes — MDD; also chronic pain (EU) — added 2026-09-14
+ 
+ ---
+ 
+@@ -96,6 +113,14 @@ Last synced to diagram: 2026-09-13
+ 
+ ---
+ 
++## L2: Digital Health / Neurostimulation Data Platforms
++*Not a stimulation modality — software/data platforms that monitor symptoms and/or interoperate with implanted neurostimulation devices. Included because they are integral to the neuromodulation ecosystem, tracked separately since they don't deliver energy to neural tissue.*
++
++### L3: Wearable-based Symptom Monitoring
++- **Rune Labs** (StrivePD) — Apple Watch accelerometer/gyroscope-based tremor & dyskinesia tracking, interoperates with Medtronic Percept PC DBS telemetry — Parkinson's disease symptom monitoring & DBS programming support — added 2026-09-14
++
++---
++
+ ## Notes for future branches (not yet populated)
+ 
+ Candidates already in `docs/BACKLOG.md` will likely need these new L2/L3 branches
+-- 
+2.43.0
+
