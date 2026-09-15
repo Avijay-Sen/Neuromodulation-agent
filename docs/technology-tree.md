@@ -17,7 +17,7 @@ automation — see `docs/BACKLOG.md` / the daily trigger):
    live database, so it only updates when someone (me, on request or via the
    daily job) regenerates it from this source.
 
-Last synced to diagram: 2026-09-14
+Last synced to diagram: 2026-09-15
 
 ---
 
@@ -48,10 +48,21 @@ Last synced to diagram: 2026-09-14
 - **Neuros Medical** (Altius) — peripheral nerve cuff, on-demand high-frequency conduction block — Post-amputation phantom/residual limb pain — added 2026-09-07
 - **LivaNova** (aura6000, originally ImThera Medical) — proximal hypoglossal nerve stimulation (multi-branch trunk cuff) — Obstructive sleep apnea — added 2026-09-14
 - **Nalu Medical** (micro-IPG, acquired by Boston Scientific Jan 2026) — battery-free wirelessly-powered implantable pulse generator, PNS + SCS indications — Chronic peripheral-nerve-origin pain — added 2026-09-14
+- **XII Medical** (investigational) — hypoglossal nerve (CN XII) stimulation, smaller/less-invasive implant vs. incumbents — Obstructive sleep apnea — added 2026-09-15
+- **Invicta Medical** (rebranded Restera, investigational) — percutaneous/injectable dual-nerve stimulation (hypoglossal + ansa cervicalis) — Obstructive sleep apnea — added 2026-09-15
+- **MicroTransponder** (Vivistim Paired VNS System) — implanted cervical vagus nerve stimulation paired with rehab movements — Chronic post-stroke upper-limb motor deficit — added 2026-09-15
 
 ### L3: Percutaneous / Temporary Peripheral Nerve Stimulation
 *Distinct from permanently implanted PNS above — a thin lead placed near a target nerve for a defined period (typically up to 60 days), then removed.*
 - **SPR Therapeutics** (SPRINT PNS, endura/extensa) — percutaneous lead + external wearable pulse generator, up to 60-day use — Chronic and acute pain of the back/extremities/head/neck/torso — added 2026-09-14
+
+### L3: Retinal Prosthesis (Photovoltaic Implant)
+*Implanted electrode array under the retina that converts externally projected light into electrical stimulation of surviving retinal neurons — mechanistically an implanted stimulation device, though "input" is optical rather than direct electrical lead placement.*
+- **Science Corporation** (PRIMA) — subretinal photovoltaic implant (378 pixels) + AR glasses projecting infrared light, converts light to electrical stimulation of bipolar cells — Vision restoration in geographic atrophy (AMD); also pursuing retinitis pigmentosa & Stargardt disease — added 2026-09-15
+
+### L3: Functional Electrical Stimulation (FES) for Gait/Motor Function
+*Wearable, non-invasive neuromuscular stimulation timed to the gait cycle or muscle-activation pattern — distinct from tremor-suppression PNS (Cala Health) and from implanted pain-focused PNS/SCS above.*
+- **Cionic** (Neural Sleeve) — EMG+IMU-driven predictive functional electrical stimulation of leg muscles — Foot drop/gait impairment (MS, stroke, cerebral palsy) — added 2026-09-15
 
 ### L3: Endovascular Neural Interface (BCI)
 - **Synchron** (Stentrode) — 16-channel stent-electrode array delivered via jugular vein into the superior sagittal sinus, no craniotomy — Paralysis/ALS communication & device control — added 2026-09-07
@@ -67,6 +78,8 @@ Last synced to diagram: 2026-09-14
 - **Onward Medical** (ARC-EX) — transcutaneous spinal cord stimulation during rehab — Spinal cord injury (hand/arm function) — added 2026-09-07
 - **Cala Health** (Cala Trio) — wearable transcutaneous peripheral nerve stimulation (radial/ulnar nerves), on-demand use — Essential tremor, Parkinson's tremor — added 2026-09-13
 - **Neurolief** (Relivion / Proliv Rx) — multi-channel headset, 6 branches of occipital + trigeminal nerves — Acute migraine; major depressive disorder — added 2026-09-14
+- **Somnair** (investigational) — intraoral retainer-like device, transmucosal electrical stimulation of airway-opening nerve/muscle — Obstructive sleep apnea — added 2026-09-15
+- **Nēsos** (investigational) — in-ear wearable, auricular vagus nerve stimulation (cholinergic anti-inflammatory pathway) — Rheumatoid arthritis (bioelectronic/neuroimmune) — added 2026-09-15
 
 ---
 
@@ -82,6 +95,10 @@ Last synced to diagram: 2026-09-14
 ### L3: Navigated TMS (nTMS)
 - **Nexstim** (NBT System / SmartFocus) — real-time 3D MRI-based navigation of induced cortical electric field, individualized coil targeting — MDD; CE-marked also for stroke rehab & chronic neuropathic pain — added 2026-09-14
 
+### L3: EEG-Guided Personalized TMS
+*Distinct from navigated TMS above — individualizes stimulation frequency (via quantitative EEG-derived peak alpha frequency) rather than 3D-MRI spatial coil targeting.*
+- **Wave Neuroscience** (MeRT) — quantitative-EEG-derived personalized stimulation frequency, rTMS pulses at patient's own dominant alpha frequency — PTSD (FDA-cleared 2026) — added 2026-09-15
+
 ---
 
 ## L2: Transcranial Electrical Stimulation (tES)
@@ -91,6 +108,10 @@ Last synced to diagram: 2026-09-14
 - **Flow Neuroscience** (FL-100) — at-home 2-electrode tDCS, anode over left DLPFC — MDD (non-treatment-refractory) — added 2026-09-07
 - **Soterix Medical** — clinical-grade tDCS (conventional and HD variants), research & clinical devices — MDD, treatment-resistant depression, stroke rehabilitation — added 2026-09-13
 - **Sooma** — at-home/clinic tDCS cap, bilateral DLPFC electrodes — MDD; also chronic pain (EU) — added 2026-09-14
+
+### L3: Alternating Current (tACS)
+*Distinct from tDCS above — applies an oscillating rather than constant current, intended to entrain cortical/subcortical rhythms rather than simply polarize tissue.*
+- **Nexalin Technology** (HALO Clarity / Deep Intracranial Frequency Stimulation) — proprietary "dynamic frequency" tACS via scalp electrodes, intended to reach deep midbrain structures — Anxiety, depression, insomnia (investigational in US; cleared in China) — added 2026-09-15
 
 ---
 
@@ -102,6 +123,10 @@ Last synced to diagram: 2026-09-14
 
 ### L3: Blood-Brain-Barrier Opening (investigational)
 - **Insightec** (Exablate Neuro, investigational arm) — low-intensity pulsed ultrasound + microbubbles, transient reversible BBB opening — Alzheimer's (antibody drug-delivery enhancement) — added 2026-09-07
+
+### L3: Low-Intensity Focused Ultrasound Neuromodulation (non-ablative, reversible)
+*Distinct from Insightec's thermal ablation above — sub-thermal acoustic energy intended to modulate (not destroy) deep-brain circuits, reversibly.*
+- **SonoMind** (investigational) — non-invasive transcranial ultrasound via patient-specific acoustic-lens/metamaterial skull-aberration correction — Treatment-resistant depression — added 2026-09-15
 
 ---
 
@@ -128,4 +153,3 @@ once researched — added here as placeholders so the daily job/automation knows
 where to file them rather than guessing:
 
 - **L2: Electrical Neurostimulation → L3: Implanted DBS (Deep Brain Stimulation)** — none yet (Medtronic/Boston Scientific/Abbott are incumbents, not startups tracked here; watch for a DBS-focused startup)
-- **L2: Ultrasound → L3: Low-Intensity Focused Ultrasound Neuromodulation (non-ablative, reversible)** — distinct from Insightec's thermal ablation; watch for a non-thermal neuromodulatory ultrasound startup

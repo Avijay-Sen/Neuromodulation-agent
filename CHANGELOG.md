@@ -2,6 +2,71 @@
 
 All research batches are logged here, newest first.
 
+## 2026-09-15 — Fourth batch (10 startups)
+
+Researched 10 startups across all four categories:
+
+- **Sleep Apnea (3):** XII Medical (Cleveland Clinic spinout, hypoglossal nerve
+  stimulation, $75M raised across Series A/B, no verified FDA milestone),
+  Invicta Medical (percutaneous dual-nerve hypoglossal + ansa cervicalis
+  stimulation, rebranded mid-development to "Restera," n=14 proof-of-concept
+  only), Somnair Inc. (Johns Hopkins CBID spinout, first fully non-invasive
+  intraoral neurostimulation approach for OSA, $4.3M seed Sept 2025, n=22
+  proof-of-concept)
+- **Cognitive Disorders / Neural Interface (2):** Science Corporation (PRIMA
+  subretinal photovoltaic implant for vision restoration in geographic
+  atrophy/AMD, ~$490M raised incl. $230M Series C Mar 2026, CE Mark + EU
+  commercial launch Jul 2026, FDA HUD designations reported but unverified),
+  MicroTransponder (Vivistim Paired VNS System, cervical VNS paired with
+  rehab for chronic post-stroke upper-limb motor deficit, FDA PMA approved
+  Aug 2021, pivotal VNS-REHAB RCT published in The Lancet)
+- **Mental Health / Psychiatric (3):** Nexalin Technology (HALO Clarity /
+  Deep Intracranial Frequency Stimulation, tACS-type device, publicly traded
+  Nasdaq: NXL, no US FDA clearance — De Novo pathway pending), Wave
+  Neuroscience (MeRT — qEEG-guided personalized TMS, FDA Breakthrough Device
+  Dec 2024, FDA clearance for PTSD announced Jun 2026), SonoMind (non-invasive
+  low-intensity focused ultrasound via personalized acoustic-metamaterial
+  skull correction for treatment-resistant depression, €3M seed 2025 + €20M
+  Series A May 2026, pre-pivotal-trial)
+- **Neuro-Musculoskeletal / Pain / Movement (2):** Cionic (Neural Sleeve —
+  EMG+IMU-driven predictive functional electrical stimulation for gait/foot
+  drop, FDA 510(k) cleared Mar 2022 and Sept 2025 for Gen 2, ~$35.3M raised),
+  Nēsos (non-invasive in-ear auricular vagus nerve stimulation for
+  rheumatoid arthritis, cholinergic anti-inflammatory pathway, $16.5M raised
+  Dec 2020, FDA Breakthrough Device Designation reported but not
+  independently confirmed, no funding disclosed since 2020)
+
+**Tech-tree updates:** Added a new L3 "Retinal Prosthesis (Photovoltaic
+Implant)" branch under Electrical Neurostimulation (Science Corporation);
+added a new L3 "Functional Electrical Stimulation (FES) for Gait/Motor
+Function" branch under Electrical Neurostimulation (Cionic); added XII
+Medical, Invicta Medical, and MicroTransponder to the existing "Implanted
+Peripheral / Cranial Nerve" L3; added Somnair and Nēsos to "Non-invasive /
+Transcutaneous Peripheral"; added a new L3 "EEG-Guided Personalized TMS"
+branch under Magnetic Stimulation (Wave Neuroscience), distinct from the
+existing MRI-based Navigated TMS branch; added a new L3 "Alternating Current
+(tACS)" branch under Transcranial Electrical Stimulation (Nexalin
+Technology), distinct from the existing tDCS branch; populated the
+previously-placeholder L3 "Low-Intensity Focused Ultrasound Neuromodulation
+(non-ablative, reversible)" branch under Focused Ultrasound (SonoMind) and
+removed it from the "Notes for future branches" placeholder section.
+
+**Comparison.html:** Appended 10 new entries to the embedded `companies`
+array (verified valid JSON after edit — 40 total companies), each using the
+full GitHub blob URL format for the `profile` field per established
+convention.
+
+**Backlog replenishment:** The prior backlog had 14 unresourced entries
+before this batch (below the ~15 threshold), so after clearing 10 of them
+in this batch, 11 new credible candidates were sourced via live web search
+and appended across all four categories (1 Sleep Apnea, 4 Cognitive, 3
+Mental Health, 3 Neuro-Musculoskeletal) — each verified as a real,
+currently-operating company via at least one independent source before
+being added. Five additional candidates the search agent surfaced
+(Signifier Medical Technologies, Synchron, BrainsWay, Neuros Medical,
+Onward Medical) were excluded as duplicates of companies already profiled
+in this tracker.
+
 ## 2026-09-14 — Third batch (10 startups)
 
 Researched 10 startups across all four categories, clearing the entire prior
